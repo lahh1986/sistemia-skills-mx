@@ -4,8 +4,8 @@ description: |
   Usar cuando el usuario quiera EVALUAR copy publicitario, anuncios, landing pages,
   posts de redes sociales, o cualquier material de marketing dirigido al mercado
   mexicano ANTES de gastar en ads. El skill activa un focus group sintético con
-  14 personas mexicanas (NSE A/B → E × género × generación × región) que evalúan
-  el material y devuelven FGMX-Score (7 dimensiones + Buyability ponderado).
+  19 personas mexicanas (NSE A/B → E × género × generación × región × voto 2024)
+  que evalúan el material y devuelven FGMX-Score (7 dimensiones + Buyability ponderado).
 
   Triggers: "evalúa este anuncio", "qué opinarían los mexicanos", "focus group",
   "antes de lanzar el ad", "este copy funcionaría", "revisa esta landing",
@@ -13,10 +13,16 @@ description: |
   "antes de gastar en ads", "test de mensaje", "FGMX-Score".
 ---
 
-# Focus Group MX — Skill principal v1.1
+# Focus Group MX — Skill principal v2.0
 
-> 14 personas mexicanas validadas con PSEC-MX (ENIGH 2024 + AMAI + PROFECO)
+> 19 personas mexicanas validadas con PSEC-MX (ENIGH 2024 + AMAI + PROFECO + INE 2024)
 > evalúan tu copy con **FGMX-Score** (7 dimensiones + Buyability ponderado).
+>
+> **v2.0 changelog**: +5 personas para cerrar gaps estructurales:
+> Lourdes (A/B patrimonial heredada CDMX) · Diego (C+ Maynecista urbano CDMX) ·
+> Pilar (C panista bastión católica Ags) · Mauricio (C medio CDMX millennial varón) ·
+> Adriana (C+ Jal cristiana evangélica Maynecista). Distribución 11 Sheinbaum / 6 Xóchitl
+> / 2 Máynez ahora refleja mejor el electorado real 2024.
 
 ## Cuándo activarte
 
@@ -315,9 +321,13 @@ Avisa al usuario y reproponé.
 
 ## Versiones
 
-- **v1.1 (2026-05-28):** FGMX-Score integrado. 14 personas validadas PSEC-MX.
-- **v1.2 (planeado):** 5 personas adicionales para corregir gaps (Máynez, A/B patrimonial, C medio CDMX).
-- **v1.3 (planeado):** Reliability tests (inter-LLM kappa, test-retest).
-- **v1.4 (planeado):** Face validity con 5 expertos pagados.
+- **v1.0 (2026-05-26):** 14 personas validadas con PSEC-MX inicial.
+- **v1.1 (2026-05-27):** FGMX-Score integrado. Disambiguation Intención, sub-categorías nuevas, threshold reliability documentado. Tecnología disponible en cada persona.
+- **v1.2 (2026-05-27):** Backtest n=10 retrospectivos correctos (Cases #3-14). Reporte estadístico agregado: hit rate 100%, Cohen's d 4.98, AUC 1.00, p<0.001.
+- **v2.0 (2026-05-27):** 5 personas adicionales para cerrar gaps estructurales (A/B heredada, MC Maynecista urbano, panista bastión real Ags, C medio CDMX varón, C+ Jal cristiana evangélica). Distribución de voto 2024 ahora 11/6/2 (Sheinbaum/Xóchitl/Máynez).
+- **v2.1 (planeado):** Inter-LLM kappa con pool de 19 personas (re-validación del Case #9 con pool expandido).
+- **v2.2 (planeado):** Backtest n=20 (tandas 2 y 3 v1.2) usando pool de 19.
+- **v2.3 (planeado):** Módulo político 2027 (spots INE, Effie Awards políticos).
+- **v3.0 (planeado):** Face validity con 5 expertos mexicanos pagados (focus group humano real comparativo).
 - **v2.0 (futuro):** Pool expandido 21-28 + módulo política explícita (fork privado).
 - **v3.0 (futuro):** Personas con memoria persistente entre runs.

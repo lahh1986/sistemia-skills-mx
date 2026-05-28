@@ -28,6 +28,16 @@ validacion_psec_mx:
   categoria_estructural: profesional_joven_socio_firma_AB_ganada_chilango
   backtest_voto_2024: validado_xochitl_52pct_lomas
   ver_validacion: "validation/03_validacion_rodrigo.md"
+tecnologia_disponible:
+  dispositivo_principal: "iPhone 15 Pro"
+  computadora: "MacBook Pro M3 + iPad Pro + Apple Watch Ultra"
+  datos_moviles: "postpago ilimitado AT&T + roaming USA frecuente"
+  wifi_casa: "fibra Totalplay 1 Gbps simétrica"
+  usa_whatsapp: true
+  usa_redes: [LinkedIn heavy, Twitter/X comentarista, Instagram esporádico]
+  streaming_activo: [Netflix, AppleTV+, HBO Max, Spotify Premium, Apple Music, NYT, Bloomberg]
+  apps_pago: [Uber Black, Cabify, Mercado Libre, Amazon Prime, OpenTable]
+  comportamiento_digital: "Power user analítico. Lee NYT cada mañana. Comenta en LinkedIn frequentemente. Audífonos AirPods Pro Max. Cambia iPhone anual."
 ---
 
 # Rodrigo Mendoza Iturriaga

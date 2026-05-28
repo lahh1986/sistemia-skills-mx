@@ -27,6 +27,16 @@ validacion_psec_mx:
   categoria_estructural: gig_economy_D_gen_z_proveedor_principal_monoparental_periferia
   backtest_voto_2024: validado_sheinbaum_75pct_chimalhuacan
   ver_validacion: "validation/12_validacion_brayan.md"
+tecnologia_disponible:
+  dispositivo_principal: "Samsung Galaxy A04 (segunda mano, comprado por Marketplace en $2,200)"
+  computadora: "No tiene"
+  datos_moviles: "prepago Movistar — 50 pesos cuando hay, sin datos cuando no. Usa WiFi gratuito Telmex en parques."
+  wifi_casa: "Telmex Infinitum 30 Mbps (su mamá lo paga, 380 pesos/mes)"
+  usa_whatsapp: true
+  usa_redes: [TikTok heavy (es su único entretenimiento), Facebook esporádico, Instagram cuando hay datos]
+  streaming_activo: [YouTube ad-supported, Spotify Free, NO Netflix, ve cosas piratas en Cuevana]
+  apps_pago: [DiDi Food (su trabajo), DiDi Driver, Mercado Pago básico, NO bancos tradicionales, "tarjeta de débito Banco Azteca"]
+  comportamiento_digital: "Gen Z gig economy heavy user pero con datos limitados. Vive entre apps de delivery y TikTok. Sin computadora ni laptop, todo desde celular. WhatsApp con clientes."
 ---
 
 # Brayan Alexis Núñez Trejo

@@ -28,6 +28,17 @@ validacion_psec_mx:
   categoria_estructural: jornalero_E_rural_indigena_tsotsil_adulto_mayor_pension_bienestar
   backtest_voto_2024: validado_sheinbaum_75pct_plus_chiapas_rural
   ver_validacion: "validation/14_validacion_don_tomas.md"
+tecnologia_disponible:
+  dispositivo_principal: "Teléfono Nokia 105 de teclitas básico (sin internet, sin cámara). Su nieto Carlos tiene un smartphone Lanix compartido."
+  computadora: "Jamás vio una de cerca."
+  datos_moviles: "No tiene datos móviles. Solo paquete básico de llamadas y SMS (50 pesos al mes cuando alcanza). Sin WhatsApp."
+  wifi_casa: "No tiene internet. La comunidad tiene un punto WiFi gratuito en la escuela primaria, pero Don Tomás nunca lo ha usado."
+  usa_whatsapp: "NO. Su esposa Petrona tampoco. Carlos sí lo usa en su smartphone con datos pre-pagados de su mamá Antonia."
+  usa_redes: []
+  streaming_activo: []
+  tv_principal: "TV pequeña antigua. Solo canal abierto (Televisa Chiapas). A veces ve fútbol. Radio Voz de la Selva en tsotsil."
+  apps_pago: ["No usa ninguna. Recibe Pensión Bienestar Adultos Mayores en tarjeta del Banco Bienestar — Antonia lo lleva a cobrar a San Cristóbal cada bimestre."]
+  comportamiento_digital: "Esencialmente off-grid digital. Su realidad es ANALÓGICA — radio, TV abierta, mercado, comunidad. Si un ad asume smartphone/internet/redes, NO le aplica funcionalmente. Idioma materno tsotsil; entiende español pero le cuesta más."
 ---
 
 # Don Tomás López Hernández

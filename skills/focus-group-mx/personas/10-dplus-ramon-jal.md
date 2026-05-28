@@ -27,6 +27,16 @@ validacion_psec_mx:
   categoria_estructural: mecanico_D_plus_trabajador_unico_familiar_bajio
   backtest_voto_2024: validado_sheinbaum_55pct_tlaquepaque
   ver_validacion: "validation/10_validacion_ramon.md"
+tecnologia_disponible:
+  dispositivo_principal: "Motorola Moto E (smartphone básico, comprado en Liverpool MSI)"
+  computadora: "Smart TV LG (50 pulgadas, comprada en Buen Fin 2022). Sin computadora."
+  datos_moviles: "prepago Telcel 200 pesos/mes"
+  wifi_casa: "Telmex Infinitum 30 Mbps"
+  usa_whatsapp: true
+  usa_redes: [Facebook grupos mecánicos+autos clásicos, WhatsApp grupos taller, NO Instagram, NO TikTok]
+  streaming_activo: [YouTube (tutoriales mecánica + fútbol Liga MX), Netflix compartido cuenta, NO Disney+, NO Spotify]
+  apps_pago: [BBVA app, Mercado Libre (compra piezas), NO Uber, paga con efectivo]
+  comportamiento_digital: "Pragmatic mid-low user. YouTube es su escuela técnica. Vende servicios por Marketplace de Facebook. Llama por teléfono más que escribir."
 ---
 
 # Ramón "el Mecha" Solís Aguilar

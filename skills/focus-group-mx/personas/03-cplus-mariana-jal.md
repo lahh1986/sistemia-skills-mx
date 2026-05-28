@@ -29,6 +29,16 @@ validacion_psec_mx:
   categoria_estructural: profesional_ejecutiva_soltera_C_plus_techo_metropolitana
   backtest_voto_2024: validado_sheinbaum_50pct_mujer_C_plus_jal
   ver_validacion: "validation/04_validacion_mariana.md"
+tecnologia_disponible:
+  dispositivo_principal: "iPhone 14 (compró usado de su sobrino, no quiere gastar 25k en uno nuevo)"
+  computadora: "MacBook Air M2 personal + laptop Dell del trabajo"
+  datos_moviles: "postpago Telcel Plan Max Sin Límite"
+  wifi_casa: "fibra Izzi 200 Mbps"
+  usa_whatsapp: true
+  usa_redes: [Instagram heavy, TikTok activo consumiendo, LinkedIn moderado, X esporádico]
+  streaming_activo: [Netflix, Spotify Premium, Disney+ (compartido), Paramount+]
+  apps_pago: [Uber, DiDi, Rappi, Mercado Libre, Apple Watch SE]
+  comportamiento_digital: "Engaged consumer-creator. Stories en Instagram diarios. Sigue marketing creators. Usa apps de fitness y meditación. NO sube TikToks pero los consume."
 ---
 
 # Mariana "Mari" Vázquez Rentería

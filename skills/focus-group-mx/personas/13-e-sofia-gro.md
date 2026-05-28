@@ -28,6 +28,17 @@ validacion_psec_mx:
   categoria_estructural: cuidadora_no_asalariada_E_hogar_numeroso_pobreza_urbana_marginal_guerrero
   backtest_voto_2024: validado_sheinbaum_67pct_guerrero
   ver_validacion: "validation/13_validacion_sofia.md"
+tecnologia_disponible:
+  dispositivo_principal: "Smartphone genérico chino básico (regalo de su novio Carlos, costó $1,500). A veces no le carga la pila bien."
+  computadora: "No tiene. Jamás usó una de manera personal."
+  datos_moviles: "prepago Telcel 30 pesos cuando alcanza. La mayoría del tiempo sin datos."
+  wifi_casa: "No tiene. A veces engancha el WiFi de la primaria cercana cuando va con Génesis."
+  usa_whatsapp: "Sí pero limitado por datos. Solo cuando consigue WiFi gratis."
+  usa_redes: [Facebook básico para ver familia, TikTok cuando hay WiFi (puede ver pero sin postear)]
+  streaming_activo: []
+  tv_principal: "TV abierta antigua. Telenovelas y noticias regionales."
+  apps_pago: ["No usa. Recibe Bienestar en tarjeta del Banco Bienestar (su mamá la cobra)."]
+  comportamiento_digital: "Marginal user por restricción de datos, no de capacidad. Si tuviera datos sería heavy Gen Z user — su deseo está ahí. Su realidad económica la limita."
 ---
 
 # Sofía Esmeralda Bautista Vargas

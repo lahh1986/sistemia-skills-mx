@@ -28,6 +28,16 @@ validacion_psec_mx:
   categoria_estructural: profesional_industrial_C_plus_nearshoring_bajio_familiar
   backtest_voto_2024: validado_xochitl_46pct_qro
   ver_validacion: "validation/05_validacion_daniel.md"
+tecnologia_disponible:
+  dispositivo_principal: "Samsung Galaxy S22 (2 años)"
+  computadora: "Laptop Lenovo familiar + iPad para los hijos"
+  datos_moviles: "postpago Telcel Plan Familiar 5 líneas"
+  wifi_casa: "fibra Telmex 200 Mbps"
+  usa_whatsapp: true
+  usa_redes: [Facebook activo grupos automotrices, LinkedIn corporativo, WhatsApp grupos primaria]
+  streaming_activo: [Netflix familiar, YouTube Premium, Disney+, Spotify Free]
+  apps_pago: [Uber ocasional, Mercado Libre, Walmart app]
+  comportamiento_digital: "Mid user práctico. Maneja apps trabajo (SAP móvil). Sigue noticias deportes y autos. Sus hijos tienen sus iPads."
 ---
 
 # Daniel Hernández López

@@ -3,7 +3,12 @@
 > **Sistema de scoring multi-dimensional para evaluación de copy publicitario
 > mexicano, validado contra frameworks académicos y prácticos.**
 >
-> Versión 1.0 · 2026-05-28 · Apache 2.0
+> Versión **1.1** · 2026-05-27 · Apache 2.0
+>
+> **v1.1 changelog**: Disambiguation de Intención (excluye consumo habitual) ·
+> 2 nuevas categorías (consumo_durable_hogar, brand_image_no_promo) ·
+> Cuadrante Buyability×Spread documentado · Gradiente NSE como señal de targeting ·
+> Threshold de reliability inter-LLM validado en Case #9 (Pearson r̄=0.88, 4-way).
 
 ---
 
@@ -145,20 +150,31 @@ Cada dimensión se puntúa **0-10** con anclas conductuales (qué diría la pers
 
 ### 7. **Intención de compra** (Purchase Intent)
 
-> ¿Lo compraría en los próximos 30-90 días si se le presenta la oportunidad?
+> ¿Comprarías a CAUSA de este ad en los próximos 30-90 días?
+
+**⚠️ CRÍTICO — disambiguation v1.1:**
+
+Intención mide **el impacto del AD en compra**, NO consumo habitual del producto.
+
+- Si **ya compras el producto regularmente** y este ad NO cambia tu frecuencia/marca: Intención **0-3** (sin importar cuánto consumas).
+- Si el ad **te hace considerar** cambio de marca, incremento de frecuencia, o nueva categoría: Intención **4-10**.
+
+**Ejemplo:** Hugo ya toma Pepsi cuando come tacos. Este ad de Pepsi NO le hace tomar más Pepsi → **Intención 1-3** (no 7).
+
+Esta clarificación se derivó del Case Study #9 (Inter-LLM Kappa), donde la dimensión Intención fue la de mayor varianza inter-LLM por interpretaciones ambiguas.
 
 **Anclas conductuales:**
 
 | Score | Lo que diría la persona |
 |---:|---|
-| 0 | "Jamás. No me interesa." |
-| 1-2 | "No. Quizás algún día pero no veo cuándo." |
-| 3-4 | "Tal vez, si me llega información adicional." |
-| 5-6 | "Probable, si encuentro el momento." |
-| 7-8 | "Sí lo compraría próximamente." |
-| 9-10 | "Lo voy a comprar / lo compraría inmediato si lo tengo enfrente." |
+| 0 | "Este ad no me hace comprarlo. Punto." |
+| 1-2 | "Lo compro o no lo compro, pero NO por este ad." |
+| 3-4 | "Tal vez me hace considerar algo, si me llega info adicional." |
+| 5-6 | "Sí, este ad me empujó a considerar comprarlo." |
+| 7-8 | "Sí lo voy a comprar próximamente PORQUE vi este ad." |
+| 9-10 | "Inmediato — saco la tarjeta o entro a la tienda hoy mismo." |
 
-**Base teórica:** Net Promoter Score (Reichheld 2003) **evolved** — NPS clásico solo pregunta "likelihood to recommend"; FGMX adapta a "likelihood to buy" que es más predictivo para evaluación pre-launch. AIDA "Action".
+**Base teórica:** Net Promoter Score (Reichheld 2003) **evolved** — NPS clásico solo pregunta "likelihood to recommend"; FGMX adapta a "likelihood to buy CAUSED BY this ad" que es más predictivo para evaluación pre-launch. AIDA "Action".
 
 ---
 
@@ -196,6 +212,10 @@ Pesos suman 1.0. Se ajustan por categoría del producto.
 | **Retail moderno** | 0.15 | **0.20** | 0.10 | 0.10 | 0.10 | **0.20** | 0.15 |
 | **Bebidas alcohólicas** | 0.10 | 0.15 | 0.10 | 0.15 | **0.25** | **0.15** | 0.10 |
 | **Causa social / ONG** | 0.10 | **0.20** | **0.20** | 0.10 | **0.25** | 0.05 | 0.10 |
+| **Consumo durable hogar (línea blanca, electrodomésticos)** ⚡ | 0.15 | **0.20** | 0.15 | 0.10 | 0.15 | **0.20** | 0.05 |
+| **Brand image sin promo (campaña institucional)** ⚡ | 0.15 | **0.20** | **0.20** | 0.10 | **0.20** | 0.05 | 0.10 |
+
+⚡ = Categorías agregadas en v1.1, derivadas de Cases #3-#6.
 
 **Justificación de los pesos:**
 
@@ -205,6 +225,8 @@ Pesos suman 1.0. Se ajustan por categoría del producto.
 - **Política:** Relevancia + Emoción porque el "producto" es un mensaje de identidad colectiva.
 - **Salud:** Comprensión + Credibilidad porque las consecuencias son críticas.
 - **Fintech:** Credibilidad + Affordability porque la confianza en el manejo del dinero es todo.
+- **Consumo durable hogar (v1.1):** Relevancia + Affordability porque la decisión es esporádica pero significativa; el target debe sentirse aludido y el precio debe caber.
+- **Brand image sin promo (v1.1):** Affordability solo 5% porque el ad NO ofrece precio; el éxito es brand favorability. Validado en Case #4 (Pepsi) y #6 (Coca Sombras de Rojo).
 
 ### Interpretación del Buyability Score
 
@@ -372,10 +394,82 @@ Tomar un ad con brand tracking real conocido (caso histórico documentado) y com
 
 ---
 
+## Cuadrante Buyability × Spread (v1.1)
+
+Diagnóstico estructural del ad combinando Buyability target y spread target-control:
+
+```
+                   Buyability target
+                   alta (≥6.5)              baja (<5.5)
+spread       ┌──────────────────────┬─────────────────────┐
+alto (>2)    │ Targeting tight       │ Targeting incorrecto │
+             │ (Effie ganador segmentado)│ (ad mal targeteado) │
+             ├──────────────────────┼─────────────────────┤
+medio (1-2)  │ Funcional             │ Mid-funnel ajustable │
+             │ (incumbente)          │                      │
+             ├──────────────────────┼─────────────────────┤
+bajo (<1)    │ ⭐ VIRALIDAD CULTURAL │ ⚠️ ESTRUCTURALMENTE  │
+             │ (Dancing Washers,    │ MALO (Pepsi Kendall, │
+             │ Aeroméxico DNA)      │ Indio, Victoria)     │
+             ├──────────────────────┼─────────────────────┤
+~0           │ Mass-market emotional│ 🚨 RECHAZO TRANSVERSAL│
+             │ (Coca Sombras Rojo)  │ (brief roto)         │
+             └──────────────────────┴─────────────────────┘
+```
+
+**Casos documentados** (Cases #1-#8 del repo):
+- ⭐⭐ Mass-market emotional: Coca-Cola Sombras de Rojo (Buy 8.66, spread 1.61)
+- ⭐ Viralidad cultural: Dancing Washers (7.58, 0.48), Aeroméxico DNA (7.83, 0.35)
+- ✅ Funcional incumbente: Doctoralia (7.05)
+- 🟡 Mid-funnel: Trust (6.30)
+- ⚠️ Estructuralmente malo: Pepsi Kendall (4.81), Indio (5.10), Victoria (4.55)
+- 🚨 Rechazo transversal: Victoria con spread 0.02
+
+---
+
+## Gradiente NSE (v1.1)
+
+Para campañas con target NSE específico, verificar que el gradiente Buyability × NSE sea coherente:
+
+| Gradiente NSE→Buy | Lectura | Caso |
+|---|---|---|
+| Positivo (A/B > D) | Ad **premium/aspiracional** correctamente targeteado | Liverpool premium |
+| **Negativo (D > A/B)** | Ad **mass-market emotional** correctamente targeteado | Coca Sombras de Rojo ✓ |
+| Flat | Ad **universal cultural** (Aeroméxico DNA) o genérico sin anchor | Aeroméxico DNA ✓ |
+| Inverso al expected | 🚨 **Targeting incorrecto** | (no observado en validación pool) |
+
+---
+
+## Threshold de reliability inter-rater (v1.1)
+
+Para que una evaluación sea aceptable inter-LLM/inter-rater (basado en Case #9):
+
+| Métrica | Threshold | Fuente |
+|---|---|---|
+| Pearson r en Buyability ≥3 LLMs | **≥ 0.75** | Cicchetti "excellent" |
+| MAD por celda en ≥6 de 7 dimensiones | **≤ 1.5 puntos** | Empírico Case #9 |
+| Concordancia patrón A>B | **≥ 75% del pool** | Empírico Case #9 |
+| Range Δ entre LLMs en Buyability | **≤ 1.5 puntos** | Heurística producción |
+
+**FGMX-Score v1.1 cumple los 4 criterios** (Case #9, 4-way LLM, sub-cluster r̄=0.95).
+
+### Recomendación operacional para producción
+
+```
+Si Buyability promedio ≥3 LLMs ≥ 7.0 y rango Δ ≤ 1.5: ⭐ ad fuerte, lanzar
+Si Buyability promedio ≥3 LLMs ∈ [5.5, 6.9] y rango Δ ≤ 1.5: 🟡 mid-funnel, A/B
+Si Buyability promedio ≥3 LLMs < 5.5: ⚠️ replantear
+Si rango Δ > 2.0 entre LLMs: 🔍 ambigüedad — revisar dossiers y SCORING.md
+Si patrón A>B difiere entre LLMs: usar majority vote
+```
+
+---
+
 ## Próximos pasos
 
-- **v1.0** (presente): Spec teórica documentada.
-- **v1.1** (próxima fase): Integrar al `SKILL.md` para que las personas devuelvan estructuradamente las 7 dimensiones.
-- **v1.2**: Cross-validation con 10 ads Effie + 10 ads fracasados.
-- **v1.3**: Inter-LLM kappa con 4 LLMs distintos.
-- **v2.0**: Refinamiento de pesos basado en regresión empírica (con datos de A/B real).
+- **v1.0** (lanzada): Spec teórica documentada.
+- **v1.1** (presente): Disambiguation Intención + 2 nuevas categorías + cuadrante Buy×Spread + gradiente NSE + threshold reliability. Derivado de Cases #1-#9.
+- **v1.2**: Cross-validation con 10 ads Effie + 10 ads fracasados (objetivo n≥20 para significancia estadística).
+- **v1.3**: Test-retest mismo LLM (¿varianza intra-LLM aceptable?).
+- **v1.4**: Comparativa contra mini-focus group humano real (5 mexicanos pagados) para validar contra ground truth.
+- **v2.0**: Refinamiento de pesos basado en regresión empírica (con datos de A/B real de clientes).

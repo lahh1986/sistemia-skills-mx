@@ -27,6 +27,16 @@ validacion_psec_mx:
   categoria_estructural: maestro_publico_C_vocacional_precario_izquierda_critica
   backtest_voto_2024: validado_sheinbaum_60pct_coyoacan
   ver_validacion: "validation/07_validacion_jorge.md"
+tecnologia_disponible:
+  dispositivo_principal: "iPhone 12 (usado, lo compró por OfferUp en $6,500)"
+  computadora: "Laptop Lenovo ThinkPad usada (~2018), prestada por la escuela. Mac mini de Aaron a veces."
+  datos_moviles: "prepago AT&T 200 pesos/mes - se acaba a mediados"
+  wifi_casa: "Telmex compartido con roommates 50 Mbps"
+  usa_whatsapp: true
+  usa_redes: [Twitter/X heavy intelectual, Instagram esporádico, BlueSky activo, Mastodon, Letterboxd]
+  streaming_activo: [Spotify Free, MUBI, Cuevana (pirata), YouTube ad-supported, Filmin compartido]
+  apps_pago: [DiDi, Mercado Pago, NO Uber Eats (caro)]
+  comportamiento_digital: "Intellectual heavy reader. Lee periódicos online. Sigue cuentas educación crítica. NO usa TikTok. NO usa Apple Wallet. Bibliófilo digital."
 ---
 
 # Jorge Alejandro Pacheco Rivera

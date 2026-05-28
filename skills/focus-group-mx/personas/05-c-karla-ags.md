@@ -27,6 +27,16 @@ validacion_psec_mx:
   categoria_estructural: profesionista_C_doble_ingreso_familiar_disidente_PAN_bastion
   backtest_voto_2024: minoria_disidente_33pct_mujeres_C_ags
   ver_validacion: "validation/06_validacion_karla.md"
+tecnologia_disponible:
+  dispositivo_principal: "Samsung Galaxy A54 (mid-range, comprado en MSI Coppel)"
+  computadora: "Laptop HP del trabajo (la usa también en casa). Sin computadora personal."
+  datos_moviles: "postpago Telcel Plan Familiar 3 líneas (con Iván + Mateo)"
+  wifi_casa: "Telmex Infinitum 50 Mbps básico"
+  usa_whatsapp: true
+  usa_redes: [Facebook activo grupos de mamás+contadores, Instagram esporádico, WhatsApp grupos primaria de Mateo]
+  streaming_activo: [Netflix (cuenta compartida con hermana), Disney+ (los hijos), Spotify Free]
+  apps_pago: [Mercado Pago, BBVA app, Soriana app, Uber esporádico]
+  comportamiento_digital: "Mid-low user práctico. Usa WhatsApp + Facebook intensivamente. NO usa TikTok. Compra MSI en Liverpool app."
 ---
 
 # Karla Beatriz Esparza Medina

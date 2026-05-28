@@ -31,6 +31,16 @@ validacion_psec_mx:
   categoria_estructural: working_class_urbana_periferia_hogar_ampliado_intergeneracional
   backtest_voto_2024: validado_sheinbaum_65pct_mujeres_C_minus_edomex
   ver_validacion: validation/01_validacion_maria_fernanda.md
+tecnologia_disponible:
+  dispositivo_principal: "Samsung Galaxy A14 (comprado en Coppel 18 MSI)"
+  computadora: "Sin computadora personal. La de la oficina solo en trabajo."
+  datos_moviles: "prepago Telcel 200 pesos/mes — se acaba antes del 20"
+  wifi_casa: "Telmex Infinitum 30 Mbps básico (lo más barato)"
+  usa_whatsapp: true
+  usa_redes: [Facebook activo grupos Ecatepec, WhatsApp grupos primaria, Instagram ocasional para ver]
+  streaming_activo: [YouTube ad-supported, NO Netflix pagado, Disney+ a veces compartido cuenta]
+  apps_pago: [Bodega Aurrera, Walmart MX, IMSS app, Liverpool app para MSI]
+  comportamiento_digital: "Mid-low practical user. WhatsApp es su vida. Facebook para ver marketplace y noticias barrio. NO sube TikToks pero los ve cuando hijos prestan teléfono."
 ---
 
 # María Fernanda — "María Fer"

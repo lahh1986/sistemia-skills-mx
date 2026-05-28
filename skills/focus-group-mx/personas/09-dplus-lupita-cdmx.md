@@ -28,6 +28,16 @@ validacion_psec_mx:
   categoria_estructural: estilista_informal_D_plus_divorciada_cuenta_propia_morenista_devota
   backtest_voto_2024: validado_sheinbaum_78pct_iztapalapa_bastion
   ver_validacion: "validation/09_validacion_lupita.md"
+tecnologia_disponible:
+  dispositivo_principal: "Samsung Galaxy A03 (comprado en Coppel a 18 MSI)"
+  computadora: "Sin computadora. Iván tiene una vieja de la prepa."
+  datos_moviles: "prepago Movistar 100 pesos/semana — se acaba constantemente"
+  wifi_casa: "Telmex Infinitum 30 Mbps el más básico"
+  usa_whatsapp: true
+  usa_redes: [Facebook activo grupos colonia + iglesia, WhatsApp grupos familiares, NO Instagram, NO TikTok]
+  streaming_activo: [YouTube ad-supported para telenovelas + recetas, NO Netflix, NO Spotify]
+  apps_pago: [Banco Azteca app, NO Mercado Pago, NO Uber]
+  comportamiento_digital: "Mid-low pragmatic user. WhatsApp es 80% de su uso digital. Le pregunta a Iván cómo hacer todo lo demás. Compra catálogos Andrea/Jafra en papel, no digital."
 ---
 
 # Guadalupe "Lupita" Reyes Martínez

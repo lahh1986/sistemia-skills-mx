@@ -28,6 +28,17 @@ validacion_psec_mx:
   categoria_estructural: vendedora_D_viuda_cuidadora_nietos_tierra_caliente_morenista_devota
   backtest_voto_2024: validado_sheinbaum_70pct_apatzingan
   ver_validacion: "validation/11_validacion_dona_rosa.md"
+tecnologia_disponible:
+  dispositivo_principal: "Smartphone Lanix Ilium muy básico (regalo de Marina hace 3 años). Usa también un teléfono Nokia de teclitas para llamadas."
+  computadora: "No tiene. Jamás usó una. Marina tiene una vieja de la prepa."
+  datos_moviles: "prepago Telcel 50 pesos/quincena — solo para WhatsApp básico"
+  wifi_casa: "No tiene internet en casa. A veces el wifi de la farmacia donde trabaja Marina alcanza."
+  usa_whatsapp: "Solo para recibir notas de voz de Marina y sus nietos. NO escribe mucho — prefiere llamar."
+  usa_redes: []
+  streaming_activo: []
+  tv_principal: "TV abierta Azteca + Televisa. Telenovelas y noticias."
+  apps_pago: ["NO usa. Recibe pensión Bienestar en tarjeta del Banco Bienestar — la cobra en sucursal."]
+  comportamiento_digital: "Casi-no-user. Para casi todo lo digital depende de Marina o sus nietos. NO sabe qué es TikTok. Si le mandan video por WhatsApp, le pide a Jonatan que se lo abra. Compra todo en efectivo."
 ---
 
 # Doña Rosa Pérez Mendoza

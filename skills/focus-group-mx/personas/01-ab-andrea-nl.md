@@ -29,6 +29,16 @@ validacion_psec_mx:
   categoria_estructural: profesional_ejecutiva_senior_AB_ganada_norteno
   backtest_voto_2024: validado_xochitl_60pct_san_pedro
   ver_validacion: "validation/02_validacion_andrea.md"
+tecnologia_disponible:
+  dispositivo_principal: "iPhone 15 Pro Max"
+  computadora: "MacBook Pro M3 + iMac trabajo + iPad Pro"
+  datos_moviles: "postpago ilimitado AT&T premium"
+  wifi_casa: "fibra Totalplay 500 Mbps + repetidores Mesh"
+  usa_whatsapp: true
+  usa_redes: [Instagram, LinkedIn, Twitter/X esporádico]
+  streaming_activo: [Netflix, AppleTV+, Disney+, HBO Max, Spotify Premium familiar]
+  apps_pago: [Uber, DiDi, Rappi, Mercado Libre, Amazon Prime]
+  comportamiento_digital: "Heavy user productivo. Cambia iPhone cada 2 años. Maneja calendars corporativos. Hijos con sus propios dispositivos. Apple Watch y AirPods Pro."
 ---
 
 # Andrea Garza Sepúlveda

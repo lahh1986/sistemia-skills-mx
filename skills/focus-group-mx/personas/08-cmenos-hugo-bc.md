@@ -28,6 +28,16 @@ validacion_psec_mx:
   categoria_estructural: gen_z_fronterizo_aspiracional_C_minus_familia_trabajadora
   backtest_voto_2024: validado_sheinbaum_65pct_BC
   ver_validacion: "validation/08_validacion_hugo.md"
+tecnologia_disponible:
+  dispositivo_principal: "iPhone 11 (usado, comprado por Mercado Libre US side en $4,800 cuando cruzó a SD)"
+  computadora: "Laptop HP Pavilion básica para las clases en línea"
+  datos_moviles: "prepago AT&T MX 300 pesos/mes — datos buenos por cobertura frontera"
+  wifi_casa: "Cox cable de USA-side a veces (vecino le da contraseña), Telmex 100 Mbps en casa"
+  usa_whatsapp: true
+  usa_redes: [TikTok obsessive, Instagram heavy, Twitter/X esporádico, BeReal, Discord, Snapchat para frontera]
+  streaming_activo: [Spotify Free, YouTube ad-supported, Netflix compartido familia, Crunchyroll, Twitch para gaming]
+  apps_pago: [Uber, Mercado Libre, Amazon US (cuando cruza), DiDi Food, Mexicali apps locales]
+  comportamiento_digital: "Heavy Gen Z user. TikTok 3+ horas/día. Bilingüe SpanglishMX en sus posts. Comparte memes. Sigue Bad Bunny, Peso Pluma, gamers. NO usa LinkedIn. NO lee periódicos."
 ---
 
 # Hugo Manuel Cárdenas Robles

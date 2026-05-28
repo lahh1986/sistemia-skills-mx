@@ -5,20 +5,18 @@ description: |
   posts de redes sociales, o cualquier material de marketing dirigido al mercado
   mexicano ANTES de gastar en ads. El skill activa un focus group sintético con
   14 personas mexicanas (NSE A/B → E × género × generación × región) que evalúan
-  el material como si fueran consumidores reales. Selecciona dinámicamente el
-  subset relevante al target del producto.
+  el material y devuelven FGMX-Score (7 dimensiones + Buyability ponderado).
 
   Triggers: "evalúa este anuncio", "qué opinarían los mexicanos", "focus group",
   "antes de lanzar el ad", "este copy funcionaría", "revisa esta landing",
   "panel de personas mexicanas", "validación de copy MX", "personas sintéticas",
-  "antes de gastar en ads", "test de mensaje".
+  "antes de gastar en ads", "test de mensaje", "FGMX-Score".
 ---
 
-# Focus Group MX — Skill principal
+# Focus Group MX — Skill principal v1.1
 
-> 14 personas mexicanas ancladas en datos públicos (ENIGH, AMAI NSE 2024, ENDUTIH,
-> PROFECO, etc.) evalúan tu copy/ad/landing antes de que gastes en ads. Selecciona
-> dinámicamente el subset relevante.
+> 14 personas mexicanas validadas con PSEC-MX (ENIGH 2024 + AMAI + PROFECO)
+> evalúan tu copy con **FGMX-Score** (7 dimensiones + Buyability ponderado).
 
 ## Cuándo activarte
 
@@ -28,195 +26,298 @@ description: |
 - El usuario menciona "focus group", "validar copy", "personas mexicanas", "antes de lanzar"
 - El usuario te pasa copy para WhatsApp Business, Instagram, Facebook, TikTok ads
 - El usuario quiere probar un naming, slogan, tagline, headline
+- El usuario menciona "FGMX-Score", "scoring", "evaluar con métricas"
 
-## Cómo te activas
+## Workflow
 
-### Paso 1: Identificar el material y el target
+### Paso 1: Identificar producto + target + categoría
 
-Antes de evaluar, pregunta o infiere:
-- **¿Qué es?** (Ad de Meta, post Instagram, landing, slogan, etc.)
-- **¿Producto/servicio?** (Categoría: salud, financiero, alimentos, automotriz, ropa, etc.)
-- **¿Precio aproximado?** (Crucial para NSE matching)
-- **¿Target hipotetizado?** (NSE, edad, género, región — si el usuario lo sabe)
+Antes de evaluar, identifica (pregunta o infiere):
+
+- **¿Qué material es?** (Ad de Meta, post Instagram, landing, slogan, video, etc.)
+- **¿Categoría del producto?** (Crítico para pesos del scoring)
+  - `consumo_masivo` (alimentos, bebidas, OTC)
+  - `premium_lujo`
+  - `b2b_servicios`
+  - `politica_advocacy`
+  - `salud_pharma`
+  - `tecnologia`
+  - `fintech_banca`
+  - `educacion`
+  - `automotriz`
+  - `inmobiliario`
+  - `retail_moderno`
+  - `bebidas_alcoholicas`
+  - `causa_social_ong`
+  - `default` (si no encaja en ninguna)
+- **¿Precio aproximado?** (Crucial para NSE matching y Affordability)
+- **¿Target hipotetizado?** (NSE, edad, género, región)
 - **¿Vertical?** (B2C / B2B / mixto)
 
-Si el usuario no lo da, infiere del material. Si no puedes inferir, pregunta brevemente.
+Si el usuario no lo da, infiere del material. Si tienes dudas, pregunta UNA vez antes de proceder.
 
-### Paso 2: Seleccionar personas del pool
+### Paso 2: Seleccionar personas del pool (modelo C híbrido)
 
-Lee `personas/metadata.json` y aplica las reglas del selector. Tipos de selección:
+Lee `personas/metadata.json` y aplica reglas del selector:
 
-**Modo Universal (las 14):** Para productos de consumo masivo amplio (Coca-Cola, Bimbo, Sabritas, Sams Club).
+**Modo Universal (las 14):** Para consumo masivo amplio (Coca-Cola, Bimbo, Sabritas).
 
-**Modo Targeted (5-9 personas):** Para nicho. Cruza el target con `categorias_compra_alta_propension`:
-- Premium ($5,000+/mes): Andrea, Rodrigo + 1-2 aspiracionales (Mariana/Daniel)
+**Modo Targeted (5-9 personas):** Para nicho. Cruza target con `categorias_compra_alta_propension`:
+- Premium ($5,000+/mes): Andrea, Rodrigo + aspiracionales (Mariana/Daniel)
 - Mid-market ($500-5,000): Mariana, Daniel, Karla, Jorge, María Fer
 - Masivo barato (<$500): María Fer, Hugo, Lupita, Ramón, Doña Rosa, Brayan
 - Bottom-of-pyramid: Lupita, Doña Rosa, Brayan, Sofía, Don Tomás
-- B2B servicios: Andrea, Rodrigo, Daniel, Karla (los que decide compras profesionales)
+- B2B servicios: Andrea, Rodrigo, Daniel, Karla
 
-**Modo Custom (con flagging):** Si el target requiere perfil que NO está en el pool, **avisa al usuario** antes de proceder:
-> "Tu producto target son [perfil X]. Mi pool tiene 2 personas relevantes (Y, Z). ¿Quieres: (a) procedo con 2, (b) genero persona ad-hoc siguiendo la plantilla, (c) cancelas y expandes pool?"
+**Modo Custom (con flagging):** Si target requiere perfil ausente del pool:
+> "Tu target son [X]. Pool tiene 2 personas relevantes (Y, Z). ¿Procedo con 2, genero ad-hoc, o expandimos pool?"
 
-**Control de rechazo:** SIEMPRE incluye 1-2 personas que NO son target para detectar **repulsión social**. Ej: Tesla → incluir María Fer/Hugo como control (no son compradores pero ¿les da respeto o asco el ad?).
+**Control de rechazo:** SIEMPRE incluir 1-2 personas NO-target para detectar repulsión social. Ejemplos:
+- Tesla → incluir María Fer/Hugo como control (no compradores pero ¿genera respeto o asco?)
+- Aurrera → incluir Andrea como control (¿no la ofende? ¿se siente clasista?)
 
-### Paso 3: Justificar la selección al usuario
+### Paso 3: Justificar selección al usuario
 
 ANTES de evaluar, explica brevemente:
-> "Voy a invocar 6 personas relevantes: Andrea (A/B NL), Rodrigo (A/B CDMX) como
-> compradores directos; Mariana, Daniel (C+) como aspiracionales; María Fer (C-)
-> como control de aspiración. Skip: Lupita, Doña Rosa, Sofía, Don Tomás (no son target).
-> Proceeding..."
+> "Categoría detectada: `premium_lujo` (auto >$1M MXN). Selección: Andrea (A/B NL),
+> Rodrigo (A/B CDMX), Mariana (C+ JAL) y Daniel (C+ QRO) como compradores/aspiracionales.
+> María Fer (C-) y Doña Rosa (D) como controles de rechazo social. Skip: 8 personas
+> claramente fuera de target. Proceeding..."
 
-### Paso 4: Cargar cada persona y evaluar
+### Paso 4: Cada persona evalúa con FGMX-Score
 
-Para cada persona seleccionada:
+Para cada persona seleccionada, lee su dossier completo + `SCORING.md` + sigue
+`prompts/evaluacion-individual.md`.
 
-1. Lee el archivo completo del dossier (`personas/{id}.md`)
-2. Usa el siguiente PROMPT INTERNO al embodiar:
+**Output esperado por persona** (YAML estructurado):
 
+```yaml
+persona_id: 07-cmenos-mariafernanda-edomex
+ad_evaluado: "[hash o resumen breve]"
+categoria_producto: consumo_masivo
+
+scores:
+  comprension: 8       # 0-10 según BARS de SCORING.md
+  relevancia: 6
+  credibilidad: 7
+  diferenciacion: 4
+  emocional: 5
+  affordability: 3
+  intencion_compra: 4
+
+buyability: 5.2   # calculado con pesos categoria_producto
+
+reaccion_inicial: |
+  "[Frase corta en VOZ de la persona — primera persona — gut reaction]"
+
+razones_top_3:
+  - "Lo entendí en el primer segundo (Comprensión 8)"
+  - "Sí me llama porque uso Soriana (Relevancia 6)"
+  - "Pero $299 no me alcanza ahora (Affordability 3)"
+
+sugerencia_concreta: |
+  "[Qué cambio específico haría comprable — en voz de la persona]"
+
+recomendaria_a_alguien_similar: false
+
+es_target: true   # o false si es persona de control
 ```
-Eres {persona.nombre_completo}. Vive en {persona.ubicacion}. {persona.frase_quien_soy}.
 
-[INCLUIR DOSSIER COMPLETO AQUÍ]
+### Paso 5: Sintetizar resultados (FGMX agregado)
 
-Hoy es {fecha_actual}. Estás revisando el siguiente material publicitario.
+Sigue `prompts/sintesis-grupo.md`. Output esperado:
 
-VAS A RESPONDER COMO {nombre}, NO COMO ASISTENTE.
-- Habla en primera persona.
-- Usa tu voz, vocabulario, modismos, regionalismos.
-- No expliques que eres una persona ficticia ni que "como [perfil] diría".
-- Si algo no te aplica (ej: no eres target), sé honesta: "esto no es para mí".
-- Si te ofende o te da rechazo, dilo claro.
-- Si te emociona o te convence, dilo igual.
-- Sé brutal pero humana: como cuando criticas un ad con tus amigas en WhatsApp.
+**Tabla heatmap de scores por persona × dimensión:**
 
-Material a evaluar:
-[INCLUIR MATERIAL AQUÍ]
+| Persona | Compr | Relev | Cred | Dif | Emoc | Afford | Int | **Buyability** |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|---:|
+| Andrea (A/B) | 9 | 7 | 7 | 6 | 7 | 8 | 6 | **7.1** |
+| Rodrigo (A/B) | 9 | 5 | 6 | 4 | 4 | 8 | 5 | **5.8** |
+| Mariana (C+) | 8 | 8 | 7 | 6 | 7 | 7 | 7 | **7.2** |
+| Daniel (C+) | 7 | 6 | 7 | 5 | 5 | 6 | 5 | **5.9** |
+| María Fer (C-) **[CONTROL]** | 8 | 3 | 6 | 3 | 4 | 2 | 2 | **3.8** |
 
-Tu respuesta debe contener:
-1. Reacción inicial (1-2 frases, gut)
-2. ¿Lo comprarías? Sí / No / Con condiciones
-3. ¿Qué te gustó? (específico, en tu voz)
-4. ¿Qué te molestó / no creíste? (específico)
-5. ¿Qué te haría comprarlo? (sugerencia concreta)
-6. Calificación 0-10 + justificación de 1 línea
-```
+**Promedios:**
+- **Buyability target (4 personas):** 6.5/10
+- **Buyability controles (1 persona):** 3.8/10
+- **Spread target-control:** 2.7 (sano: si fuera <1.0 sería alarma de mal targeting)
 
-### Paso 5: Sintetizar el feedback
+**Análisis por dimensión:**
 
-Después de las N evaluaciones individuales, genera una síntesis:
-
-**Tabla de decisiones:**
-| Persona | NSE | Compra? | Score | Razón principal |
-|---|---|---|---:|---|
-| Andrea | A/B | Sí con cond | 7/10 | Visual premium pero precio no aterriza |
-| Rodrigo | A/B | No | 4/10 | El insight es cliché |
-| ... | ... | ... | ... | ... |
-
-**Promedio ponderado:** {score}/10 entre target real (excluyendo controles)
-**Promedio en controles:** {score}/10 (es alarma si los no-target lo aman más que los target)
+| Dimensión | Promedio target | Insight |
+|---|---:|---|
+| Comprensión | 8.3 | ✅ Mensaje claro |
+| Relevancia | 6.5 | ⚠️ Aceptable pero no fuerte |
+| Credibilidad | 6.8 | ✅ Promesa creíble |
+| Diferenciación | 5.3 | ⚠️ Cliché — el competidor podría decir lo mismo |
+| Emocional | 5.8 | ⚠️ Frío, falta conexión |
+| Affordability | 7.3 | ✅ Cabe en presupuesto target |
+| Intención | 5.8 | ⚠️ Compra dudosa sin trigger adicional |
 
 **Patrones detectados:**
-- Lo que TODOS criticaron (deal-breakers): [...]
-- Lo que TODOS apreciaron (lo que sí jala): [...]
-- Polarización (donde hubo opiniones opuestas): [...]
+- **Deal-breakers (todas/casi todas las personas mencionaron):** [...]
+- **Lo que sí jala (todas reaccionaron positivo):** [...]
+- **Polarización (opiniones opuestas):** [...]
 
-**Detección de problemas culturales:**
-- ¿Hubo reacciones de "esto se siente gringo / traducido / no MX"? [Sí/No]
-- ¿Hubo reacciones de clasismo, machismo, edadismo no intencionales? [Sí/No]
-- ¿Hubo confusión de idioma o vocabulario? [Sí/No]
+**Detección de problemas:**
+- ¿Cultural mismatch ("se siente gringo/traducido")? [Sí/No con quotes]
+- ¿Affordability gap (target dice "no me alcanza")? [Sí/No]
+- ¿Clasismo/machismo/edadismo no intencional? [Sí/No con quotes]
+- ¿Confusión de vocabulario o idioma? [Sí/No]
 
 ### Paso 6: Generar 3 variantes mejoradas
 
-Basado en el feedback, propon 3 variantes del material original que abordan
-las críticas más fuertes:
+Sigue `prompts/variantes-mejoradas.md`. Cada variante debe:
 
-- **Variante A — Aterriza el precio:** [...]
-- **Variante B — Insight más mexicano:** [...]
-- **Variante C — Tono más auténtico:** [...]
+1. Abordar la dimensión MÁS débil del scoring (la más baja)
+2. Mantener fortalezas existentes (no quemar lo que sí funciona)
+3. Ser concreta y publicable (no abstracta)
 
-Cada variante debe ser concreta y publicable.
+**Output esperado:**
+
+```markdown
+### Variante A — [tema del cambio]
+**Buyability proyectado:** 7.4 (+1.6 vs original)
+**Dimensión mejorada:** Emocional 5.8 → 7.5
+
+[Copy específico aquí, listo para usar]
+
+### Variante B — [tema del cambio]
+**Buyability proyectado:** 7.1 (+1.3 vs original)
+**Dimensión mejorada:** Diferenciación 5.3 → 7.2
+
+[Copy específico aquí]
+
+### Variante C — [tema del cambio]
+**Buyability proyectado:** 6.8 (+1.0 vs original)
+**Dimensión mejorada:** Affordability 7.3 → 8.5 (anchor reducido)
+
+[Copy específico aquí]
+```
 
 ### Paso 7: Sugerencia de canales
 
-Basado en las personas que más reaccionaron positivo, sugiere dónde poner el ad:
-- Si Andrea/Rodrigo lo aman: LinkedIn, Instagram premium, podcasts de calidad
-- Si Mariana/Daniel lo aman: Instagram, Facebook, YouTube
-- Si María Fer/Hugo lo aman: TikTok orgánico, Facebook, WhatsApp marketing
-- Si Doña Rosa/Don Tomás lo aman: TV abierta, radio, comunidad
+Basado en personas que reaccionaron positivo:
+
+- **Si Andrea/Rodrigo lo aman:** LinkedIn, Instagram premium, podcasts curados (Lex Fridman/Cracks), El Financiero
+- **Si Mariana/Daniel lo aman:** Instagram Reels, Facebook, YouTube
+- **Si Karla/Jorge lo aman:** Facebook grupos, podcasts, TikTok mid-target
+- **Si María Fer/Hugo lo aman:** TikTok orgánico, Facebook, WhatsApp marketing, ads en Mercado Libre
+- **Si Lupita/Ramón lo aman:** Facebook grupos del barrio, TV abierta (Las Estrellas), WhatsApp Business templates
+- **Si Doña Rosa/Don Tomás lo aman:** TV abierta, radio AM/FM, comunidad directa, mañaneras
+
+## Output final estructurado al usuario
+
+Entrega TODO en este orden:
+
+1. **Resumen ejecutivo (3 líneas):** Buyability final + recomendación de lanzamiento
+2. **Tabla heatmap persona × dimensión**
+3. **Análisis por dimensión**
+4. **Patrones detectados + problemas**
+5. **3 variantes mejoradas (con copy concreto)**
+6. **Canales recomendados**
+7. **Limitaciones del análisis** (cuántas personas, qué quedó fuera, etc.)
 
 ## Reglas críticas al ejecutar
 
 ### NUNCA romper personaje
 
-❌ Evita: "Como Andrea diría, le parece..."
-✅ Sí: "No, esto no me late. La producción se ve cheap."
+❌ "Como Andrea diría..." | ❌ "Esta persona pensaría..."
+✅ "No, esto no me late." | ✅ "La producción se ve cheap, neta."
 
 ### NUNCA inventar datos fuera del dossier
 
-Cada persona tiene `fuentes_ancla` en su frontmatter. Si una pregunta del ad
-toca temas NO cubiertos en el dossier, la persona puede decir "no sé" o
-"no es algo en lo que piense" — no inventes.
+Si una pregunta del ad toca temas NO cubiertos en el dossier, la persona dice "no sé" o
+"no es algo en lo que piense" — NO INVENTES.
 
-### NUNCA omitir las críticas duras
+### NUNCA omitir críticas duras
 
-Una persona molesta es información valiosa. Si Andrea ve un ad que le parece
-cheap o clasista, debe decirlo con su voz auténtica, sin suavizar.
+Si Andrea ve un ad que le parece cheap o clasista, debe decirlo con su voz auténtica.
+Suavizar = información perdida para el cliente.
 
-### SIEMPRE citar fuentes cuando sea relevante
+### NUNCA puntuar fuera de la BARS
 
-Si una persona menciona un precio, dato o estadística, debe poder anclarse en
-las fuentes (ENIGH para gasto, PROFECO para precios, etc.). El skill puede
-consultar `precios.duckdb` para precios reales.
+Cada score debe corresponder a un nivel descrito en `SCORING.md`. Si la persona daría
+"6.7", redondea a 7 con justificación en `razones_top_3`.
 
 ### SIEMPRE distinguir target real vs control
 
-Al sintetizar, indicar claramente:
-- "Score de target real (4 personas): 6.5/10"
-- "Score de controles (2 personas): 3.2/10"
-Esto evita confusión donde un ad parece "bien" porque 12 de 14 personas
-votaron positivo, pero las 2 que sí son target lo rechazaron.
+Calcular Buyability separado para `es_target: true` vs `es_target: false`. Reportar
+spread. Spread <1.0 = alarma de mal targeting.
+
+### SIEMPRE consultar precios reales si aplica
+
+Si el ad menciona precio o se compara con competidor, consulta `precios.duckdb` (cuando
+esté accesible) para validar contra PROFECO real.
+
+```sql
+-- Ejemplo
+SELECT producto, AVG(precio) FROM precios
+WHERE producto ILIKE '%detergente%'
+  AND estado = 'Estado de Mexico'
+  AND fecha_registro >= '2025-01-01'
+GROUP BY producto;
+```
 
 ## Modos de operación adicionales
 
 ### Modo "Análisis competitivo"
-Si el usuario te da 2-3 ads competidores, las 14 personas los comparan y dicen cuál preferirían comprar y por qué.
+Usuario da 2-3 ads competidores → cada persona los compara y elige el que más
+probablemente compraría. Output: ranking por persona + ganador agregado.
 
 ### Modo "A/B test pre-launch"
-Si el usuario te da 2 versiones del mismo copy, evalúa ambas y dice cuál ganaría qué % en cada NSE.
+Usuario da 2 versiones del mismo copy → cada persona evalúa ambas → output:
+qué versión gana en cada NSE + recomendación de targeting.
 
-### Modo "Diagnóstico de copy fallido"
-Si el usuario ya lanzó un ad y no funcionó, las personas analizan POR QUÉ no funcionó (en vez de evaluar uno nuevo).
+### Modo "Diagnóstico copy fallido"
+Usuario dice "este ad ya lanzó y no funcionó" → las personas analizan POR QUÉ
+no funcionó (NSE mal seleccionado, mensaje confuso, affordability gap, etc.).
 
-### Modo "Generación de copy desde brief"
-Si el usuario te da un brief (no copy), generas 3 versiones de copy y las pones a evaluar con el focus group.
+### Modo "Generación desde brief"
+Usuario da brief (no copy) → generas 3 versiones de copy → las pones a evaluar
+con focus group → entregas la mejor.
 
 ## Archivos referenciados
 
+- `SCORING.md` — Especificación completa FGMX-Score (BARS + pesos por categoría)
 - `personas/metadata.json` — Tags y reglas de selección
-- `personas/01-ab-andrea-nl.md` ... `personas/14-e-dontomas-chis.md` — Los 14 dossiers
-- `personas/07-cmenos-mariafernanda-edomex.md` — Dossier piloto (más maduro)
-- `../../../research/precios.duckdb` — 10.5M precios reales PROFECO para consultas
-- `../../../research/catalog.json` — 67 fuentes públicas MX para referencia adicional
+- `personas/01-ab-andrea-nl.md` ... `personas/14-e-dontomas-chis.md` — 14 dossiers
+- `prompts/evaluacion-individual.md` — Prompt para invocar persona con FGMX-Score
+- `prompts/sintesis-grupo.md` — Agregación ponderada de resultados
+- `prompts/variantes-mejoradas.md` — Generación de 3 variantes
+- `validation/00_REPORTE_AGREGADO.md` — Validación PSEC-MX de las 14 personas
+- `METODOLOGIA.md` — Método PSEC-MX (raíz del repo)
 
 ## Casos borde
 
-### ¿Y si el producto es para gringos (no MX)?
+### Producto para gringos
 Declina: "Este skill es para mercado mexicano. Para US/global usa otros métodos."
 
-### ¿Y si el copy ya está en inglés?
-Pregunta si va a ir al mercado MX en inglés o si lo van a traducir. Si va en inglés, las personas comentan también sobre el efecto de no estar en español (la mayoría reaccionarían mal salvo Andrea/Rodrigo/Mariana).
+### Copy en inglés para MX
+Pregunta si va a ir en inglés o se va a traducir. Si en inglés, todas las personas
+EXCEPTO Andrea/Rodrigo/Mariana reaccionarán mal (Relevancia ≤3).
 
-### ¿Y si el copy es político?
-v1 — política implícita: las personas tienen opinión política sutil. Pueden evaluar mensajes pero la calidad será limitada.
-v2 — módulo política explícita: NO está en este skill. Es separado.
+### Copy político explícito
+v1 actual — política implícita (las personas tienen voto 2024). Pueden evaluar
+mensajes políticos pero con menor profundidad. Para módulo electoral completo,
+ver fork privado `focus-group-electoral-mx` (no público).
 
-### ¿Y si el usuario quiere las 14 sin importar el producto?
-Procede pero advierte: "Estás invocando las 14 para un producto donde solo 4 son target. Te van a salir 10 evaluaciones poco relevantes. ¿Procedemos así o ajustamos?"
+### Usuario quiere las 14 sin importar producto
+Procede pero advierte: "Estás invocando las 14 para producto donde solo 4 son target.
+10 evaluaciones van a ser poco relevantes. ¿Procedo así o ajustamos?"
+
+### Buyability todos altos en controles
+Si controles puntean Buyability ≥7, hay 2 escenarios:
+- (a) El ad es genuinamente masivo (no nicho) — recategorizar
+- (b) El targeting fue mal hipotetizado — reevaluar paso 1
+
+Avisa al usuario y reproponé.
 
 ## Versiones
 
-- **v1 (mayo 2026):** 14 personas, selector básico, política implícita.
-- **v2 (planeado):** Pool expandido (21-28), módulo política explícita (fork privado para clientes B2B en elecciones), generación ad-hoc de personas faltantes.
-- **v3 (futuro):** Personas con memoria persistente, comunidad pública contribuye personas, integración con plataformas (Meta Ads API, Google Ads API).
+- **v1.1 (2026-05-28):** FGMX-Score integrado. 14 personas validadas PSEC-MX.
+- **v1.2 (planeado):** 5 personas adicionales para corregir gaps (Máynez, A/B patrimonial, C medio CDMX).
+- **v1.3 (planeado):** Reliability tests (inter-LLM kappa, test-retest).
+- **v1.4 (planeado):** Face validity con 5 expertos pagados.
+- **v2.0 (futuro):** Pool expandido 21-28 + módulo política explícita (fork privado).
+- **v3.0 (futuro):** Personas con memoria persistente entre runs.

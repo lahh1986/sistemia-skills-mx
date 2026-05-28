@@ -1,0 +1,37 @@
+# Research corpus - too large for git (4 GB)
+# Available locally on Storage SSD, indexed in research/INDEX.md
+research/
+
+# Local project state (contiene info comercial privada)
+CLAUDE.md
+
+# Politica module - private fork, not public
+politica*.zip
+focus-group-electoral-mx/
+
+# Skills electoral fork - private
+skills/focus-group-electoral-mx/
+
+# Zips intermedios
+*.zip
+*.rar
+
+# DuckDB
+*.duckdb
+
+# Temp files
+.DS_Store
+*.tmp
+/tmp/
+__pycache__/
+*.pyc
+
+# Validation working files (no los individuales, sí el reporte)
+# skills/focus-group-mx/validation/01_validacion_*.md
+# skills/focus-group-mx/validation/02_validacion_*.md
+# ... etc — vamos a publicar el agregado y los individuales
+
+# OS
+Thumbs.db
+.Spotlight-V100
+.Trashes

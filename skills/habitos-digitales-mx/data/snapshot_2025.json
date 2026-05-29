@@ -1,0 +1,95 @@
+{
+  "version": "habitos-digitales-mx 1.0",
+  "vigencia": "2024-2025",
+  "fuentes": {
+    "endutih_2024": "research/inegi/endutih/endutih2024_boletin_resultados.pdf",
+    "datareportal_2025": "research/datareportal/datareportal_digital_2025_mexico_resumen.md",
+    "amvo_2025": "research/amvo/amvo_estudio_venta_online_2025.pdf",
+    "enif_2024": "research/inegi/enif/enif2024_reporte_completo.pdf"
+  },
+  "poblacion": {
+    "total_mx": 131000000,
+    "pob_6_mas": 120600000,
+    "hogares_total": 39100000,
+    "hogares_urbano": 31500000,
+    "hogares_rural": 7600000
+  },
+  "internet": {
+    "usuarios": 100200000,
+    "pct_pob_6mas": 83.1,
+    "pct_urbano": 86.9,
+    "pct_rural": 68.5,
+    "pct_hombres": 84.1,
+    "pct_mujeres": 82.3,
+    "horas_dia_promedio": 4.4,
+    "por_edad": {
+      "6-11":  {"pct": 79.7, "horas": 2.6},
+      "12-17": {"pct": 95.1, "horas": 4.5},
+      "18-24": {"pct": 97.0, "horas": 5.7},
+      "25-34": {"pct": 95.1, "horas": 5.6},
+      "35-44": {"pct": 92.3, "horas": 4.7},
+      "45-54": {"pct": 83.8, "horas": 3.9},
+      "55-64": {"pct": 71.0, "horas": 3.2},
+      "65+":   {"pct": 42.1, "horas": 3.0}
+    },
+    "dispositivos_pct": {
+      "celular_inteligente": 97.2,
+      "smart_tv": 43.6,
+      "computadora": 35.9,
+      "consola_videojuegos": 8.1
+    },
+    "lugares_acceso_pct": {
+      "hogar": 95.1,
+      "movil_cualquier_lugar": 56.8,
+      "casa_otra_persona": 44.1,
+      "trabajo": 41.2,
+      "sitio_publico": 19.8,
+      "escuela": 16.5
+    }
+  },
+  "redes_sociales": {
+    "fecha_corte": "2025-01",
+    "usuarios_total": 93000000,
+    "pct_poblacion": 70.7,
+    "plataformas": {
+      "facebook":  {"usuarios": 93000000, "pct_pob": 70.7, "skew_f_pct": 51.8, "skew_m_pct": 48.2},
+      "tiktok":    {"usuarios": 85400000, "pct_pob_18mas": 91.7, "skew_f_pct": 43.6, "skew_m_pct": 56.4, "crecimiento_anual_pct": 15.1},
+      "youtube":   {"usuarios": 83600000, "pct_pob": 63.6, "skew_f_pct": 51.2, "skew_m_pct": 48.8},
+      "messenger": {"usuarios": 57000000, "pct_pob": 43.3, "skew_f_pct": 52.2, "skew_m_pct": 47.8},
+      "instagram": {"usuarios": 48800000, "pct_pob": 37.1, "skew_f_pct": 53.5, "skew_m_pct": 46.5, "crecimiento_anual_pct": 8.7},
+      "pinterest": {"usuarios": 26700000, "pct_pob": 20.3, "skew_f_pct": 67.2, "skew_m_pct": 26.2, "crecimiento_anual_pct": 11.0},
+      "linkedin":  {"usuarios": 26000000, "pct_pob": 19.8, "skew_f_pct": 44.0, "skew_m_pct": 56.0, "crecimiento_anual_pct": 18.2},
+      "x":         {"usuarios": 16900000, "pct_pob": 12.8, "skew_f_pct": 33.6, "skew_m_pct": 66.4},
+      "snapchat":  {"usuarios": 15100000, "pct_pob": 11.5, "skew_f_pct": 73.9, "skew_m_pct": 25.0}
+    }
+  },
+  "ecommerce_amvo_2025": {
+    "pct_urbanos_compran_online": 77,
+    "ticket_promedio_mxn": 1000,
+    "compras_trimestre_activos": 5,
+    "top_categorias": ["moda", "electronica", "hogar", "belleza", "viajes"],
+    "buen_fin_share_anual_pct": 22
+  },
+  "metodos_pago_online_pct": {
+    "tarjeta_credito": 41,
+    "tarjeta_debito": 35,
+    "efectivo_oxxo_7eleven": 22,
+    "spei_codi": 18,
+    "apple_google_pay": 9,
+    "msi_sobre_2000mxn": 32
+  },
+  "bancarizacion_enif_2024": {
+    "pct_adultos_con_cuenta": 49.1,
+    "pct_tarjeta_credito": 31.8,
+    "pct_tarjeta_debito": 45.6,
+    "brecha_genero_pp_a_favor_hombres": 4,
+    "estados_menos_bancarizados": ["Chiapas", "Oaxaca", "Tlaxcala", "Guerrero"],
+    "estados_mas_bancarizados": ["Nuevo León", "Baja California Sur", "Ciudad de México", "Querétaro"]
+  },
+  "offline": {
+    "mexicanos_offline": 21900000,
+    "pct_offline": 16.7,
+    "brecha_rural_pp": 31.5,
+    "brecha_urbano_pp": 13.1
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "version": "nse-mx 1.0 — implementación abierta AMAI 2024",
+  "vigencia": "2024-2026 (regla vigente según Comité Técnico AMAI oct 2023)",
+  "fuente_coeficientes": "research/amai/amai_nse_2024_nota_metodologica.pdf (Figura 4)",
+  "escala_max": 300,
+  "variables": {
+    "educacion_jefe": {
+      "descripcion": "Último grado de estudios del jefe del hogar",
+      "puntos": {
+        "sin_instruccion": 0,
+        "preescolar": 0,
+        "primaria_incompleta": 5,
+        "primaria_completa": 12,
+        "secundaria_incompleta": 17,
+        "secundaria_completa": 18,
+        "preparatoria_incompleta": 21,
+        "preparatoria_completa": 26,
+        "profesional_incompleta": 37,
+        "profesional_completa": 52,
+        "posgrado": 79
+      }
+    },
+    "banos_completos": {
+      "descripcion": "Baños con regadera Y WC",
+      "puntos": {"0": 0, "1": 21, "2": 43, "3+": 64}
+    },
+    "autos": {
+      "descripcion": "Autos propios (excluye motos, taxis, vehículos del trabajo)",
+      "puntos": {"0": 0, "1": 19, "2": 38, "3+": 57}
+    },
+    "internet": {
+      "descripcion": "Conexión de internet en el hogar (fijo o móvil dedicado)",
+      "puntos": {"no": 0, "si": 28}
+    },
+    "ocupados": {
+      "descripcion": "Personas en el hogar que aportan ingreso",
+      "puntos": {"0": 0, "1": 16, "2": 33, "3+": 49}
+    },
+    "dormitorios": {
+      "descripcion": "Cuartos destinados a dormir (excluye cocina, sala, baño)",
+      "puntos": {"0": 0, "1": 6, "2": 12, "3": 17, "4+": 23}
+    }
+  },
+  "niveles": [
+    {"nivel": "E",   "min": 0,   "max": 60,  "pct_nacional": 8.7,  "label": "pobreza"},
+    {"nivel": "D",   "min": 61,  "max": 100, "pct_nacional": 25.4, "label": "clase baja"},
+    {"nivel": "D+",  "min": 101, "max": 130, "pct_nacional": 14.9, "label": "clase trabajadora alta"},
+    {"nivel": "C-",  "min": 131, "max": 155, "pct_nacional": 16.4, "label": "clase media baja"},
+    {"nivel": "C",   "min": 156, "max": 180, "pct_nacional": 15.3, "label": "clase media típica"},
+    {"nivel": "C+",  "min": 181, "max": 220, "pct_nacional": 12.0, "label": "clase media alta"},
+    {"nivel": "A/B", "min": 221, "max": 300, "pct_nacional": 7.3,  "label": "alto / patrimonial"}
+  ],
+  "distribucion_por_estado_pct": {
+    "Aguascalientes":   {"E":3,  "D":16, "D+":15, "C-":19, "C":20, "C+":15, "A/B":13},
+    "Nuevo León":       {"E":3,  "D":16, "D+":16, "C-":19, "C":19, "C+":15, "A/B":12},
+    "Baja California Sur": {"E":4, "D":18, "D+":12, "C-":17, "C":20, "C+":17, "A/B":12},
+    "Querétaro":        {"E":6,  "D":17, "D+":14, "C-":18, "C":19, "C+":15, "A/B":11},
+    "Ciudad de México": {"E":5,  "D":19, "D+":15, "C-":19, "C":16, "C+":16, "A/B":11},
+    "Chihuahua":        {"E":4,  "D":21, "D+":14, "C-":17, "C":19, "C+":15, "A/B":10},
+    "Sonora":           {"E":4,  "D":21, "D+":14, "C-":17, "C":19, "C+":15, "A/B":10},
+    "Baja California":  {"E":3,  "D":15, "D+":12, "C-":19, "C":22, "C+":18, "A/B":10},
+    "Coahuila":         {"E":3,  "D":19, "D+":14, "C-":20, "C":19, "C+":16, "A/B":10},
+    "Tamaulipas":       {"E":6,  "D":22, "D+":14, "C-":18, "C":19, "C+":13, "A/B":9},
+    "Colima":           {"E":6,  "D":19, "D+":15, "C-":18, "C":18, "C+":16, "A/B":9},
+    "Sinaloa":          {"E":5,  "D":22, "D+":15, "C-":18, "C":17, "C+":14, "A/B":8},
+    "San Luis Potosí":  {"E":12, "D":24, "D+":14, "C-":16, "C":14, "C+":12, "A/B":8},
+    "Jalisco":          {"E":4,  "D":20, "D+":15, "C-":19, "C":19, "C+":16, "A/B":8},
+    "Yucatán":          {"E":6,  "D":26, "D+":17, "C-":17, "C":15, "C+":12, "A/B":8},
+    "Morelos":          {"E":9,  "D":26, "D+":15, "C-":15, "C":15, "C+":11, "A/B":7},
+    "Zacatecas":        {"E":5,  "D":22, "D+":17, "C-":17, "C":18, "C+":13, "A/B":7},
+    "Durango":          {"E":5,  "D":26, "D+":17, "C-":17, "C":16, "C+":12, "A/B":7},
+    "Hidalgo":          {"E":9,  "D":27, "D+":16, "C-":16, "C":15, "C+":11, "A/B":7},
+    "Nayarit":          {"E":8,  "D":29, "D+":15, "C-":16, "C":15, "C+":11, "A/B":7},
+    "Quintana Roo":     {"E":6,  "D":21, "D+":18, "C-":19, "C":17, "C+":14, "A/B":6},
+    "Michoacán":        {"E":10, "D":28, "D+":15, "C-":17, "C":13, "C+":11, "A/B":6},
+    "Guanajuato":       {"E":7,  "D":26, "D+":16, "C-":18, "C":18, "C+":11, "A/B":6},
+    "Campeche":         {"E":12, "D":31, "D+":16, "C-":15, "C":13, "C+":9,  "A/B":6},
+    "Tabasco":          {"E":13, "D":36, "D+":15, "C-":12, "C":10, "C+":9,  "A/B":6},
+    "Estado de México": {"E":9,  "D":27, "D+":17, "C-":16, "C":15, "C+":10, "A/B":6},
+    "Tlaxcala":         {"E":8,  "D":30, "D+":18, "C-":16, "C":14, "C+":10, "A/B":5},
+    "Puebla":           {"E":12, "D":30, "D+":14, "C-":15, "C":14, "C+":9,  "A/B":5},
+    "Guerrero":         {"E":22, "D":37, "D+":13, "C-":11, "C":8,  "C+":7,  "A/B":4},
+    "Chiapas":          {"E":19, "D":44, "D+":12, "C-":8,  "C":8,  "C+":7,  "A/B":3},
+    "Veracruz":         {"E":18, "D":34, "D+":14, "C-":13, "C":11, "C+":7,  "A/B":3},
+    "Oaxaca":           {"E":20, "D":36, "D+":14, "C-":13, "C":8,  "C+":6,  "A/B":3}
+  },
+  "distribucion_por_tamaño_localidad_pct": {
+    "rural_<2500":      {"E":17.7, "D":39.0, "D+":15.0, "C-":12.4, "C":9.0,  "C+":5.5,  "A/B":1.4},
+    "semi_2500_15K":    {"E":12.3, "D":30.7, "D+":16.1, "C-":15.2, "C":13.2, "C+":8.5,  "A/B":4.0},
+    "urbano_15K_100K":  {"E":6.8,  "D":24.6, "D+":15.3, "C-":17.6, "C":16.6, "C+":12.0, "A/B":7.0},
+    "metro_>100K":      {"E":4.1,  "D":18.0, "D+":14.5, "C-":18.2, "C":18.4, "C+":16.2, "A/B":10.7}
+  }
+}

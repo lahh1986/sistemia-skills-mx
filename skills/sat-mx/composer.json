@@ -1,0 +1,16 @@
+{
+  "name": "sistemia/sat-mx",
+  "description": "Skill de Claude Code para descargar Constancia de Situación Fiscal y Opinión de Cumplimiento del SAT México. Orquesta librerías de phpcfdi.",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2",
+    "phpcfdi/csf-sat-scraper": "^0.1.0",
+    "phpcfdi/opinion-cumplimiento-sat-scraper": "^0.1.0",
+    "phpcfdi/image-captcha-resolver": "^0.3.0",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

@@ -35,3 +35,6 @@ __pycache__/
 Thumbs.db
 .Spotlight-V100
 .Trashes
+
+# PHP / Composer (sat-mx skill)
+vendor/

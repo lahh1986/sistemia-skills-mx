@@ -1,0 +1,93 @@
+{
+  "_meta": {
+    "as_of": "2026-06-10",
+    "modelo_zonas": "Adaptación de Lope Blanch (1971) + Moreno de Alba con norte heterogéneo y Yucatán separado.",
+    "nota_importante": "Las regiones son herramienta, no etiqueta. Una persona regio criada en CDMX puede tener léxico mixto. La API del skill acepta múltiples zonas + nivel de confianza, NO una sola etiqueta cerrada.",
+    "fuentes_dialectales": [
+      "Lope Blanch, Juan M. (1971). 'El español hablado en México'. NRFH.",
+      "Moreno de Alba, José G. (1994). 'La pronunciación del español en México'.",
+      "Atlas Lingüístico de México (ALM)."
+    ]
+  },
+  "zonas": [
+    {
+      "id": "noroeste",
+      "nombre": "Noroeste",
+      "estados": ["Baja California", "Baja California Sur", "Sonora", "Sinaloa"],
+      "estado_capital_lexico": "Hermosillo / Tijuana",
+      "caracter_lexico": "Norte fronterizo con influencia anglicista directa (raite, troca, parquear). Marca 'morro/morra' como genérico de chico/a. Frutas y costumbres del desierto.",
+      "ejemplos_marcadores": ["raite", "troca", "morro", "huerco", "compa", "ándele pues"],
+      "registros_clave": ["raite ≠ aventón (norte vs centro)"],
+      "anglicismos_aceptados": ["parquear", "troca", "raite", "lonchera"],
+      "cuidado": "Tijuana/Mexicali tienen mucha mezcla de espanglish — si tu target es BC frontera, no 'corrijas' anglicismos que ahí son neutrales."
+    },
+    {
+      "id": "noreste_regio",
+      "nombre": "Noreste / Regio",
+      "estados": ["Nuevo León", "Coahuila", "Tamaulipas norte"],
+      "estado_capital_lexico": "Monterrey",
+      "caracter_lexico": "Identidad léxica fuerte y orgullosa. Modificadores intensos ('está con madre', 'está chido', 'jala'). El regio sabe que es regio.",
+      "ejemplos_marcadores": ["bofo", "chopo", "jalas", "está con madre", "qué onda mi compa", "carnal"],
+      "registros_clave": ["jale = trabajo (norte) vs chamba (nacional)", "pisto = trago (norte) vs chela (nacional)"],
+      "anglicismos_aceptados": ["bistec", "lonche", "tubear"],
+      "cuidado": "Marketing genérico 'centralizado' genera rechazo instantáneo. Si tu copy huele a CDMX, el regio lo detecta y lo descarta."
+    },
+    {
+      "id": "norte_centro_bajio",
+      "nombre": "Norte-centro / Bajío norte",
+      "estados": ["Chihuahua", "Durango", "Zacatecas", "Aguascalientes", "San Luis Potosí", "Guanajuato norte"],
+      "estado_capital_lexico": "Chihuahua / SLP",
+      "caracter_lexico": "Zona transicional — comparte rasgos con el norte (morro, ándele) y con el centro (no manches, popote). Hablar 'norteño' aquí es legítimo pero no extremo.",
+      "ejemplos_marcadores": ["ándele", "morro", "no manches", "cabuleo (broma)", "pichón (novato)"],
+      "anglicismos_aceptados": ["raite", "lonche"],
+      "cuidado": "Es la zona más difícil de etiquetar. Si tu target es Bajío norte, mejor probá con copy centro y veces con copy norte antes de decidir."
+    },
+    {
+      "id": "centro_altiplano",
+      "nombre": "Centro / Altiplano",
+      "estados": ["CDMX", "Estado de México", "Morelos", "Puebla", "Tlaxcala", "Hidalgo", "Guanajuato sur", "Michoacán norte"],
+      "estado_capital_lexico": "CDMX (chilango)",
+      "caracter_lexico": "La 'norma' que los medios reproducen. 'Chido', 'padre', 'qué pedo', 'no manches'. Estándar de doblaje y publicidad nacional.",
+      "ejemplos_marcadores": ["chido", "padre", "qué pedo", "no manches", "qué oso", "chamba", "popote"],
+      "anglicismos_aceptados": ["lonche (no siempre)", "checar"],
+      "cuidado": "Es la zona dominante en producción de contenido, lo cual genera ceguera regional. NO asumir que 'centro = México'."
+    },
+    {
+      "id": "occidente_tapatio",
+      "nombre": "Occidente / Tapatío",
+      "estados": ["Jalisco", "Colima", "Nayarit", "Michoacán sur"],
+      "estado_capital_lexico": "Guadalajara",
+      "caracter_lexico": "Entonación marcada. Léxico propio: 'birote' (no bolillo), 'panda' (=grupo de amigos), 'cantonear' (=vivir). Identidad fuerte, no es el centro.",
+      "ejemplos_marcadores": ["birote", "panda", "cantonear", "torta ahogada", "mande", "órale"],
+      "anglicismos_aceptados": ["chequear"],
+      "cuidado": "Llamarle 'bolillo' al birote en GDL es señal de que no entendés Jalisco. Detalle pequeño, lectura cultural grande."
+    },
+    {
+      "id": "sur_sureste_costa",
+      "nombre": "Sur-sureste costa",
+      "estados": ["Guerrero", "Oaxaca", "Veracruz", "Tabasco", "Chiapas"],
+      "estado_capital_lexico": "Veracruz / Oaxaca",
+      "caracter_lexico": "Variedad costeña con elisión consonántica fuerte ('pue' = pues, 'pa'l rato'). Léxico con influencia caribeña en Veracruz y mesoamericana en Oaxaca/Chiapas.",
+      "ejemplos_marcadores": ["pue", "pa'l rato", "chamacón", "lana (=dinero)", "jocoque", "ándele"],
+      "cuidado": "Esta zona tiene MUCHA variación interna no capturable en una sola zona. Veracruz N ≠ Veracruz S ≠ Oaxaca costa ≠ Oaxaca sierra. Para target específico, valida con persona local. Riesgo alto de caricatura si solo usas marcadores estereotípicos."
+    },
+    {
+      "id": "yucatan_peninsula",
+      "nombre": "Península de Yucatán",
+      "estados": ["Yucatán", "Campeche", "Quintana Roo"],
+      "estado_capital_lexico": "Mérida",
+      "caracter_lexico": "Variedad propia con préstamos mayas integrados al uso cotidiano (no folclor): 'mare', 'bomba', 'tuch', 'chichí (abuela)'. Entonación distintiva. Yucateco/peninsular ≠ 'sureste' genérico.",
+      "ejemplos_marcadores": ["mare", "bomba", "chichí (abuela)", "tuch (ombligo)", "wayé (=por aquí)", "lo voy a hacer hoy"],
+      "cuidado": "Las palabras mayas NO son folclor — son léxico cotidiano. Tratarlas como exotismo (en publicidad turística por ejemplo) es ofensivo. 'Chichí' en Yucatán es abuela; en centro es vulgar (seno) — máximo riesgo de error embarazoso si no validás."
+    }
+  ],
+  "casos_multi_zona": {
+    "descripcion": "Una persona puede pertenecer a varias zonas por origen, crianza, migración o consumo de medios. El skill debe aceptar combinaciones.",
+    "ejemplos": [
+      { "etiqueta": "regio en CDMX", "leer_como": ["noreste_regio", "centro_altiplano"], "nota": "Léxico mixto, probablemente conserva 'jale/jalas' pero adopta 'chido/padre'" },
+      { "etiqueta": "chilango con padres yucatecos", "leer_como": ["centro_altiplano", "yucatan_peninsula"], "nota": "Sabe 'mare/bomba' aunque no las use públicamente" },
+      { "etiqueta": "yucateca en GDL", "leer_como": ["yucatan_peninsula", "occidente_tapatio"], "nota": "Combinación poco común — léxico será YUC con préstamos GDL puntuales" },
+      { "etiqueta": "migrante norte → centro", "leer_como": ["noreste_regio", "centro_altiplano"], "nota": "Conserva entonación y modificadores intensos, adopta 'padre/chido'" }
+    ]
+  }
+}

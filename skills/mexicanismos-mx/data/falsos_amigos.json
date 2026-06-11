@@ -1,0 +1,178 @@
+{
+  "_meta": {
+    "as_of": "2026-06-10",
+    "tipo": "Palabras que cambian de significado por región DENTRO de México, o que tienen significado distinto entre MX y otros países hispanohablantes.",
+    "criticidad": "Esta es la sección MÁS práctica del skill. Un error aquí causa malentendidos reales, ofensa accidental o conversión perdida en publicidad."
+  },
+  "intra_mexico": [
+    {
+      "termino": "chichí",
+      "significados": [
+        {"region": "yucatan_peninsula", "significado": "Abuela", "registro": "familiar"},
+        {"region": "centro_altiplano", "significado": "Seno, pecho femenino", "registro": "vulgar / coloquial"}
+      ],
+      "riesgo": "ALTO — la palabra es cariñosa en YUC y vulgar en CDMX. Decir 'mi chichí me crió' en CDMX provoca risa o juicio."
+    },
+    {
+      "termino": "chaqueta",
+      "significados": [
+        {"region": "centro_altiplano", "significado": "Vulgar — masturbación. NO USAR para prenda de vestir.", "registro": "vulgar"},
+        {"region": "noreste_regio", "significado": "Chamarra, prenda de vestir.", "registro": "neutral"},
+        {"region": "Latinoamérica general", "significado": "Prenda de vestir.", "registro": "neutral"}
+      ],
+      "riesgo": "ALTO — para audiencia centro/CDMX usar 'chamarra' sin excepción. 'Chaqueta' es solo norte/regio o internacional. Anunciar 'chaquetas de invierno' en CDMX es chiste involuntario."
+    },
+    {
+      "termino": "morro",
+      "significados": [
+        {"region": "noroeste, noreste_regio, norte_centro_bajio", "significado": "Niño, joven; también novio.", "registro": "coloquial"},
+        {"region": "centro_altiplano", "significado": "Hocico, parte frontal. Raro como 'persona'.", "registro": "neutral"},
+        {"region": "España", "significado": "Cara/atrevimiento ('tener morro').", "registro": "coloquial"}
+      ],
+      "riesgo": "MEDIO — fuera del norte, 'mi morro' no se entiende como hijo/novio. Usar 'chavo' en centro."
+    },
+    {
+      "termino": "padre",
+      "significados": [
+        {"region": "centro_altiplano, occidente_tapatio", "significado": "Bueno, lindo, agradable. 'Qué padre.'", "registro": "coloquial"},
+        {"region": "noreste_regio", "significado": "Solo el papá biológico. 'Padre' como adjetivo de cool se reemplaza por 'con madre' o 'chido'.", "registro": "neutral"}
+      ],
+      "riesgo": "MEDIO — copy 'qué padre tu producto' en Monterrey suena distante o ñoño. Usar 'qué chido' o 'qué con madre'."
+    },
+    {
+      "termino": "papa",
+      "significados": [
+        {"region": "centro_altiplano", "significado": "Tubérculo, patata.", "registro": "neutral"},
+        {"region": "noreste_regio, noroeste", "significado": "Tubérculo. Igual.", "registro": "neutral"},
+        {"region": "yucatan_peninsula", "significado": "Tubérculo. Igual.", "registro": "neutral"},
+        {"region": "nacional", "significado": "También: padre (papá con acento — sin acento es ambiguo escrito).", "registro": "coloquial"}
+      ],
+      "riesgo": "BAJO — el contexto escrito es claro. Pero 'papa' sin acento en chat puede confundir momentáneamente."
+    },
+    {
+      "termino": "bolillo",
+      "significados": [
+        {"region": "centro_altiplano, noroeste, noreste_regio", "significado": "Pan blanco salado alargado.", "registro": "neutral"},
+        {"region": "occidente_tapatio", "significado": "NO se usa. Lo correcto es 'birote', técnicamente distinto.", "registro": "marca de origen"}
+      ],
+      "riesgo": "MEDIO — en GDL, llamarle bolillo al birote te marca como no-tapatío al instante."
+    },
+    {
+      "termino": "jale",
+      "significados": [
+        {"region": "noreste_regio, noroeste, norte_centro_bajio", "significado": "Trabajo.", "registro": "coloquial"},
+        {"region": "centro_altiplano", "significado": "Tirón, acción rápida. NO se usa como trabajo.", "registro": "neutral"}
+      ],
+      "riesgo": "MEDIO — 'ya entro al jale' en CDMX no se entiende como ir a trabajar."
+    },
+    {
+      "termino": "pisto",
+      "significados": [
+        {"region": "noreste_regio, norte_centro_bajio", "significado": "Trago, bebida alcohólica.", "registro": "coloquial"},
+        {"region": "centro_altiplano", "significado": "Casi no se usa. Trago=trago, chela=cerveza.", "registro": "neutral"},
+        {"region": "España", "significado": "Guiso de verduras (significado completamente distinto).", "registro": "neutral"}
+      ],
+      "riesgo": "MEDIO — 'aviéntale un pisto' en CDMX suena raro/norteño."
+    },
+    {
+      "termino": "raite",
+      "significados": [
+        {"region": "noroeste, noreste_regio, norte_centro_bajio", "significado": "Aventón, lift en auto.", "registro": "coloquial"},
+        {"region": "centro_altiplano", "significado": "No se usa. Usar 'aventón'.", "registro": "neutral"}
+      ],
+      "riesgo": "BAJO — se entiende por contexto, pero copy con 'raite' en CDMX suena norteño."
+    },
+    {
+      "termino": "troca",
+      "significados": [
+        {"region": "noroeste, noreste_regio, norte_centro_bajio", "significado": "Camioneta pickup. Anglicismo asimilado.", "registro": "coloquial"},
+        {"region": "centro_altiplano", "significado": "No se usa. Usar 'camioneta' o 'pickup'.", "registro": "neutral"}
+      ],
+      "riesgo": "BAJO — entendible pero norteño."
+    },
+    {
+      "termino": "elote desgranado / esquites",
+      "significados": [
+        {"region": "noreste_regio", "significado": "Granos sueltos preparados: 'elote desgranado' o 'elote en vaso'.", "registro": "neutral"},
+        {"region": "centro_altiplano", "significado": "Lo mismo, pero se llama 'esquites'.", "registro": "neutral"}
+      ],
+      "riesgo": "BAJO — pedir esquites en MTY funciona; pedir 'elote desgranado' en CDMX no es estándar."
+    },
+    {
+      "termino": "mande",
+      "significados": [
+        {"region": "centro_altiplano, occidente_tapatio, sur_sureste_costa", "significado": "Forma cortés de '¿sí?' cuando alguien te llama. Tradicional.", "registro": "formal-cortés"},
+        {"region": "noreste_regio (Gen Z urbana)", "significado": "Puede leerse como sumiso o anticuado.", "registro": "varía"}
+      ],
+      "riesgo": "BAJO-MEDIO — sigue siendo cortés en mayoría del país. Gen Z urbana norte prefiere '¿qué?' o '¿qué pasó?'"
+    },
+    {
+      "termino": "platicar",
+      "significados": [
+        {"region": "nacional (MX)", "significado": "Conversar, charlar. Estándar.", "registro": "neutral"},
+        {"region": "Argentina/España", "significado": "Suena formal/anticuado. Usar 'hablar' o 'charlar'.", "registro": "neutral"}
+      ],
+      "riesgo": "BAJO — estándar para MX, marca origen MX en cross-border."
+    }
+  ],
+  "cross_pais": [
+    {
+      "termino": "popote",
+      "significados": [
+        {"region": "México", "significado": "Tubito para sorber.", "registro": "neutral"},
+        {"region": "España", "significado": "Pajita.", "registro": "neutral"},
+        {"region": "Argentina/Uruguay", "significado": "Bombilla (para mate) o sorbete.", "registro": "neutral"},
+        {"region": "Colombia/Venezuela", "significado": "Pitillo.", "registro": "neutral"}
+      ],
+      "riesgo": "Universalmente 'popote' es MX. En cross-border decir 'popote' marca origen MX clarísimo."
+    },
+    {
+      "termino": "tuna",
+      "significados": [
+        {"region": "México", "significado": "Fruto del nopal.", "registro": "neutral"},
+        {"region": "Caribe (PR, Cuba)", "significado": "Pez (atún).", "registro": "neutral"}
+      ],
+      "riesgo": "MEDIO — anunciar 'tuna fresca' a audiencia caribeña puede confundir."
+    },
+    {
+      "termino": "la raza",
+      "significados": [
+        {"region": "México", "significado": "Grupo cercano, gente. Sin connotación racial.", "registro": "coloquial"},
+        {"region": "Chicano US", "significado": "Identidad chicana/latina, con carga política.", "registro": "identidad"}
+      ],
+      "riesgo": "BAJO — pero en cruces transfronterizos cargar consciente del significado distinto."
+    },
+    {
+      "termino": "coger",
+      "significados": [
+        {"region": "España", "significado": "Tomar, agarrar. Neutral.", "registro": "neutral"},
+        {"region": "México y casi toda Latinoamérica", "significado": "Tener sexo. Vulgar.", "registro": "vulgar"}
+      ],
+      "riesgo": "ALTÍSIMO — copy directo de España con 'coger el bus' es chiste vulgar en MX. Reemplazar con 'tomar' o 'agarrar'."
+    },
+    {
+      "termino": "concha",
+      "significados": [
+        {"region": "México", "significado": "Pan dulce con cubierta de azúcar en forma de concha.", "registro": "neutral"},
+        {"region": "Argentina/Chile/Uruguay", "significado": "Vulgar — genital femenino.", "registro": "vulgar"}
+      ],
+      "riesgo": "ALTO en cross-border. 'Comprar conchas' en AR es chiste involuntario."
+    },
+    {
+      "termino": "ahorita",
+      "significados": [
+        {"region": "México", "significado": "Pronto-ish: puede ser ya, en un rato, en horas. Famosamente ambiguo.", "registro": "coloquial"},
+        {"region": "Resto LATAM", "significado": "Casi inmediato, ya mero.", "registro": "coloquial"}
+      ],
+      "riesgo": "MEDIO — ningún latinoamericano fuera de MX entiende la elasticidad temporal de 'ahorita' MX."
+    },
+    {
+      "termino": "pedir el favor",
+      "significados": [
+        {"region": "Colombia", "significado": "Equivalente a 'porfavor' formal — 'le pido el favor'.", "registro": "formal-cortés"},
+        {"region": "México", "significado": "Suena formal-anticuado o foráneo.", "registro": "marca de origen"}
+      ],
+      "riesgo": "BAJO — en MX usar 'por favor' o 'me haces el favor'."
+    }
+  ]
+}

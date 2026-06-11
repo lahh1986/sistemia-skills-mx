@@ -1,0 +1,161 @@
+{
+  "_meta": {
+    "as_of": "2026-06-10",
+    "tipo": "Guía editorial sobre palabras con CARGA SOCIAL (clase, raza, género, regional, ideológica). NO es una lista de prohibición — es una guía para decidir CUÁNDO sí y CUÁNDO no usar cada palabra, con contexto y registro.",
+    "principio_editorial": "El clasismo y racismo en español MX están MUY presentes en el vocabulario cotidiano. Marcamos las cargas para que el writer/dev decida con información, no para prohibir. Una palabra puede ser reapropiada (naco), neutralizada por contexto (carnal) o problemática siempre (eufemismos racializados como 'prietito').",
+    "ancla_principal": "Federico Navarrete, 'Alfabeto del racismo mexicano' (Malpaso, 2017) — 48 entradas de práctica racista cotidiana. Disponible en bibliotecas y librerías MX.",
+    "advertencia_audiencia": "Diseñar copy comercial para audiencia MX SIN entender estas cargas garantiza errores caros. Tampoco hace falta convertirte en activista — solo saber qué estás eligiendo decir."
+  },
+  "carga_de_clase": [
+    {
+      "termino": "naco",
+      "definicion_negativa": "Despectivo de clase: persona percibida como 'sin cultura', 'sin gusto', 'fuera del canon urbano'.",
+      "uso_seguro": ["NUNCA en publicidad MX salvo brand de comedia/auto-burla. Reapropiación urbana existe (Naco es Chido, etc.) pero es minoritaria."],
+      "uso_problematico": ["Cualquier copy comercial que clasifique al consumidor 'no quieres parecer naco', 'esto te eleva'."],
+      "contexto": "El opuesto fresa-naco es el eje vertebrador del clasismo MX. Para Sistemia, evitar AMBOS sin contexto."
+    },
+    {
+      "termino": "fresa",
+      "definicion_negativa": "Despectivo de clase: persona percibida como 'pretencioso', 'snob', 'sobreactuado'.",
+      "uso_seguro": ["Auto-burla, contexto humorístico claro. Brand juvenil que se pelea con esa imagen."],
+      "uso_problematico": ["Copy que aspire a 'no ser fresa' pero termine perpetuando el binario clasista."],
+      "contexto": "Como su opuesto 'naco', vehicula clasismo. En publicidad: usar consciente o evitar."
+    },
+    {
+      "termino": "nice",
+      "definicion_negativa": "Anglicismo de aspiracional clase media-alta urbana. Marca aspiración a 'cool internacional'.",
+      "uso_seguro": ["Brand juvenil urbano CDMX/Polanco/Roma. Aspiraciónal genuino."],
+      "uso_problematico": ["Copy para Bajío rural, sureste o norte working-class — suena ajeno y distante."],
+      "contexto": "Marca clase A/B+ y geografía urbana. Sirve cuando esa ES tu audiencia, sino aliena."
+    },
+    {
+      "termino": "godín",
+      "definicion_negativa": "Oficinista. Auto-burla millennial sobre vida corporativa.",
+      "uso_seguro": ["El propio sujeto se auto-define como godín. Brand que celebra la rutina corporativa."],
+      "uso_problematico": ["Aplicar 'godín' a otros sin que se hayan auto-definido — suena condescendiente."],
+      "contexto": "Específico de generación X tardía y millennials urbanos. Gen Z lo siente más distante."
+    },
+    {
+      "termino": "mirrey / pirruris / whitexican",
+      "definicion_negativa": "Crítica con carga: privilegiado por dinero o color de piel.",
+      "uso_seguro": ["Crítica social, periodismo cultural, comedia."],
+      "uso_problematico": ["Marketing comercial — riesgo de polarizar y perder audiencia."]
+    },
+    {
+      "termino": "chairo / fifí",
+      "definicion_negativa": "Polarización política: chairo = simpatizante MORENA/AMLO, fifí = simpatizante PAN/oposición. Ambos despectivos.",
+      "uso_seguro": ["Periodismo de opinión, comedia política."],
+      "uso_problematico": ["CUALQUIER copy comercial. Polariza al instante. Sistemia mantiene neutralidad — no usar."],
+      "contexto": "Estos términos dividen al mercado a la mitad. NUNCA en branding o marketing comercial. Ver feedback memoria 'business_spanish_mx'."
+    }
+  ],
+  "carga_racial": [
+    {
+      "termino": "prieto / prietito / morenito",
+      "definicion_negativa": "Eufemismos racializados que infantilizan a personas de piel oscura. Históricamente 'cariñoso' pero hoy ampliamente cuestionados.",
+      "uso_seguro": ["NUNCA en copy comercial. Solo crítica social explícita."],
+      "uso_problematico": ["Publicidad de productos para piel, descripciones aspiracionales."],
+      "contexto": "Para Sistemia y proyectos MX: estos términos NO ENTRAN al copy. Riesgo reputacional y ético."
+    },
+    {
+      "termino": "indio / inditos / oaxaquita",
+      "definicion_negativa": "'Indio' como despectivo (vs. 'indígena' como término neutral/positivo). Diminutivos infantilizan.",
+      "uso_seguro": ["NUNCA en copy comercial. Solo crítica histórica explícita."],
+      "uso_problematico": ["Aún se cuela en publicidad turística MX. Banderazo de evitación inmediata."],
+      "contexto": "Una de las cargas más insidiosas del español MX. Para audiencia migrante, indígena o internacionalmente consciente, error caro."
+    },
+    {
+      "termino": "chaparrito / chaparrita",
+      "definicion_negativa": "Aparentemente 'cariñoso' pero racializa baja estatura como atributo indígena.",
+      "uso_seguro": ["Familia, contexto íntimo donde la otra persona lo acepta."],
+      "uso_problematico": ["Copy comercial. Anuncios de ropa por talla. Trabajos."]
+    },
+    {
+      "termino": "güero / güerito",
+      "definicion_negativa": "Persona de piel clara y/o cabello rubio. 'Cariñoso' en MX pero racializa.",
+      "uso_seguro": ["Familiar, sin tono de privilegio explícito."],
+      "uso_problematico": ["Marketing que asocie 'ser güero' con éxito o aspiración."],
+      "contexto": "Históricamente NO peyorativo en MX (a diferencia de US), pero refuerza jerarquía racial. Cuidado en branding."
+    }
+  ],
+  "carga_de_genero_servicio": [
+    {
+      "termino": "muchacha / chacha / criada / sirvienta",
+      "definicion_negativa": "Trabajadora doméstica. Cada palabra tiene carga distinta — 'sirvienta' es más despectiva, 'criada' arcaico, 'chacha' coloquial-clasista.",
+      "uso_seguro": ["Término actual recomendado: 'trabajadora del hogar' (formal) o 'persona que trabaja en mi casa' (humanizado)."],
+      "uso_problematico": ["'Mi muchacha' en cualquier copy o branding. 'Chacha' en contexto público."],
+      "contexto": "Activismo del trabajo doméstico ha cambiado el vocabulario formal. CONLACTRAHO y similares marcaron 'trabajadora del hogar' como término justo."
+    },
+    {
+      "termino": "gato / gata",
+      "definicion_negativa": "Sirvienta. Despectivo fuerte. NO usar.",
+      "uso_seguro": ["Solo análisis histórico."],
+      "uso_problematico": ["Cualquier copy o branding."]
+    },
+    {
+      "termino": "joven (mesero)",
+      "definicion_negativa": "Forma cortés para meserit@s y personal de servicio. Estándar MX, NO despectivo en uso correcto.",
+      "uso_seguro": ["Universal en restaurantes y tiendas."],
+      "uso_problematico": ["Cuando se infantiliza a adulto mayor que sirve — ahí usar 'señor' o 'señora'."]
+    }
+  ],
+  "carga_regional_burla": [
+    {
+      "termino": "yuca (por yucateco)",
+      "definicion_negativa": "Apócope despectivo. Yucatecos lo perciben como menosprecio.",
+      "uso_seguro": ["NUNCA. Usar 'yucateco/a' completo."],
+      "uso_problematico": ["Cualquier comunicación."]
+    },
+    {
+      "termino": "chilango",
+      "definicion_negativa": "Originario de CDMX. Históricamente despectivo desde provincia ('chilangos invasivos'), reapropiado por la propia CDMX.",
+      "uso_seguro": ["Auto-identificación. Tono cariñoso o neutral."],
+      "uso_problematico": ["Marketing dirigido a provincia con tono 'chilango impone a México'."]
+    },
+    {
+      "termino": "buchón / buchona",
+      "definicion_negativa": "Norte: persona asociada con estética narco-traficante (cirugías, ropa de marca exagerada).",
+      "uso_seguro": ["Documental, comedia, crítica."],
+      "uso_problematico": ["Marketing de moda o estética en norte — extremadamente sensible."]
+    },
+    {
+      "termino": "chuntaro",
+      "definicion_negativa": "Despectivo de clase y origen rural, especialmente norte y Bajío.",
+      "uso_seguro": ["Auto-burla en comedia."],
+      "uso_problematico": ["Marketing, periodismo aspirante a respetar."]
+    }
+  ],
+  "vulgares_pero_usables": [
+    {
+      "termino": "wey / güey",
+      "uso": "WEY (con W) está semi-aceptado en informal escrito. GÜEY se siente más vulgar. Brand juvenil-urbano MX puede usar wey en chat pero NO en hero de landing.",
+      "context_safe": "Bocadillos de Instagram, captions juveniles, WhatsApp.",
+      "context_avoid": "Hero copy, propuesta de valor, cualquier formal."
+    },
+    {
+      "termino": "no manches",
+      "uso": "Eufemismo nacional de 'no mames'. Casi neutralizado. Aceptable en informal.",
+      "context_safe": "Reacciones, captions, copy de redes.",
+      "context_avoid": "Documentos formales, B2B."
+    },
+    {
+      "termino": "está cabrón",
+      "uso": "Vulgar pero ampliamente aceptado en informal. Énfasis fuerte.",
+      "context_safe": "Brand con tono directo MX.",
+      "context_avoid": "B2B formal, audiencias mixtas Latam."
+    },
+    {
+      "termino": "neta",
+      "uso": "Neutral. Sin carga vulgar.",
+      "context_safe": "Cualquier informal y semi-formal MX.",
+      "context_avoid": "Solo formal corporativo nacional o cross-border."
+    }
+  ],
+  "guia_de_uso": {
+    "para_brand_corporativo_b2b_mx": ["Evitar TODO el bloque vulgar y de clasismo. Usar registro semi-formal nacional (CDMX-centric porque B2B suele ser CDMX, pero adaptar si target es regio o tapatío)."],
+    "para_brand_consumer_juvenil_mx": ["Usar wey/no manches/neta con moderación. Si target es regio: 'está con madre' funciona, 'qué chido' es seguro. Si target es CDMX joven: 'padre/chido/qué oso'."],
+    "para_brand_regional_especifico": ["Saturar de marcadores regionales SOLO si el target es ESPECÍFICAMENTE de esa zona. Saturar para audiencia mixta genera caricatura."],
+    "para_publicidad_servicio_publico": ["Cero clasismo y carga racial. Evitar cualquier término del bloque de carga racial. Usar registro neutral."],
+    "para_humor_y_comedia": ["Aquí los términos cargados se pueden usar conscientemente — pero auto-conscientes, no como burla del otro."]
+  }
+}

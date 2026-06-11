@@ -64,7 +64,15 @@
 - **Data:** Páginas oficiales de pricing (cada gateway), AMVO Estudio Venta Online 2025, Banxico SPEI/CoDi, INEGI ENIF 2024, GlobeNewswire BNPL Report 2026, marco regulatorio CNBV/Ley Fintech.
 - **Status:** ✅ MVP funcional — 5 gateways + 11 métodos + caso end-to-end de marketplace (eltianguis).
 
-#### 7. `payments-ar` 🇦🇷 — Gateway y métodos de pago en Argentina
+#### 7. `mexicanismos-mx` 🗣️ — Español MX por región, edad, clase y registro
+- **Pregunta:** ¿Este copy MX suena natural para mi target (regio/chilango/yucateco/costeño)? ¿Tiene clasismo accidental? ¿El slang Gen Z va a caducar?
+- **Cómo:** 7 zonas dialectales (Lope Blanch adaptado + Yucatán separado) + 110 mexicanismos curados con scoring por región/registro/generación/NSE + 50 falsos amigos intra-MX y cross-Latam + guía editorial de carga clasista/racial + 25 entries Gen Z 2026 con `decay_risk` y `last_validated` para advertir caducidad.
+- **Output:** Veredicto + análisis línea por línea + 3 versiones alternativas (más natural / segura cross-MX / saturada de marca regional) + flags de falsos amigos y carga clasista + links a DEM como oracle.
+- **Data:** Curaduría propia Sistemia (NO copia DEM, que es CC BY-NC-ND). Anclas: DEM/Colmex, Diccionario de Mexicanismos AML 2022, Federico Navarrete "Alfabeto del racismo mexicano" (2017), corpus regionales (CHM Monterrey, CHBC Baja California, CSCM CDMX), prensa MX para slang juvenil.
+- **Frontera con `locale-mx`:** locale-mx = reglas duras (tú/ustedes, "computadora"). mexicanismos-mx = qué palabra MX según target. Complementarios.
+- **Status:** ✅ MVP funcional — 7 regiones + 110 mexicanismos + 50 falsos amigos + caso end-to-end (landing dental regio vs CDMX).
+
+#### 8. `payments-ar` 🇦🇷 — Gateway y métodos de pago en Argentina
 - **Pregunta:** ¿Qué gateway uso en AR? ¿Cómo modelo cuotas post-Ahora 12 derogado? ¿Cómo cobro USD con cepo cambiario? ¿MP a inmediato 6.29% o 35d 1.49%?
 - **Cómo:** Comisiones reales 2026 verificadas (Mercado Pago AR, Decidir/Prisma, dLocal, MODO, PayU, Ualá Bis, Naranja X) + adopción real de métodos (BCRA Informe Pagos Minoristas, Infobae) + árbol de decisión específico AR (vertical + cuotas + bancarización + geografía + cepo) + patrones de marketplace MP API + estrategia de cuotas post-derogación.
 - **Output:** Gateway recomendado + estrategia de cuotas (absorber merchant vs trasladar cliente vs híbrido) + fee efectivo estimado + gotchas operativos AR (hold MP 7-21d, categoría BCRA cambiante, surcharge tarjeta internacional +3%, cepo) + próximos pasos.
@@ -73,20 +81,20 @@
 
 ### Skills compuestos (orquestan a los atómicos)
 
-#### 8. `mercado-local-mx` 📍 — Viabilidad de negocio físico
+#### 9. `mercado-local-mx` 📍 — Viabilidad de negocio físico
 - **Pregunta:** ¿Vale la pena abrir mi negocio en X ciudad / colonia?
 - **Cómo:** Combina `demografia-mx` + `nse-mx` + `precios-mx` + (opcional) `habitos-digitales-mx` para calcular TAM/SAM/SOM, semáforo de viabilidad, ingreso estimado y riesgos.
 - **Output:** Dossier de viabilidad con 3 ubicaciones alternativas si la primera no convence.
 - **Status:** ✅ Workflow documentado.
 
-#### 9. `legal-pyme-mx` ⚖️ — Cumplimiento legal federal PyME
+#### 10. `legal-pyme-mx` ⚖️ — Cumplimiento legal federal PyME
 - **Pregunta:** ¿Esta PyME cumple con sus obligaciones legales federales más caras?
 - **Cómo:** Validadores RFC + CURP + chequeo contra 11 listas SAT (69-B/69 CFF, 14,436 RFCs), generador de Aviso de Privacidad LFPDPPP 2025 (corto/simplificado/integral por giro), tabla ISN por estado, árbol de decisión para obligaciones por giro.
 - **Output:** Veredicto + costo del riesgo si se ignora + ruta de cumplimiento.
 - **Data:** 30 archivos oficiales (~119 MB) descargados: SAT (CFDI XSDs, RMF 2026, listas 69-B/CFF), Diputados (CFF/LFPDPPP/LFPC/LSS/LIFNVT/LFT/LFPPI/LFPIORPI), STPS (NOM-035), INAI (Manual Aviso Privacidad), RENAPO (reglas CURP).
 - **Status:** ✅ MVP funcional. RFC + 69-B + Aviso Privacidad + CURP + ISN listos. Pendiente v1.1: COFEPRIS, CONDUSEF, IFT, marco NOM-STPS completo.
 
-#### 10. `contador-pyme-mx` 🧾 — Validador CFDI + skills para contadores PyME
+#### 11. `contador-pyme-mx` 🧾 — Validador CFDI + skills para contadores PyME
 - **Pregunta:** ¿Este CFDI 4.0 está bien armado? ¿Voy a deducir sin problemas? ¿Mi proveedor es facturera?
 - **Cómo:** Validador estructural contra XSDs SAT + catálogos vigentes 2026 + detección de complementos (Pagos 2.0, Nómina 1.2, Carta Porte 3.1, Retenciones v2.0) + reglas de negocio (RESICO PF→PM 1.25%, honorarios 10%+10.67%, arrendamiento, PUE fin de mes, motivos cancelación 01-04) + cruce automático contra 11 listas SAT (delega a `legal-pyme-mx`).
 - **Output:** Veredicto + lista de hallazgos con severidad + recomendación accionable + costo de NO atender el riesgo.

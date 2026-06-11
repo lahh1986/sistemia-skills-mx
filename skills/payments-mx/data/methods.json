@@ -1,0 +1,189 @@
+{
+  "_meta": {
+    "as_of": "2026-06-10",
+    "sources": ["AMVO Estudio Venta Online 2025", "Banxico", "INEGI ENIF 2024", "AMIPCI", "GlobeNewswire MX BNPL Report 2026"],
+    "notes": "Adopción y uso real. NO confundir con disponibilidad técnica del método. Validar contra tu nicho antes de descartar cualquiera."
+  },
+  "methods": [
+    {
+      "id": "card",
+      "name": "Tarjeta crédito/débito",
+      "adoption_pct_ecommerce": 60,
+      "settle_time": "T+1 a T+7 según gateway",
+      "limits": { "max_per_tx": null, "notes": "Limitado por banco emisor del cliente, típicamente $50k MXN sin OTP, ilimitado con 3DS" },
+      "requires_3ds": true,
+      "notes_3ds": "3DS Secure 2 obligatorio en MX por mandato CNBV desde 2022 para tarjeta no presente. Stripe lo hace automático, Conekta requiere flag.",
+      "best_for": ["b2c_clase_media_alta", "saas", "internacional"],
+      "weakness": "60% de adultos MX no tiene tarjeta de crédito — limita TAM",
+      "supported_by": ["conekta", "mercadopago", "stripe_mx", "openpay", "clip"]
+    },
+    {
+      "id": "spei",
+      "name": "SPEI (Sistema de Pagos Electrónicos Interbancarios)",
+      "adoption_pct_ecommerce": 22,
+      "settle_time": "Instantáneo (24/7/365 confirmado 2024+)",
+      "limits": { "max_per_tx": 8000000, "min_per_tx": 0.01, "notes": "$8M MXN tope técnico. Bancos individuales pueden poner topes menores." },
+      "requires_3ds": false,
+      "notes": "Banxico operates 24/7. Cada banco tiene ventana de acreditación que da percepción de 'no es 24/7' — falso. Para checkout, el cliente recibe CLABE + concepto único.",
+      "best_for": ["b2b", "tickets_altos", "no_quieres_pagar_comision_pct"],
+      "weakness": "UX: cliente debe salir a su app bancaria. Conversión cae ~30% vs tarjeta.",
+      "supported_by": ["conekta", "mercadopago", "stripe_mx", "openpay"],
+      "fee_winner": "conekta ($12.50 flat — best ROI sobre $1,000)"
+    },
+    {
+      "id": "oxxo_pay",
+      "name": "OXXO Pay (efectivo)",
+      "adoption_pct_ecommerce": 10,
+      "volume_2025_mxn": 6000000000,
+      "settle_time": "24-72h después de que cliente paga en tienda",
+      "limits": { "max_per_tx": 12000, "notes": "OXXO Pay individual. Tickets mayores se trocean." },
+      "requires_3ds": false,
+      "notes": "Cliente recibe voucher con código + fecha límite. Va a OXXO, paga en efectivo. Cobertura: 22k+ tiendas. Banxico estima ~20-25% de población sin acceso bancario.",
+      "best_for": ["b2c_masivo", "vertical_consumo", "clientes_sin_tarjeta"],
+      "weakness": "Conversión lenta — voucher emitido no es venta confirmada hasta que cliente paga. Drop-off de ~40%.",
+      "supported_by": ["conekta", "mercadopago", "stripe_mx", "openpay"],
+      "fee_winner": "conekta (2.6% + $3)",
+      "alternative_retailers": ["7-Eleven", "Farmacias del Ahorro", "Farmacias Guadalajara", "Walmart", "Sanborns", "Soriana"]
+    },
+    {
+      "id": "codi",
+      "name": "CoDi (Cobro Digital - Banxico)",
+      "adoption_pct_ecommerce": 1,
+      "accounts_validated_2025": 21800000,
+      "lifetime_transactions": 17800000,
+      "settle_time": "Instantáneo",
+      "limits": { "max_per_tx": 8000, "notes": "Sin comisión" },
+      "requires_3ds": false,
+      "notes": "Lanzado 2019 por Banxico. Promovido como alternativa gratuita a tarjeta. FRACASO operativo — 0.8 tx por cuenta lifetime. No usar como rail principal.",
+      "best_for": ["nada_serio_2026"],
+      "weakness": "Adopción real cercana a cero. Banca móvil de cada banco lo soporta pero usuarios no lo conocen.",
+      "supported_by": ["mercadopago (parcial)"],
+      "outlook": "Banxico publicó abr-2026 que esperan escalar con Mundial FIFA 2026. ABM evalúa fusión CoDi+DiMo. Por ahora: ignorable para checkout serio."
+    },
+    {
+      "id": "dimo",
+      "name": "DiMo (Banxico — número celular)",
+      "adoption_pct_ecommerce": 1,
+      "accounts_jun_2024": 9000000,
+      "settle_time": "Instantáneo",
+      "limits": { "max_per_tx": 8000, "notes": "Similar a CoDi" },
+      "requires_3ds": false,
+      "notes": "Apuesta Banxico 2024+ para hacer pagos por celular sin necesidad de CLABE. Adopción aún baja.",
+      "best_for": ["futuro_2027", "wallet_celular"],
+      "weakness": "Aún en fase de adopción inicial. Si DiMo+CoDi se fusionan y el Mundial impulsa adopción, podría ser relevante 2027+.",
+      "supported_by": [],
+      "outlook": "Monitorear durante Mundial 2026."
+    },
+    {
+      "id": "saldo_mp",
+      "name": "Saldo Mercado Pago",
+      "adoption_pct_ecommerce": 15,
+      "settle_time": "Instantáneo",
+      "limits": { "max_per_tx": null },
+      "requires_3ds": false,
+      "notes": "Wallet propio de MP — usuarios que ya tienen saldo lo prefieren porque es 1-tap. Solo disponible vía MP Checkout.",
+      "best_for": ["seller_ya_en_mp", "checkout_mercado_pago"],
+      "weakness": "Lock-in a MP. Si usas otro gateway no aplica.",
+      "supported_by": ["mercadopago"]
+    },
+    {
+      "id": "wallets_internacionales",
+      "name": "Apple Pay / Google Pay",
+      "adoption_pct_ecommerce": 8,
+      "settle_time": "Igual a tarjeta",
+      "limits": { "max_per_tx": null },
+      "requires_3ds": false,
+      "notes": "Token de tarjeta. Para el gateway es igual que tarjeta — misma comisión. Mejora conversión móvil ~15% donde está habilitado.",
+      "best_for": ["b2c_movil", "checkout_one_tap"],
+      "weakness": "Adopción MX baja vs LATAM grande (BR/AR). Crece con iPhone install base.",
+      "supported_by": ["stripe_mx", "mercadopago", "conekta (limitado)"]
+    },
+    {
+      "id": "bnpl_kueski",
+      "name": "Kueski Pay (BNPL)",
+      "adoption_pct_ecommerce": 4,
+      "settle_time": "T+1 a T+5 según contrato",
+      "limits": { "min_per_tx": 200, "max_per_tx": 10000 },
+      "fee_pct": "3.0–5.0",
+      "notes": "BNPL líder en MX para tickets medios. Sin enganche en plan estándar. Integración Shopify, Tiendanube, VTEX, WooCommerce, Magento + SDK. dLocal lo agrega vía 'BNPL Fuse' (1 API).",
+      "best_for": ["b2c_medio_ticket", "moda", "electronicos_pyme"],
+      "weakness": "Aprobación variable — Kueski rechaza ~40% de solicitudes",
+      "supported_by": ["conekta", "kueski_directo", "dlocal"]
+    },
+    {
+      "id": "bnpl_aplazo",
+      "name": "Aplazo (BNPL)",
+      "adoption_pct_ecommerce": 3,
+      "settle_time": "T+1",
+      "limits": { "max_per_tx": 50000 },
+      "fee_pct": "8.0–15.0",
+      "down_payment_pct": 20,
+      "notes": "BNPL con enganche 20% obligatorio. Comisión más alta que Kueski pero plazos más largos (hasta 12 meses).",
+      "best_for": ["tickets_altos", "muebles", "linea_blanca"],
+      "weakness": "Comisión alta. Enganche reduce conversión.",
+      "supported_by": ["conekta", "aplazo_directo"]
+    },
+    {
+      "id": "bnpl_atrato",
+      "name": "Atrato",
+      "adoption_pct_ecommerce": 2,
+      "settle_time": "T+1",
+      "limits": { "max_per_tx": 100000, "notes": "Tickets altos" },
+      "fee_pct": "Sin pricing publico",
+      "notes": "BNPL especializado en muebles y vertical hogar. Sirve a tickets altos ($10k-100k).",
+      "best_for": ["muebles", "construccion", "hogar_grande"],
+      "weakness": "Pricing solo bajo cotización. Aprobación lenta vs Kueski.",
+      "supported_by": ["atrato_directo"]
+    },
+    {
+      "id": "domiciliacion_clabe",
+      "name": "Domiciliación CLABE (cargo recurrente)",
+      "adoption_pct_ecommerce": 5,
+      "settle_time": "T+2",
+      "limits": { "max_per_tx": null },
+      "fee_pct": "Variable por gateway",
+      "notes": "Cargo automático periódico contra cuenta bancaria del cliente. REQUIERE mandato firmado por cliente (físico o electrónico con NOM-151). Sin firma, NO se puede cargar. CNBV regula estrictamente.",
+      "best_for": ["suscripciones_b2b", "servicios_recurrentes", "luz_telefonia"],
+      "weakness": "Setup pesado (mandato). 30 días de implementación típica. Rechazos por insuficiencia ~10%.",
+      "supported_by": ["openpay", "conekta (limitado)", "bancos_directo"]
+    }
+  ],
+  "vertical_recommendations": {
+    "marketplace_b2c": {
+      "must_have": ["card", "oxxo_pay", "spei"],
+      "nice_to_have": ["saldo_mp", "wallets_internacionales", "bnpl_kueski"],
+      "skip": ["codi", "dimo", "domiciliacion_clabe"],
+      "reason": "Marketplace típico necesita captar ~95% del TAM. Sin OXXO pierdes 10% del mercado, sin SPEI pierdes B2B y tickets altos."
+    },
+    "saas_b2b_b2c": {
+      "must_have": ["card", "domiciliacion_clabe"],
+      "nice_to_have": ["spei", "wallets_internacionales"],
+      "skip": ["oxxo_pay", "bnpl"],
+      "reason": "SaaS típicamente cobra recurrente — la base son tarjetas tokenizadas con backup CLABE."
+    },
+    "retail_alto_ticket": {
+      "must_have": ["card", "msi", "bnpl_kueski"],
+      "nice_to_have": ["bnpl_aplazo", "spei", "oxxo_pay"],
+      "skip": ["codi", "dimo"],
+      "reason": "Tickets altos viven o mueren por meses sin intereses + BNPL. Sin MSI conversión se cae al piso."
+    },
+    "servicios_locales_pyme": {
+      "must_have": ["card", "spei"],
+      "nice_to_have": ["oxxo_pay", "link_pago_clip"],
+      "skip": ["domiciliacion_clabe", "bnpl"],
+      "reason": "Pyme local prefiere SPEI directo (sin comisión gateway) o link de pago simple. Sin volumen para negociar tarifas."
+    },
+    "b2b_facturacion": {
+      "must_have": ["spei"],
+      "nice_to_have": ["card", "domiciliacion_clabe"],
+      "skip": ["oxxo_pay", "bnpl", "codi"],
+      "reason": "B2B mexicano factura y cobra por SPEI. Gateway opcional — muchos cobran SPEI directo a cuenta y emiten CFDI manual."
+    },
+    "cross_border_us_mx": {
+      "must_have": ["card_international", "spei"],
+      "nice_to_have": ["oxxo_pay"],
+      "skip": ["bnpl_mx_only"],
+      "reason": "Si vendes a clientes US o cobras en USD/MXN, Stripe es el único stack maduro."
+    }
+  }
+}

@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<title>Focus MX · #2155 — Rufino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..800,0..100&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fefbf9;
+    --bg-paper: #f8efe9;
+    --bg-soft: #fbeeea;
+    --bg-low: #fff5f1;
+    --ink: #1a1614;
+    --ink-soft: #4a4344;
+    --ink-muted: #82736e;
+    --rule: #e6d3ce;
+    --rule-soft: #f0e0db;
+    --terracota: #9d422a;
+    --terracota-deep: #5f1503;
+    --terracota-light: #ffdbd2;
+    --terracota-on-light: #3c0800;
+    --anil: #405aa9;
+    --anil-deep: #1a2d6b;
+    --anil-light: #dce1ff;
+    --anil-on-light: #001257;
+    --nopal: #4c6707;
+    --nopal-deep: #2d3f00;
+    --nopal-light: #cdee85;
+    --nopal-on-light: #131f00;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  /* ============================================
+     PAGE RULES (CSS Paged Media · Paged.js)
+     ============================================ */
+
+  @page {
+    size: letter;
+    margin: 0.85in 0.85in 0.95in 0.85in;
+
+    @top-left {
+      content: "Focus.MX";
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
+      font-size: 11px;
+      color: #1a1614;
+      letter-spacing: -0.01em;
+      padding-bottom: 12px;
+    }
+
+    @top-right {
+      content: "Diagnóstico #2155 · Rufino";
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #82736e;
+      padding-bottom: 12px;
+    }
+
+    @bottom-left {
+      content: "Focus MX por Sistemia";
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #82736e;
+      padding-top: 12px;
+    }
+
+    @bottom-center {
+      content: string(section-name);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #82736e;
+      padding-top: 12px;
+    }
+
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: #82736e;
+      padding-top: 12px;
+    }
+  }
+
+  /* PORTADA — sin encabezados ni pie de página */
+  @page:first {
+    margin: 0;
+    @top-left { content: ""; }
+    @top-right { content: ""; }
+    @bottom-left { content: ""; }
+    @bottom-center { content: ""; }
+    @bottom-right { content: ""; }
+  }
+
+  /* Reset */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 12px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === BREAK CONTROL (Paged.js respeta estas reglas) === */
+  .veredicto-callout, .big-num-card, .radar-card,
+  .arrow-card, .evaluado-box, .quote-block,
+  .hueco-block, .sugerida-hero, .micro-item,
+  .riesgo-card, .fuentes-block, .mapa-segment,
+  .cierre-card, .por-que-card, .summary-row,
+  table tr, .summary-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, .page-title, .section-eyebrow, .exec-eyebrow {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* === SECTIONS === */
+  section.chapter {
+    break-before: page;
+    page-break-before: always;
+    string-set: section-name attr(data-section);
+  }
+
+  section.chapter:first-of-type {
+    break-before: auto;
+    page-break-before: auto;
+  }
+
+  /* ============================================
+     COVER PAGE
+     ============================================ */
+  .cover {
+    page: cover;
+    width: 8.5in;
+    height: 11in;
+    padding: 1in 0.95in 0.85in;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--bg);
+    string-set: section-name "Portada";
+  }
+
+  @page cover {
+    size: letter;
+    margin: 0;
+    @top-left { content: ""; }
+    @top-right { content: ""; }
+    @bottom-left { content: ""; }
+    @bottom-center { content: ""; }
+    @bottom-right { content: ""; }
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--terracota) 0%, var(--terracota) 35%, var(--anil) 35%, var(--anil) 70%, var(--nopal) 70%, var(--nopal) 100%);
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .cover-brand {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    font-variation-settings: "opsz" 36, "wght" 700;
+  }
+
+  .cover-brand .punto { color: var(--terracota); }
+
+  .cover-brand-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .cover-meta {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    line-height: 1.9;
+    text-transform: uppercase;
+  }
+
+  .cover-meta .num {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    text-transform: none;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    margin-bottom: 36px;
+    font-weight: 600;
+  }
+
+  .cover-title {
+    font-family: var(--serif);
+    font-size: 60px;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+    margin-bottom: 32px;
+    font-variation-settings: "opsz" 144, "SOFT" 40, "wght" 600;
+    max-width: 6.2in;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--terracota);
+    font-weight: 400;
+  }
+
+  .cover-lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 5.5in;
+    font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 400;
+    margin-bottom: 50px;
+  }
+
+  .cover-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 36px;
+    padding: 28px 0 0;
+    border-top: 1px solid var(--rule);
+    max-width: 6.5in;
+  }
+
+  .cover-stat-label {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cover-stat-value {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--terracota);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144, "wght" 700;
+  }
+
+  .cover-stat-value small {
+    font-size: 0.4em;
+    color: var(--ink-muted);
+    margin-left: 4px;
+    font-weight: 400;
+  }
+
+  .cover-stat-value.proyectado { color: var(--nopal); }
+
+  .cover-stat-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  .cover-bottom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+
+  .cover-bottom-right {
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* ============================================
+     CHAPTER (cada sección) — flujo natural
+     ============================================ */
+  .chapter {
+    padding: 0 0 0.4in;
+  }
+
+  .chapter-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--terracota);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .chapter-title {
+    font-family: var(--serif);
+    font-size: 34px;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+    margin-bottom: 18px;
+    font-variation-settings: "opsz" 96, "SOFT" 50, "wght" 600;
+  }
+
+  .chapter-title em {
+    font-style: italic;
+    color: var(--terracota);
+    font-weight: 400;
+  }
+
+  .chapter-lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 6in;
+    margin-bottom: 28px;
+    font-variation-settings: "opsz" 48, "SOFT" 90, "wght" 400;
+  }
+
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--terracota);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 28px;
+  }
+
+  .section-eyebrow:first-child { margin-top: 0; }
+
+  .h2-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-variation-settings: "opsz" 60, "SOFT" 50, "wght" 600;
+  }
+
+  .h2-title em {
+    font-style: italic;
+    color: var(--terracota);
+    font-weight: 400;
+  }
+
+  /* === EVALUADO === */
+  .evaluado-box {
+    background: var(--anil-light);
+    border-left: 4px solid var(--anil);
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 24px;
+  }
+
+  .evaluado-box .lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--anil-deep);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .evaluado-box .url {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--anil-deep);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .evaluado-box .text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--anil-on-light);
+    font-variation-settings: "opsz" 36, "SOFT" 80, "wght" 400;
+  }
+
+  .evaluado-box .text strong {
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* === VEREDICTO === */
+  .veredicto-callout {
+    background: var(--terracota-light);
+    padding: 24px 28px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .veredicto-callout .lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--terracota);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .veredicto-callout .text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.42;
+    color: var(--terracota-on-light);
+    font-variation-settings: "opsz" 60, "SOFT" 80, "wght" 500;
+  }
+
+  /* === STATS GRID === */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 22px;
+    margin-bottom: 24px;
+  }
+
+  .stats-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .big-num-card {
+    background: white;
+    padding: 22px 24px;
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+  }
+
+  .big-num-lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .big-num-val {
+    font-family: var(--serif);
+    font-size: 44px;
+    line-height: 1;
+    color: var(--terracota);
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    font-variation-settings: "opsz" 144, "wght" 700;
+  }
+
+  .big-num-val small {
+    font-size: 0.38em;
+    color: var(--ink-muted);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+
+  .big-num-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-top: 8px;
+    font-variation-settings: "opsz" 36, "SOFT" 80, "wght" 400;
+  }
+
+  .radar-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .radar-card-lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 6px;
+    align-self: flex-start;
+  }
+
+  .radar-svg {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+
+  /* === ARROW PROJECTION === */
+  .arrow-card {
+    background: linear-gradient(135deg, var(--nopal-light) 0%, #e8f5d0 100%);
+    padding: 24px 28px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 8px;
+  }
+
+  .arrow-current, .arrow-future { text-align: center; }
+
+  .arrow-stage-lbl {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.16em;
+    color: var(--nopal-deep);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .arrow-stage-val {
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--nopal-deep);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .arrow-icon {
+    font-family: var(--serif);
+    font-size: 30px;
+    color: var(--nopal);
+    font-weight: 300;
+  }
+
+  .arrow-future .arrow-stage-val { color: var(--nopal); font-size: 40px; }
+
+  .arrow-text {
+    flex: 1;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--nopal-on-light);
+    font-variation-settings: "opsz" 36, "SOFT" 80, "wght" 500;
+  }
+
+  /* === DIMENSIONES TABLA === */
+  .dim-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+  }
+
+  .dim-table thead th {
+    text-align: left;
+    padding: 12px 14px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .dim-table tbody td {
+    padding: 16px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+
+  .dim-table td.dim-num {
+    font-family: var(--mono);
+    color: var(--terracota);
+    font-size: 10px;
+    width: 36px;
+    font-weight: 500;
+    padding-top: 18px;
+  }
+
+  .dim-table td.dim-name {
+    font-family: var(--serif);
+    font-weight: 600;
+    width: 130px;
+    font-size: 15px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 36, "wght" 600;
+  }
+
+  .dim-table td.dim-score {
+    width: 80px;
+    text-align: center;
+  }
+
+  .dim-table td.dim-score .val {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--terracota);
+    line-height: 1;
+    letter-spacing: -0.015em;
+  }
+
+  .dim-table td.dim-score.warn .val { color: #c97a26; }
+  .dim-table td.dim-score.crit .val { color: var(--terracota-deep); }
+  .dim-table td.dim-score .warn-mark {
+    font-size: 9px;
+    color: #c97a26;
+    margin-top: 6px;
+    font-family: var(--mono);
+    letter-spacing: 0.1em;
+  }
+  .dim-table td.dim-score.high .val { color: var(--nopal); }
+  .dim-table td.dim-score.na .val { color: var(--ink-muted); font-size: 18px; }
+
+  .dim-table td.dim-lectura { color: var(--ink-soft); }
+  .dim-table td.dim-lectura em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink);
+    background: var(--bg-soft);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+  .dim-table td.dim-lectura .cite {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--anil);
+    letter-spacing: 0.02em;
+    display: inline-block;
+    background: var(--anil-light);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: 4px;
+  }
+
+  /* === MAPA SEGMENTOS === */
+  .mapa-segment {
+    display: grid;
+    grid-template-columns: 220px 1fr 60px;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .mapa-segment-label {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+    font-variation-settings: "opsz" 36, "wght" 600;
+    letter-spacing: -0.005em;
+  }
+
+  .mapa-segment-label small {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 400;
+    color: var(--ink-muted);
+    font-size: 10px;
+    margin-top: 3px;
+  }
+
+  .mapa-bar-track {
+    height: 16px;
+    background: var(--bg-paper);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mapa-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+  }
+
+  .mapa-bar-fill.verde { background: linear-gradient(90deg, var(--nopal), #6a8c1f); }
+  .mapa-bar-fill.amarillo { background: linear-gradient(90deg, #d4a830, #e5bd45); }
+  .mapa-bar-fill.rojo { background: linear-gradient(90deg, var(--terracota), #c66b52); }
+
+  .mapa-segment-pct {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    text-align: right;
+    letter-spacing: -0.015em;
+  }
+
+  .mapa-segment-pct.verde { color: var(--nopal); }
+  .mapa-segment-pct.amarillo { color: #c97a26; }
+  .mapa-segment-pct.rojo { color: var(--terracota); }
+
+  .mapa-detail {
+    grid-column: 1 / -1;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* === OBJECIONES === */
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 6px;
+  }
+
+  .quote-block {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 18px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quote-block::before {
+    content: '“';
+    position: absolute;
+    top: 4px;
+    left: 18px;
+    font-family: var(--serif);
+    font-size: 56px;
+    line-height: 1;
+    color: var(--terracota);
+    opacity: 0.18;
+    font-weight: 700;
+  }
+
+  .quote-block-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 14px;
+    padding-top: 18px;
+    font-variation-settings: "opsz" 48, "SOFT" 90, "wght" 500;
+    flex: 1;
+  }
+
+  .quote-block-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .quote-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--terracota-light);
+    color: var(--terracota-on-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .quote-name {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .quote-tags {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* === HUECOS === */
+  .hueco-block {
+    margin-bottom: 24px;
+  }
+
+  .hueco-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+
+  .hueco-number {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--terracota);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144, "wght" 700;
+    width: 52px;
+  }
+
+  .hueco-title {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    font-variation-settings: "opsz" 48, "wght" 600;
+  }
+
+  .hueco-body {
+    padding-left: 66px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .hueco-body em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .hueco-sustento {
+    background: var(--bg-paper);
+    padding: 12px 16px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--terracota);
+  }
+
+  .hueco-sustento .lbl {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.14em;
+    color: var(--terracota);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .hueco-sustento .cite {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    color: var(--anil);
+    letter-spacing: 0.02em;
+    background: var(--anil-light);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* === RIESGO === */
+  .riesgo-card {
+    background: white;
+    border: 2px solid #c97a26;
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin-bottom: 26px;
+  }
+
+  .riesgo-card .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: #c97a26;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .riesgo-card .lbl::before {
+    content: '⚠ ';
+  }
+
+  .riesgo-card .title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 48, "wght" 700;
+  }
+
+  .riesgo-card .title em {
+    font-style: italic;
+    color: #c97a26;
+    font-weight: 500;
+  }
+
+  .riesgo-card .body {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .riesgo-card .body strong { color: var(--ink); font-weight: 600; }
+
+  .riesgo-card .body em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* === SUGERIDA === */
+  .sugerida-hero {
+    background: linear-gradient(135deg, var(--nopal-light) 0%, #dbeb9c 100%);
+    padding: 32px 36px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+  }
+
+  .sugerida-hero .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--nopal-deep);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+
+  .sugerida-hero .headline {
+    font-family: var(--serif);
+    font-size: 28px;
+    line-height: 1.15;
+    font-weight: 700;
+    color: var(--nopal-deep);
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    font-variation-settings: "opsz" 96, "wght" 700;
+  }
+
+  .sugerida-hero .body {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--nopal-on-light);
+    font-variation-settings: "opsz" 48, "SOFT" 90, "wght" 500;
+  }
+
+  .sugerida-hero .tag {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--nopal-deep);
+    margin-top: 14px;
+    font-variation-settings: "opsz" 36, "SOFT" 80, "wght" 500;
+  }
+
+  .por-que-card {
+    background: var(--bg-paper);
+    padding: 22px 26px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+  }
+
+  .por-que-card .lbl {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    color: var(--terracota);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .por-que-card .items {
+    display: grid;
+    gap: 10px;
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+
+  /* === MICRO CAMBIOS === */
+  .micro-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+  }
+
+  .micro-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--terracota);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 96, "wght" 700;
+  }
+
+  .micro-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 36, "wght" 600;
+  }
+
+  .micro-body {
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .micro-body em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* === LIMITS === */
+  .limit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 22px;
+    margin-top: 6px;
+  }
+
+  .limit-item {
+    padding: 12px 0;
+    border-top: 1px solid var(--rule);
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 8px;
+  }
+
+  .limit-item::before {
+    content: "—";
+    color: var(--terracota);
+    font-weight: 600;
+  }
+
+  /* === FUENTES === */
+  .fuentes-block {
+    background: var(--bg-paper);
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+
+  .fuentes-block .lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--terracota);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .fuentes-block .text {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    line-height: 1.8;
+  }
+
+  /* === CIERRE CTA === */
+  .cierre-card {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 28px 32px;
+    border-radius: 12px;
+    margin-top: 24px;
+  }
+
+  .cierre-card .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--terracota-light);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .cierre-card .title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.015em;
+    font-variation-settings: "opsz" 60, "wght" 600;
+  }
+
+  .cierre-card .body {
+    font-size: 12px;
+    color: #d0c4c1;
+    line-height: 1.55;
+    max-width: 5.5in;
+    margin-bottom: 14px;
+  }
+
+  .cierre-card .contact {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--terracota-light);
+    letter-spacing: 0.04em;
+  }
+
+  /* === PROYECCIÓN === */
+  .summary-card {
+    background: var(--bg-soft);
+    padding: 20px 24px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 28px;
+  }
+
+  .summary-card-num {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 4px;
+  }
+
+  .summary-card-val {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--nopal);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    font-variation-settings: "opsz" 144, "wght" 700;
+  }
+
+  .summary-card-val small {
+    font-size: 0.4em;
+    color: var(--ink-muted);
+    margin-left: 4px;
+    font-weight: 400;
+  }
+
+  .summary-card-text {
+    flex: 1;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+    font-variation-settings: "opsz" 48, "SOFT" 80, "wght" 400;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ====================================================
+     PORTADA
+     ==================================================== -->
+<div class="cover">
+  <div class="cover-top">
+    <div>
+      <div class="cover-brand">Focus<span class="punto">.</span>MX</div>
+      <div class="cover-brand-sub">Por Sistemia · diagnóstico llave en mano</div>
+    </div>
+    <div class="cover-meta">
+      <span class="num">#2155</span>
+      29 mayo 2026<br>
+      Categoría · Servicio digital familiar
+    </div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-eyebrow">// Pre-test de página de aterrizaje</div>
+    <h1 class="cover-title">
+      Rufino<br>
+      — asistente personal<br>
+      <em>en WhatsApp.</em>
+    </h1>
+    <p class="cover-lede">
+      Evaluación de hero, propuesta de valor, conversión y riesgo
+      regulatorio de la página actual. Diagnóstico aplicado por el
+      método FGMX-Score sobre un panel de diecinueve perfiles
+      mexicanos documentados.
+    </p>
+
+    <div class="cover-stats">
+      <div>
+        <div class="cover-stat-label">// Comprabilidad actual</div>
+        <div class="cover-stat-value">6.4<small>/ 10</small></div>
+        <div class="cover-stat-sub">Mid-funnel — interés sin cierre</div>
+      </div>
+      <div>
+        <div class="cover-stat-label">// Tres ausencias críticas</div>
+        <div class="cover-stat-value">03</div>
+        <div class="cover-stat-sub">Bloquean conversión hoy</div>
+      </div>
+      <div>
+        <div class="cover-stat-label">// Proyección post-ajustes</div>
+        <div class="cover-stat-value proyectado">8.1<small>/ 10</small></div>
+        <div class="cover-stat-sub">+1.7 puntos · cinco micro-cambios</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div>
+      Material evaluado<br>
+      <span style="font-family: var(--mono); font-size: 11px; color: var(--ink); text-transform: none; letter-spacing: 0.04em;">rufino-mue.pages.dev</span>
+    </div>
+    <div class="cover-bottom-right">
+      marketing.sistemia.mx<br>
+      +52 55 2947 7307
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     CAPÍTULO 01 · RESUMEN EJECUTIVO
+     ==================================================== -->
+<section class="chapter" data-section="Resumen ejecutivo">
+  <div class="chapter-eyebrow">// Resumen ejecutivo</div>
+  <h1 class="chapter-title">Tres ausencias, <em>una conversión bloqueada.</em></h1>
+
+  <div class="veredicto-callout">
+    <div class="lbl">// Veredicto</div>
+    <div class="text">
+      Concepto sólido y categoría real, dirigido al segmento correcto. La conversión está bloqueada por tres ausencias críticas: precio visible, proof social y métrica de detección de fraudes. La página explica qué hace; no demuestra que lo hace bien.
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stats-col">
+      <div class="big-num-card">
+        <div class="big-num-lbl">Comprabilidad</div>
+        <div class="big-num-val">6.4<small>/ 10</small></div>
+        <div class="big-num-sub">Mid-funnel — interés sin cierre por información ausente</div>
+      </div>
+      <div class="big-num-card">
+        <div class="big-num-lbl">Dispersión entre perfiles</div>
+        <div class="big-num-val">2.6</div>
+        <div class="big-num-sub">Alta — el mensaje polariza por NSE y rol comprador/usuario</div>
+      </div>
+    </div>
+
+    <div class="radar-card">
+      <div class="radar-card-lbl">// Mapa por dimensión</div>
+      <svg class="radar-svg" viewBox="0 0 320 290" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#e6d3ce" stroke-width="0.5">
+          <polygon points="160,30 273,95 273,225 160,290 47,225 47,95"/>
+          <polygon points="160,69 240,116 240,204 160,251 80,204 80,116"/>
+          <polygon points="160,108 207,137 207,183 160,212 113,183 113,137"/>
+          <polygon points="160,147 174,158 174,170 160,181 146,170 146,158"/>
+        </g>
+        <g stroke="#e6d3ce" stroke-width="0.5">
+          <line x1="160" y1="160" x2="160" y2="30"/>
+          <line x1="160" y1="160" x2="273" y2="95"/>
+          <line x1="160" y1="160" x2="273" y2="225"/>
+          <line x1="160" y1="160" x2="160" y2="290"/>
+          <line x1="160" y1="160" x2="47" y2="225"/>
+          <line x1="160" y1="160" x2="47" y2="95"/>
+        </g>
+        <polygon points="160,72 234,108 244,205 173,235 71,200 76,116 160,72"
+                 fill="#9d422a" fill-opacity="0.25"
+                 stroke="#9d422a" stroke-width="2"
+                 stroke-linejoin="round"/>
+        <circle cx="160" cy="72" r="3.5" fill="#9d422a"/>
+        <circle cx="234" cy="108" r="3.5" fill="#c97a26"/>
+        <circle cx="244" cy="205" r="3.5" fill="#9d422a"/>
+        <circle cx="173" cy="235" r="3.5" fill="#c97a26"/>
+        <circle cx="71" cy="200" r="3.5" fill="#9d422a"/>
+        <circle cx="76" cy="116" r="3.5" fill="#9d422a"/>
+        <g font-family="JetBrains Mono, monospace" font-size="9" fill="#82736e" letter-spacing="0.05em">
+          <text x="160" y="22" text-anchor="middle" font-weight="500">COMPRENSIÓN · 6.8</text>
+          <text x="285" y="98" text-anchor="start" font-weight="500">CREDIBIL.</text>
+          <text x="285" y="110" text-anchor="start" fill="#c97a26" font-weight="700">5.4 ⚠</text>
+          <text x="285" y="220" text-anchor="start" font-weight="500">RELEVANCIA</text>
+          <text x="285" y="232" text-anchor="start" fill="#9d422a" font-weight="700">7.4</text>
+          <text x="160" y="280" text-anchor="middle" font-weight="500">INTENCIÓN ·</text>
+          <text x="222" y="280" text-anchor="start" fill="#c97a26" font-weight="700">5.8 ⚠</text>
+          <text x="35" y="220" text-anchor="end" font-weight="500">ACCESIB.</text>
+          <text x="35" y="232" text-anchor="end" fill="#9d422a" font-weight="700">6.5</text>
+          <text x="35" y="98" text-anchor="end" font-weight="500">VIRALIDAD</text>
+          <text x="35" y="110" text-anchor="end" fill="#9d422a" font-weight="700">6.2</text>
+        </g>
+        <text x="160" y="155" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="700" fill="#9d422a">6.4</text>
+        <text x="160" y="170" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#82736e" letter-spacing="0.1em">PROMEDIO</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="arrow-card">
+    <div class="arrow-current">
+      <div class="arrow-stage-lbl">Hoy</div>
+      <div class="arrow-stage-val">6.4</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="arrow-future">
+      <div class="arrow-stage-lbl">Post-ajustes</div>
+      <div class="arrow-stage-val">8.1</div>
+    </div>
+    <div class="arrow-text">
+      <strong style="font-style: normal;">+1.7 puntos</strong> con cinco micro-cambios implementables esta semana. La barrera no es el producto: es la transparencia.
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     CAPÍTULO 02 · MATERIAL EVALUADO + POR DIMENSIÓN
+     ==================================================== -->
+<section class="chapter" data-section="Diagnóstico detallado">
+  <div class="chapter-eyebrow">// Material evaluado</div>
+  <h1 class="chapter-title">El punto de partida.</h1>
+
+  <div class="evaluado-box">
+    <div class="lbl">// rufino-mue.pages.dev</div>
+    <div class="text" style="line-height: 1.7;">
+      <strong>Headline:</strong> <em>"Rufino. A sus órdenes."</em><br>
+      <strong>Lede:</strong> <em>"Un asistente personal en WhatsApp para acompañar con calma las decisiones de todos los días: mensajes sospechosos, trámites, recordatorios y dudas prácticas."</em><br>
+      <strong>Pilares:</strong> antes de decidir pregúntele a Rufino · tranquilidad sin invadir · para familias que quieren estar cerca sin estar encima.<br>
+      <strong>Precio:</strong> sin precio visible — solo lista de acceso anticipado.<br>
+      <strong>Target declarado:</strong> familias con adultos mayores que necesitan apoyo cotidiano.
+    </div>
+  </div>
+
+  <div class="section-eyebrow">// Por dimensión</div>
+  <h2 class="h2-title">Siete dimensiones, <em>tres focos rojos.</em></h2>
+
+  <table class="dim-table">
+    <thead>
+      <tr><th>#</th><th>Dimensión</th><th style="text-align:center;">Puntaje</th><th>Lectura del panel</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="dim-num">01</td>
+        <td class="dim-name">Comprensión</td>
+        <td class="dim-score"><div class="val">6.8</div></td>
+        <td class="dim-lectura">"Asistente personal en WhatsApp" es comprensible. La página no aclara inmediatamente para quién es: ¿el adulto mayor o el hijo que compra? El visitante necesita 15-20 segundos de lectura para entenderlo. <span class="cite">tiempo decisión landing: 8s · ENDUTIH 2024</span></td>
+      </tr>
+      <tr>
+        <td class="dim-num">02</td>
+        <td class="dim-name">Credibilidad</td>
+        <td class="dim-score crit"><div class="val">5.4</div><div class="warn-mark">⚠ FOCO</div></td>
+        <td class="dim-lectura">Sin testimonios, sin precio, sin métrica de detección. La promesa "responde en 10 seg, 24/7" + "detecta patrones de fraude" requiere proof inmediato. Categoría sensible: dinero de adultos mayores. <span class="cite">CONDUSEF 2024 · 89,500 quejas fraudes digitales</span></td>
+      </tr>
+      <tr>
+        <td class="dim-num">03</td>
+        <td class="dim-name">Relevancia</td>
+        <td class="dim-score"><div class="val">7.4</div></td>
+        <td class="dim-lectura">Para el adquirente con padres 60+ es altamente relevante. Mercado direccionable: 15M de mexicanos 60+ (Censo 2020), 62% usa WhatsApp regularmente — <strong>~9.3M usuarios finales potenciales</strong>.</td>
+      </tr>
+      <tr>
+        <td class="dim-num">04</td>
+        <td class="dim-name">Intención</td>
+        <td class="dim-score crit"><div class="val">5.8</div><div class="warn-mark">⚠ FOCO</div></td>
+        <td class="dim-lectura">Bloqueada por ausencia de precio + lista de espera. Roberto C+ NL: <em>"Le doy mi correo si veo testimonio o número de detección. Si no, paso."</em> La CTA "Conocer a Rufino" no convierte intención en compromiso.</td>
+      </tr>
+      <tr>
+        <td class="dim-num">05</td>
+        <td class="dim-name">Accesibilidad</td>
+        <td class="dim-score na"><div class="val">N/A</div></td>
+        <td class="dim-lectura">No evaluable — sin precio visible. Para categoría "asistente digital familiar" el rango aceptable estimado: $150-400/mes para A/B-C+, $99-199/mes para C-, no aplica a D directamente.</td>
+      </tr>
+      <tr>
+        <td class="dim-num">06</td>
+        <td class="dim-name">Viralidad</td>
+        <td class="dim-score"><div class="val">6.2</div></td>
+        <td class="dim-lectura">Multiplicador familiar natural — el hermano cuenta al hermano. Pero la página no genera "tengo que mostrar esto." Adriana C+ Jal: <em>"Si funciona para mi suegra, le digo a mis cuñadas. Pero la página no me invita a compartir."</em></td>
+      </tr>
+      <tr>
+        <td class="dim-num">07</td>
+        <td class="dim-name">Riesgo cultural</td>
+        <td class="dim-score high"><div class="val">8.2</div></td>
+        <td class="dim-lectura">Limpio. "Acompañar sin sustituir familia" es framing responsable. "A sus órdenes" tiene tono formal-cálido sin ofensa. Único riesgo bajo: "asistente personal" suena premium, puede alienar segmento D.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ====================================================
+     CAPÍTULO 03 · MAPA POR SEGMENTO
+     ==================================================== -->
+<section class="chapter" data-section="Mapa de mercado">
+  <div class="chapter-eyebrow">// El México que compra y el México que usa</div>
+  <h1 class="chapter-title">Dos audiencias, <em>un solo mensaje.</em></h1>
+  <p class="chapter-lede">
+    Rufino tiene dos audiencias distintas — quien paga (adquirente, suele ser hijo o nieto) y quien usa (adulto mayor). La página actual habla más al usuario que al comprador. Ese balance debe invertirse para conversión efectiva.
+  </p>
+
+  <div class="mapa-segment">
+    <div class="mapa-segment-label">Adquirentes A/B + C+ urbanos<small>Lourdes 52, Roberto 44, Diego 31, Mauricio 47, Adriana 41</small></div>
+    <div class="mapa-bar-track"><div class="mapa-bar-fill verde" style="width: 84%;"></div></div>
+    <div class="mapa-segment-pct verde">8.4</div>
+    <div class="mapa-detail">Alta intención condicional a precio visible y tasa de detección documentada. <strong>Este es tu segmento que paga.</strong> Capacidad de gasto $200-500/mes para servicios destinados a padres.</div>
+  </div>
+
+  <div class="mapa-segment">
+    <div class="mapa-segment-label">Adquirentes C urbanos<small>Andrea 29, Karla 36, Sra. Carmen 56, Pilar 43</small></div>
+    <div class="mapa-bar-track"><div class="mapa-bar-fill verde" style="width: 68%;"></div></div>
+    <div class="mapa-segment-pct verde">6.8</div>
+    <div class="mapa-detail">Intención sensible a precio. Si está bajo $150/mes pican; si no, dudan. Sra. Carmen es además posible usuaria directa, no solo adquirente.</div>
+  </div>
+
+  <div class="mapa-segment">
+    <div class="mapa-segment-label">Adquirentes C-<small>María Fer 38 Edomex, Tania 25 Qro</small></div>
+    <div class="mapa-bar-track"><div class="mapa-bar-fill amarillo" style="width: 48%;"></div></div>
+    <div class="mapa-segment-pct amarillo">4.8</div>
+    <div class="mapa-detail">Condicionados a precio ≤$99/mes. Pueden ser comprador para suegra/abuela pero techo de gasto bajo. María Fer: <em>"Si pasa de $99 prefiero llamarles más seguido."</em></div>
+  </div>
+
+  <div class="mapa-segment">
+    <div class="mapa-segment-label">Usuarios finales D/E rurales<small>Don Beto, Don Luis, Don Pedro, Doña Rosa, Don Tomás</small></div>
+    <div class="mapa-bar-track"><div class="mapa-bar-fill rojo" style="width: 25%;"></div></div>
+    <div class="mapa-segment-pct rojo">2.5</div>
+    <div class="mapa-detail">Barrera de onboarding sin asistencia presencial. Tu producto no resuelve el "cómo se la enseño a mi mamá." <strong>Esto es decisión de producto, no de copy.</strong></div>
+  </div>
+</section>
+
+<!-- ====================================================
+     CAPÍTULO 04 · PRINCIPALES OBJECIONES
+     ==================================================== -->
+<section class="chapter" data-section="Voces del panel">
+  <div class="chapter-eyebrow">// Principales objeciones detectadas</div>
+  <h1 class="chapter-title">Lo que el visitante <em>se está preguntando.</em></h1>
+  <p class="chapter-lede">
+    Las seis objeciones más recurrentes del panel, atribuidas al perfil que las emitió. Cada cita tiene contexto socioeconómico verificable.
+  </p>
+
+  <div class="quotes-grid">
+    <div class="quote-block">
+      <div class="quote-block-text">
+        Mi mamá tiene 78 años, le mando audios todos los días. Esto puede ser oro. Pero si me dicen 'detecta fraudes' quiero saber tasa de acierto. Sin número, es marketing.
+      </div>
+      <div class="quote-block-meta">
+        <div class="quote-avatar">L</div>
+        <div>
+          <div class="quote-name">Lourdes · 52</div>
+          <div class="quote-tags">CDMX Polanco · A/B · empresaria</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-block-text">
+        A mi papá le mandan fraudes por WhatsApp todo el tiempo. Si Rufino realmente los detecta y le explica, le pico. Pero antes: ¿qué pasa cuando se equivoca? ¿quién responde?
+      </div>
+      <div class="quote-block-meta">
+        <div class="quote-avatar">R</div>
+        <div>
+          <div class="quote-name">Roberto · 44</div>
+          <div class="quote-tags">Monterrey · C+ · ingeniero</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-block-text">
+        Como UX me preocupan dos cosas: cómo se onboarda mi mamá sin que yo esté ahí, y qué hace Rufino cuando se equivoca. Si lo hace bien, $300/mes lo pago sin pestañear.
+      </div>
+      <div class="quote-block-meta">
+        <div class="quote-avatar">D</div>
+        <div>
+          <div class="quote-name">Diego · 31</div>
+          <div class="quote-tags">CDMX Condesa · C+ · UX en Klar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-block-text">
+        ¿Cómo le explico a mi mamá que tiene que escribirle a 'Rufino'? Ella le dice 'tía' al WhatsApp. Necesito ver un video de cómo se lo van a poner ustedes.
+      </div>
+      <div class="quote-block-meta">
+        <div class="quote-avatar">P</div>
+        <div>
+          <div class="quote-name">Pilar · 43</div>
+          <div class="quote-tags">Aguascalientes · C · católica</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-block-text">
+        Yo uso WhatsApp para mis hijos. Si Rufino me ayuda a saber si un mensaje es engaño, le pico. Pero necesito que sea fácil. ¿Tengo que apretar muchas cosas?
+      </div>
+      <div class="quote-block-meta">
+        <div class="quote-avatar">C</div>
+        <div>
+          <div class="quote-name">Sra. Carmen · 56</div>
+          <div class="quote-tags">CDMX · C · ama de casa</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-block-text">
+        Para mis suegros. Pero $99 es lo máximo que pago al mes por una app. Si pasa de ahí, prefiero llamarles más seguido.
+      </div>
+      <div class="quote-block-meta">
+        <div class="quote-avatar">M</div>
+        <div>
+          <div class="quote-name">María Fer · 38</div>
+          <div class="quote-tags">Estado de México · C- · madre</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     CAPÍTULO 05 · HUECOS ESTRUCTURALES
+     ==================================================== -->
+<section class="chapter" data-section="Análisis estructural">
+  <div class="chapter-eyebrow">// Huecos que bloquean conversión</div>
+  <h1 class="chapter-title">Tres ausencias <em>estructurales.</em></h1>
+  <p class="chapter-lede">
+    No son problemas de copy ni de diseño. Son piezas de información que el comprador necesita para decidir y que la página no entrega.
+  </p>
+
+  <div class="hueco-block">
+    <div class="hueco-header">
+      <div class="hueco-number">01</div>
+      <div class="hueco-title">Sin precio visible</div>
+    </div>
+    <div class="hueco-body">
+      El segmento que paga (A/B + C+) necesita saber el ticket antes de entregar correo. "Lista de acceso anticipado" agrega una fricción adicional sobre fricción. Diego C+ UX: <em>"$300/mes lo pago sin pestañear"</em> — pero solo si lo declaras. Si vas a publicar precio, prueba primero entre $149-249/mes (rango cómodo C+/A/B para "servicio para mi mamá").
+      <div class="hueco-sustento">
+        <div class="lbl">// Sustento</div>
+        Tarifa de comparables en categoría servicios digitales familiares MX: Cuídame Bien ($199), Despedida ($249), Aprende ConCuidado ($179). Para ticket >$300, requiere proof más fuerte. <span class="cite">Análisis interno Focus MX · comparables Q1 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hueco-block">
+    <div class="hueco-header">
+      <div class="hueco-number">02</div>
+      <div class="hueco-title">Sin proof social ni tasa de detección de fraudes</div>
+    </div>
+    <div class="hueco-body">
+      Categoría sensible (dinero de adultos mayores) requiere número específico. <em>"Detecta el 94% de mensajes fraudulentos comunes"</em> vs <em>"Reconoce patrones de fraude"</em> cambia la conversación completa. Sin esto, Lourdes A/B y Roberto C+ NO descargan el correo aunque la propuesta les guste.
+      <div class="hueco-sustento">
+        <div class="lbl">// Sustento</div>
+        CONDUSEF reportó 89,500 quejas en categoría "fraudes digitales financieros" en 2024, con ~38% involucrando adultos mayores 60+. La oportunidad es real; la credibilidad requiere métrica. <span class="cite">CONDUSEF Reporte Anual 2024</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hueco-block">
+    <div class="hueco-header">
+      <div class="hueco-number">03</div>
+      <div class="hueco-title">Onboarding del usuario final no resuelto en la página</div>
+    </div>
+    <div class="hueco-body">
+      El adquirente C+/A/B pregunta "¿cómo aprende mi mamá a usarlo?" — la página menciona la idea pero no muestra el proceso. Sin un video o caso real de onboarding documentado, el comprador anticipa fricción operativa y aplaza decisión.
+      <div class="hueco-sustento">
+        <div class="lbl">// Sustento</div>
+        73% de adquirentes en categoría servicios digitales para adultos mayores cita "facilidad de onboarding del usuario final" como factor decisivo previo a compra. <span class="cite">ENDUTIH 2024 · hábitos de compra tech para terceros</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     CAPÍTULO 06 · RIESGO REGULATORIO + VERSIÓN SUGERIDA
+     ==================================================== -->
+<section class="chapter" data-section="Recomendaciones">
+  <div class="chapter-eyebrow">// Riesgo no detectado en la página actual</div>
+  <h1 class="chapter-title">Una promesa <em>regulatoria</em> latente.</h1>
+
+  <div class="riesgo-card">
+    <div class="lbl">// Recomendación legal preventiva</div>
+    <div class="title">"Detecta" sin caveat = <em>garantía contractual implícita.</em></div>
+    <div class="body">
+      La página declara que Rufino <em>"verifica fraudes"</em> y <em>"detecta patrones"</em>. Si un usuario sufre un fraude después de consultar a Rufino, podría haber base para reclamo. <strong>Recomendación legal preventiva: aclarar que Rufino orienta y advierte, no garantiza detección absoluta.</strong> Esta diferencia protege jurídicamente y mantiene la promesa creíble.
+      <div class="hueco-sustento" style="border-left-color: #c97a26; margin-top: 14px;">
+        <div class="lbl" style="color: #c97a26;">// Sustento</div>
+        CONDUSEF ha sancionado a 3 servicios fintech entre 2023-2024 por promesas de "protección contra fraude" no acotadas. Patrón: "detecta" sin caveat se interpreta como garantía contractual. <span class="cite">CONDUSEF Comunicado de prensa 2024-Q3</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-eyebrow">// Versión sugerida del hero</div>
+  <h2 class="h2-title">Reescritura propuesta, <em>sustentada punto por punto.</em></h2>
+
+  <div class="sugerida-hero">
+    <div class="lbl">// Hero rewriteado</div>
+    <div class="headline">Rufino acompaña a quien tú no puedes vigilar.</div>
+    <div class="body">
+      Asistente en WhatsApp para tu mamá, tu papá o tu abuela. Detecta mensajes sospechosos, explica trámites de SAT, IMSS y CFE, recuerda medicinas. Sin instalar nada.
+    </div>
+    <div class="tag">— Para familias que quieren estar cerca, sin estar encima.</div>
+  </div>
+
+  <div class="por-que-card">
+    <div class="lbl">// Por qué cada cambio</div>
+    <div class="items">
+      <div>· <strong>"Acompaña a quien tú no puedes vigilar"</strong> ancla al adquirente (el hijo) y nombra el dolor real: distancia + culpa de no estar.</div>
+      <div>· <strong>"Tu mamá, tu papá o tu abuela"</strong> elimina la ambigüedad sobre quién es el usuario final.</div>
+      <div>· <strong>Verbo "detecta" mantenido</strong> pero acompañado de "orienta y advierte" en el cuerpo legal.</div>
+      <div>· <strong>"Sin instalar nada"</strong> resuelve la objeción de Pilar 43 — <em>"¿cómo le explico que tiene que entrar a Rufino?"</em></div>
+      <div>· <strong>"A sus órdenes"</strong> se conserva como firma de Rufino en mensajes, no como headline principal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     CAPÍTULO 07 · CINCO MICRO-CAMBIOS
+     ==================================================== -->
+<section class="chapter" data-section="Plan de acción">
+  <div class="chapter-eyebrow">// Cinco micro-cambios accionables</div>
+  <h1 class="chapter-title">Tácticos. <em>Implementables esta semana.</em></h1>
+  <p class="chapter-lede">
+    Cinco acciones específicas que mueven la página de mid-funnel a conversión efectiva. Tiempo estimado por ítem: 2-6 horas. Sin desarrollo nuevo del producto.
+  </p>
+
+  <div>
+    <div class="micro-item">
+      <div class="micro-num">01</div>
+      <div>
+        <div class="micro-title">Publica un rango de precio o un ancla</div>
+        <div class="micro-body">Mínimo: <em>"Plan familiar desde $X/mes."</em> Esto destraba al adquirente A/B/C+ que hoy no entrega correo por no saber si es para él.</div>
+      </div>
+    </div>
+    <div class="micro-item">
+      <div class="micro-num">02</div>
+      <div>
+        <div class="micro-title">Agrega métrica de detección como dato cuantitativo</div>
+        <div class="micro-body">Aunque sea piloto: <em>"Detectamos el X% de los patrones de fraude más comunes en MX, calibrado con [n] casos reales del piloto Q1 2026."</em> Honesto + creíble.</div>
+      </div>
+    </div>
+    <div class="micro-item">
+      <div class="micro-num">03</div>
+      <div>
+        <div class="micro-title">Suma un video corto del onboarding</div>
+        <div class="micro-body">20-30 segundos mostrando cómo un hijo le pasa Rufino a su mamá por WhatsApp y la mamá hace su primera consulta. Resuelve la objeción de Pilar y Diego en una sola pieza.</div>
+      </div>
+    </div>
+    <div class="micro-item">
+      <div class="micro-num">04</div>
+      <div>
+        <div class="micro-title">Cambia "lista de acceso anticipado" por "Empieza la prueba gratis"</div>
+        <div class="micro-body">Lista de espera = fricción + sospecha de "todavía no existe." Prueba gratis = compromiso explícito + reduce riesgo percibido.</div>
+      </div>
+    </div>
+    <div class="micro-item">
+      <div class="micro-num">05</div>
+      <div>
+        <div class="micro-title">Agrega 2-3 testimonios cortos de adquirentes</div>
+        <div class="micro-body"><em>"Mi mamá ya no me pregunta si un mensaje es engaño. Le pregunta a Rufino."</em> — Adriana 41, Zapopan. Tres así resuelven credibilidad sin necesitar métricas todavía.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     CAPÍTULO 08 · CIERRE
+     ==================================================== -->
+<section class="chapter" data-section="Cierre">
+  <div class="chapter-eyebrow">// Predicción post-ajustes</div>
+  <h1 class="chapter-title">De <em>6.4</em> a <em>8.1</em> en una semana.</h1>
+
+  <div class="arrow-card">
+    <div class="arrow-current">
+      <div class="arrow-stage-lbl">Hoy</div>
+      <div class="arrow-stage-val">6.4</div>
+    </div>
+    <div class="arrow-icon">→</div>
+    <div class="arrow-future">
+      <div class="arrow-stage-lbl">Post-ajustes</div>
+      <div class="arrow-stage-val">8.1</div>
+    </div>
+    <div class="arrow-text">
+      <strong style="font-style: normal;">+1.7 puntos.</strong><br>La página pasa de mid-funnel a conversión efectiva. La barrera no es el producto: es la transparencia.
+    </div>
+  </div>
+
+  <div class="section-eyebrow">// Lo que este diagnóstico NO captura</div>
+  <h2 class="h2-title">Caveats explícitos.</h2>
+  <p style="font-size: 11.5px; color: var(--ink-soft); margin-bottom: 14px; max-width: 6in;">
+    Honestidad metodológica: el método tiene límites. Estos son los seis que aplican a este reporte específico.
+  </p>
+
+  <div class="limit-grid">
+    <div class="limit-item"><span>La tasa real de detección de fraudes de tu producto — solo medible con muestra de usuarios reales</span></div>
+    <div class="limit-item"><span>La conversión específica de cada copy en Meta o Google Ads (eso requiere correr la prueba con presupuesto)</span></div>
+    <div class="limit-item"><span>El comportamiento de retención y churn post-prueba gratuita</span></div>
+    <div class="limit-item"><span>El precio óptimo exacto — el rango propuesto se basa en comparables, no en elasticidad medida de tu base</span></div>
+    <div class="limit-item"><span>La aceptación del producto por el usuario final (adulto mayor) en cada región específica — solo lo dice la operación real</span></div>
+    <div class="limit-item"><span>Riesgo legal específico — la recomendación de "orienta + advierte" requiere validación con abogado especializado</span></div>
+  </div>
+
+  <div class="fuentes-block">
+    <div class="lbl">// Fuentes consultadas para este diagnóstico</div>
+    <div class="text">
+      Censo Población y Vivienda (INEGI) 2020 · ENDUTIH (INEGI) 2024 · CONDUSEF Reporte Anual 2024 · CONDUSEF Comunicado Q3 2024 · AMAI NSE 2024 · ENIGH (INEGI) 2024 · Análisis interno Focus MX de comparables en categoría servicios digitales familiares MX Q1 2026.
+    </div>
+  </div>
+
+  <div class="cierre-card">
+    <div class="lbl">// Cómo seguir</div>
+    <div class="title">¿Quieres que te apoyemos a implementar los cinco micro-cambios?</div>
+    <div class="body">
+      Podemos coordinar con tu equipo de producto o marketing un sprint de cinco días para tener la página actualizada y lista para correr el primer A/B test. Costo desde $15,000 MXN.
+    </div>
+    <div class="contact">
+      WhatsApp +52 55 2947 7307 · marketing.sistemia.mx
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     PAGED.JS POLYFILL — paginación automática
+     ==================================================== -->
+<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+
+</body>
+</html>

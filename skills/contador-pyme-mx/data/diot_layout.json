@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "vigencia": "2026 (plataforma nueva desde 1-ago-2025)",
+  "fuente": "SAT — Layout DIOT plataforma nueva pstcdi.clouda.sat.gob.mx",
+  "formato": {
+    "tipo": "TXT pipe-delimited",
+    "separador": "|",
+    "encoding": "UTF-8 sin BOM",
+    "fin_linea": "LF (Linux) o CRLF (Windows), SAT acepta ambos",
+    "max_registros_carga_batch": 40000,
+    "captura_manual_max": 30
+  },
+  "secciones": [
+    {
+      "id": 1,
+      "nombre": "Operaciones con proveedores",
+      "tipo_tercero": "01",
+      "descripcion": "Operaciones donde adquirente paga IVA al proveedor (incluye RIF, RESICO, General). Sección más usada."
+    },
+    {
+      "id": 2,
+      "nombre": "Operaciones con proveedores RESICO",
+      "tipo_tercero": "03",
+      "descripcion": "Específico cuando el proveedor es RESICO PF"
+    },
+    {
+      "id": 3,
+      "nombre": "Operaciones con extranjeros",
+      "tipo_tercero": "05",
+      "descripcion": "IVA importación o pagos a residentes en el extranjero"
+    },
+    {
+      "id": 4,
+      "nombre": "Operaciones globales con público en general",
+      "tipo_tercero": "15"
+    },
+    {
+      "id": 5,
+      "nombre": "Operaciones con sujeto extranjero sin RFC",
+      "tipo_tercero": "04"
+    }
+  ],
+  "campos_obligatorios": [
+    {"orden": 1,  "nombre": "TIPO_TERCERO",                       "ejemplo": "04|01|03|05|15", "longitud": "2", "descripcion": "Catálogo TipoTercero SAT"},
+    {"orden": 2,  "nombre": "TIPO_OPERACION",                     "ejemplo": "85", "longitud": "2", "descripcion": "85=Otros, 03=Prestación servicios profesionales, 06=Arrendamiento bienes inmuebles"},
+    {"orden": 3,  "nombre": "RFC_PROVEEDOR",                      "ejemplo": "ABC120101XYZ", "longitud": "12 o 13"},
+    {"orden": 4,  "nombre": "ID_FISCAL_EXTRANJERO",               "ejemplo": "", "obligatorio_si": "TIPO_TERCERO en (04, 05)"},
+    {"orden": 5,  "nombre": "NOMBRE_EXTRANJERO",                  "obligatorio_si": "extranjero"},
+    {"orden": 6,  "nombre": "PAIS_RESIDENCIA",                    "obligatorio_si": "extranjero"},
+    {"orden": 7,  "nombre": "NACIONALIDAD",                       "obligatorio_si": "extranjero"},
+    {"orden": 8,  "nombre": "VALOR_ACTOS_TASA_16",                "ejemplo": "10000.00", "descripcion": "Valor de actos pagados con tasa 16% IVA"},
+    {"orden": 9,  "nombre": "VALOR_ACTOS_FRONTERA_8",             "descripcion": "Tasa 8% región frontera"},
+    {"orden": 10, "nombre": "VALOR_ACTOS_IMPORTACION_16",         "descripcion": "IVA de importación tasa 16%"},
+    {"orden": 11, "nombre": "VALOR_ACTOS_IMPORTACION_8",          "descripcion": "IVA importación frontera 8%"},
+    {"orden": 12, "nombre": "VALOR_ACTOS_IMPORTACION_EXENTOS",    "descripcion": "Importación exenta"},
+    {"orden": 13, "nombre": "VALOR_ACTOS_TASA_0",                 "descripcion": "Pagos con IVA tasa 0%"},
+    {"orden": 14, "nombre": "VALOR_ACTOS_EXENTOS",                "descripcion": "Pagos exentos IVA"},
+    {"orden": 15, "nombre": "VALOR_ACTOS_NO_OBJETO",              "descripcion": "Pagos no objeto IVA"},
+    {"orden": 16, "nombre": "IVA_RETENIDO",                       "descripcion": "IVA que retuviste"},
+    {"orden": 17, "nombre": "IVA_DEVUELTO_DESCUENTOS_BONIFICACIONES"}
+  ],
+  "ejemplo_renglon_tipico_proveedor_nacional_general": {
+    "descripcion": "Pago de $10,000 + $1,600 IVA a proveedor PM régimen general (no es facturera ni RESICO)",
+    "renglon": "01|85|ABC120101XYZ||||| 10000.00|0.00|0.00|0.00|0.00|0.00|0.00|0.00|0.00|0.00",
+    "explicacion": "TipoTercero=01 (proveedor nacional), TipoOp=85 (otros), RFC=ABC..., Valor16=$10,000 (base), demás en 0"
+  },
+  "validaciones_skill": [
+    "Si TIPO_TERCERO requiere RFC nacional, debe ser RFC válido (12 PM o 13 PF)",
+    "Suma de valores debe ser >0 (no enviar renglones vacíos)",
+    "Si TIPO_TERCERO es '03' (RESICO), proveedor debe ser PF",
+    "Si TIPO_TERCERO es '04' o '05', es extranjero — completar ID fiscal, nombre, país"
+  ],
+  "nota_critica": "Esta es la versión simplificada del layout. El layout completo del SAT tiene 54 campos. Para generación de archivos para producción, descargar el layout oficial desde la plataforma DIOT con tu e.firma."
+}

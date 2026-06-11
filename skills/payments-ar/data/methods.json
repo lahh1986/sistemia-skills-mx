@@ -1,0 +1,214 @@
+{
+  "_meta": {
+    "as_of": "2026-06-10",
+    "sources": ["BCRA Informe de Pagos Minoristas feb-2026", "BCRA Com 'A' 8432/2026", "Infobae jun-2026 derogación Ahora 12", "GlobeNewswire AR BNPL Report 2026", "iProUP", "calcularsueldo.com.ar"],
+    "country_context": "Argentina vive con inflación crónica + cepo cambiario. Esto desplaza el comportamiento del consumidor a: cuotas para hedge, USDT para ahorro, QR interoperable para transferencias instantáneas. CoDi/CFDI no aplican — el equivalente es AFIP Factura Electrónica + Régimen Simplificado/Monotributo/IVA.",
+    "notes": "Adopción real + comportamiento cultural. NO confundir con disponibilidad técnica. Validar contra tu nicho antes de descartar cualquiera."
+  },
+  "methods": [
+    {
+      "id": "card_credit",
+      "name": "Tarjeta crédito",
+      "adoption_pct_ecommerce": 65,
+      "settle_time": "Inmediato a T+35 según plan elegido",
+      "limits": { "max_per_tx": null, "notes": "Limitado por banco emisor; típicamente requiere CVV2 + a veces OTP" },
+      "requires_3ds": "Variable — BCRA empuja 3DS pero no es mandato universal aún",
+      "best_for": ["ecom_ar", "cuotas", "b2c_bancarizado"],
+      "weakness": "Surcharge +3% en tarjetas internacionales mata cross-border. Pérdida de poder adquisitivo por inflación reduce ticket promedio.",
+      "supported_by": ["mercadopago_ar", "decidir", "dlocal_ar", "payu_ar", "uala_bis", "naranja_x"]
+    },
+    {
+      "id": "card_debit",
+      "name": "Tarjeta débito",
+      "adoption_pct_ecommerce": 18,
+      "settle_time": "T+1 hábil",
+      "limits": { "max_per_tx": null, "notes": "Tope por banco" },
+      "requires_3ds": false,
+      "fee_winner": "decidir (0.80% regulado)",
+      "best_for": ["productos_consumo_diario", "publico_no_bancarizado_premium"],
+      "weakness": "Cliente prefiere crédito por cuotas — débito pierde cuota mental",
+      "supported_by": ["mercadopago_ar", "decidir", "dlocal_ar"]
+    },
+    {
+      "id": "cuotas_sin_interes",
+      "name": "Cuotas sin interés (3, 6, 12, 18, 24)",
+      "adoption_pct_ecommerce": 45,
+      "settle_time": "Depende del gateway + plazo de cuota",
+      "limits": { "min_per_tx": null, "max_per_tx": null },
+      "regulatory_state_2026": "PROGRAMA OFICIAL 'AHORA 12 / AHORA 18 / AHORA 24' DEROGADO en junio 2026. Sigue existiendo técnicamente pero SIN SUBSIDIO ESTATAL — el costo financiero ahora lo absorbe el merchant o el cliente.",
+      "costo_referencial_2026": {
+        "3_cuotas": "5.39% CFT",
+        "6_cuotas": "10.82% CFT",
+        "12_cuotas": "22.22% CFT"
+      },
+      "notes": "Cultural en AR — vender sin cuotas es vender al 30% del mercado potencial. Pero modelar como COSTO DEL MERCHANT, no como 'sin interés gratis'.",
+      "best_for": ["electro", "indumentaria", "muebles", "tickets_medios_altos"],
+      "weakness": "Post-derogación 2026, los CFTs los paga el merchant o se trasladan al cliente. Conversión cae si trasladás.",
+      "supported_by": ["mercadopago_ar", "decidir", "dlocal_ar", "uala_bis", "naranja_x"]
+    },
+    {
+      "id": "qr_interoperable_pct",
+      "name": "QR Interoperable / Transferencia 3.0 / PCT",
+      "adoption_pct_ecommerce": 30,
+      "volume_2026_feb": "89.9M operaciones, $2.1 billones ARS, +42.7% YoY",
+      "settle_time": "Instantáneo (24/7/365)",
+      "limits": { "max_per_tx": null, "notes": "Tope por banco emisor del usuario" },
+      "split_cbu_cvu_2026_feb": "47.6% cuentas CVU (fintech) vs 52.4% CBU (bancos)",
+      "fee_winner": "mercadopago_ar o modo (0.80% match)",
+      "notes": "Default-on en MP, MODO, Ualá, Cuenta DNI. 87 billeteras + 61 aceptadores registrados. ES EL FUTURO del checkout AR — pero requiere bancarización.",
+      "best_for": ["bancarizados", "tickets_bajos_medios", "checkout_movil"],
+      "weakness": "No funciona si tu cliente no tiene cuenta bancaria/billetera (~25% de adultos AR)",
+      "supported_by": ["mercadopago_ar", "modo", "uala_bis", "cuenta_dni"]
+    },
+    {
+      "id": "rapipago_pago_facil",
+      "name": "Rapipago / Pago Fácil (cash voucher)",
+      "adoption_pct_ecommerce": 8,
+      "settle_time": "24-72h después de que cliente paga en sucursal",
+      "limits": { "max_per_tx": 100000, "notes": "Tope típico ARS 100,000 por voucher — varía por punto" },
+      "requires_3ds": false,
+      "notes": "Cliente recibe voucher con código + fecha límite. Va a Rapipago o Pago Fácil (red de kioscos + locales) y paga en efectivo. Crítico para 20-25% del público no bancarizado o que prefiere efectivo.",
+      "best_for": ["b2c_masivo", "clientes_sin_tarjeta", "interior_no_bancarizado"],
+      "weakness": "Conversión lenta — voucher emitido no es venta hasta que cliente paga. Drop-off ~40%. Inflación corre contra el voucher.",
+      "supported_by": ["mercadopago_ar", "dlocal_ar", "payu_ar"]
+    },
+    {
+      "id": "saldo_mp",
+      "name": "Saldo Mercado Pago",
+      "adoption_pct_ecommerce": 20,
+      "settle_time": "Instantáneo",
+      "limits": { "max_per_tx": null },
+      "requires_3ds": false,
+      "notes": "Wallet propio de MP — base de usuarios masiva en AR (>50% de la población adulta tiene cuenta MP).",
+      "best_for": ["seller_en_mp", "checkout_mercado_pago"],
+      "weakness": "Lock-in a MP. Si usás otro gateway, no aplica.",
+      "supported_by": ["mercadopago_ar"]
+    },
+    {
+      "id": "modo_pago",
+      "name": "MODO (wallet bancaria)",
+      "adoption_pct_ecommerce": 5,
+      "settle_time": "Hereda del procesador subyacente",
+      "limits": { "max_per_tx": null, "notes": "Tope por banco" },
+      "requires_3ds": false,
+      "notes": "Push-pay desde app del banco del usuario. Cobertura: clientes de los ~30 bancos del consorcio MODO. Crece pero no destrona MP.",
+      "best_for": ["gastro_retail_fisico", "bancarizados_premium_anti_mp"],
+      "weakness": "UX obliga a abrir app bancaria — fricción real",
+      "supported_by": ["modo", "decidir_payway"]
+    },
+    {
+      "id": "mercado_credito",
+      "name": "Mercado Crédito (BNPL embebido en MP)",
+      "adoption_pct_ecommerce": 8,
+      "settle_time": "T+1",
+      "limits": { "min_per_tx": 5000, "max_per_tx": 500000, "notes": "ARS — varía por aprobación de usuario" },
+      "fee_pct": "Incluido en costo de cuotas (~5-25% según plazo)",
+      "notes": "Es BNPL del MP — el usuario ve 'cuotas con Mercado Pago' aunque no tenga tarjeta. Aprobación instantánea con score MP. Default ON en cualquier checkout MP — sólo hay que activarlo.",
+      "best_for": ["b2c_ticket_medio", "no_tarjeta_pero_buen_score_mp"],
+      "weakness": "Aprobación variable — ~50% pasa, el resto rebota. UI MP siempre lo prioriza primero.",
+      "supported_by": ["mercadopago_ar"]
+    },
+    {
+      "id": "naranja_plan_z",
+      "name": "Naranja Plan Z + tarjeta Naranja",
+      "adoption_pct_ecommerce": 12,
+      "settle_time": "Hereda del gateway (MP/Decidir lo procesan)",
+      "limits": { "max_per_tx": null },
+      "fee_pct": "Variable — la tarjeta Naranja cobra cuota al issuer, el merchant ve fee de gateway",
+      "notes": "Plan Z permite al cliente decidir AL CIERRE DE TARJETA si paga en 1, 2 o 3 cuotas sin interés. Esto mejora conversión sin que el merchant pague el costo financiero — Naranja lo absorbe. Histórico fuerte en Córdoba/NOA.",
+      "best_for": ["electro_indumentaria", "interior_cordoba_noa", "muebles_linea_blanca"],
+      "weakness": "Sólo aplica si cliente tiene tarjeta Naranja",
+      "supported_by": ["mercadopago_ar", "decidir", "naranja_x"]
+    },
+    {
+      "id": "uala_card_app",
+      "name": "Tarjeta Ualá + app",
+      "adoption_pct_ecommerce": 7,
+      "settle_time": "Hereda del gateway",
+      "limits": { "max_per_tx": null },
+      "notes": "Ualá tiene tarjeta prepaga + app + wallet (Ualá Bis para cobros). Base de usuarios joven creciente.",
+      "best_for": ["target_joven_18_30", "bancarizados_alternativos"],
+      "supported_by": ["mercadopago_ar", "decidir", "dlocal_ar", "uala_bis"]
+    },
+    {
+      "id": "binance_pay_qr",
+      "name": "Binance Pay QR (USDT/cripto)",
+      "adoption_pct_ecommerce": 2,
+      "settle_time": "Instantáneo con conversión automática a ARS",
+      "limits": { "max_per_tx": null },
+      "fee_pct": "Sin fee directo al merchant",
+      "notes": "Activo en AR. Soporta BTC/USDT/100+ cripto, convierte a ARS automáticamente. Adopción real principalmente en e-commerce de servicios, freelancers cross-border, y verticales cripto-friendly.",
+      "best_for": ["servicios_cross_border", "freelance", "verticales_cripto_friendly", "hedge_contra_inflacion"],
+      "weakness": "Aún nicho para ecom general. Requiere que cliente tenga Binance.",
+      "supported_by": ["binance_pay_directo"]
+    },
+    {
+      "id": "usdt_p2p",
+      "name": "USDT P2P (Binance P2P, Lemon, Belo)",
+      "adoption_pct_ecommerce": 5,
+      "settle_time": "Variable — depende de match P2P",
+      "limits": { "max_per_tx": null },
+      "fee_pct": "Variable (spread, no fee fijo)",
+      "notes": "Mainstream en AR para AHORRO. Cada vez más usado para comercio informal y cross-border. NO se integra como gateway formal — es por chat/transfer P2P. Listarlo en este skill por contexto, no como rail oficial.",
+      "best_for": ["informal", "freelance_cross_border", "savings_hedge"],
+      "weakness": "Sin SDK, sin integración API formal, alta fricción para checkout estructurado",
+      "supported_by": ["fuera_de_gateways_formales"]
+    },
+    {
+      "id": "wibond_wipei_bnpl",
+      "name": "Wibond / WIPEI / Pareto (BNPL alternativos)",
+      "adoption_pct_ecommerce": 3,
+      "settle_time": "T+1 a T+5",
+      "limits": { "min_per_tx": 5000, "max_per_tx": 250000 },
+      "fee_pct": "Variable, ~5-15% según proveedor y aprobación",
+      "notes": "BNPL no embebido en MP. Wibond y WIPEI compiten por nichos específicos (educación, salud, deportes). Pareto via dLocal.",
+      "best_for": ["nichos_verticales_especificos", "ya_no_pasa_con_mercado_credito"],
+      "weakness": "Sin la base de usuarios de MP. Cliente debe registrarse en el momento — fricción alta.",
+      "supported_by": ["wibond_directo", "wipei_directo", "dlocal_ar"]
+    }
+  ],
+  "vertical_recommendations": {
+    "ecommerce_b2c_general_ar": {
+      "must_have": ["card_credit", "cuotas_sin_interes", "qr_interoperable_pct", "saldo_mp"],
+      "nice_to_have": ["rapipago_pago_facil", "mercado_credito", "naranja_plan_z"],
+      "skip": ["binance_pay_qr", "usdt_p2p", "wibond_wipei_bnpl"],
+      "reason": "B2C AR vive de tarjeta + cuotas + saldo MP. Sin OXXO-equivalente fuerte: Rapipago/Pago Fácil capta a no-bancarizados. QR interoperable es el rail moderno barato. Naranja indispensable para electro/indumentaria del interior."
+    },
+    "marketplace_b2c_ar": {
+      "must_have": ["card_credit", "cuotas_sin_interes", "qr_interoperable_pct", "saldo_mp", "mercado_credito"],
+      "nice_to_have": ["rapipago_pago_facil", "modo_pago"],
+      "skip": ["binance_pay_qr", "wibond_wipei_bnpl"],
+      "reason": "MP Marketplace API es el único stack serio en AR. Aprovechá mercado_credito + cuotas + saldo_mp del propio MP."
+    },
+    "saas_b2b_ar": {
+      "must_have": ["card_credit", "qr_interoperable_pct"],
+      "nice_to_have": ["card_debit", "binance_pay_qr (cross-border)"],
+      "skip": ["cuotas_sin_interes", "rapipago_pago_facil"],
+      "reason": "B2B SaaS no usa cuotas ni cash. Tarjeta + transferencia. Si recibís de afuera AR, dLocal para USD."
+    },
+    "retail_alto_ticket_ar": {
+      "must_have": ["card_credit", "cuotas_sin_interes", "naranja_plan_z", "mercado_credito"],
+      "nice_to_have": ["wibond_wipei_bnpl", "modo_pago"],
+      "skip": ["binance_pay_qr"],
+      "reason": "Electro/indumentaria/muebles vive o muere por cuotas. Sin Plan Z + cuotas, conversión se cae al piso."
+    },
+    "freelance_cross_border": {
+      "must_have": ["dlocal_payouts_usd", "binance_pay_qr", "usdt_p2p"],
+      "nice_to_have": ["card_credit (para gastos AR)"],
+      "skip": ["rapipago_pago_facil", "cuotas_sin_interes"],
+      "reason": "Cobrar en USD desde AR requiere estructura especial. dLocal + USDT son los rails reales."
+    },
+    "servicios_locales_pyme_ar": {
+      "must_have": ["card_credit", "qr_interoperable_pct"],
+      "nice_to_have": ["uala_bis (link de pago)", "modo_pago"],
+      "skip": ["dlocal_ar", "wibond_wipei_bnpl"],
+      "reason": "PyME local prefiere QR + transferencia (sin fee) o link de pago Ualá. Cuotas opcional según vertical."
+    },
+    "gastro_retail_fisico_ar": {
+      "must_have": ["card_credit", "card_debit", "qr_interoperable_pct", "modo_pago"],
+      "nice_to_have": ["saldo_mp", "naranja_plan_z"],
+      "skip": ["rapipago_pago_facil"],
+      "reason": "Físico — cliente bancarizado premium prefiere MODO/QR. Débito Decidir 0.80% es el rey."
+    }
+  }
+}

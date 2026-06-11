@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "ejercicio": 2026,
+  "fuentes": ["CFF Art. 12", "RMF 2026 reglas 2.1.x", "Decreto compilación beneficios fiscales DOF"],
+  "regla_general": {
+    "dia_base": 17,
+    "descripcion": "Pago provisional ISR + IVA + retenciones + DIOT vencen el día 17 del mes siguiente",
+    "recorrido_inhabil": "Si día 17 cae sábado, domingo o día inhábil oficial, se recorre al siguiente día hábil",
+    "dias_extra_por_sexto_digito_rfc": {
+      "fundamento": "Decreto que compila beneficios fiscales, Art. 5.1",
+      "descripcion": "Días extra después del día 17 según el sexto dígito numérico del RFC",
+      "tabla": {
+        "1_y_2": 1,
+        "3_y_4": 2,
+        "5_y_6": 3,
+        "7_y_8": 4,
+        "9_y_0": 5
+      },
+      "nota": "Aplica solo a contribuyentes a quienes corresponda y para pagos provisionales y definitivos del ISR, IVA y retenciones."
+    }
+  },
+  "obligaciones_mensuales": [
+    {
+      "id": "isr_pago_provisional",
+      "nombre": "Pago provisional ISR",
+      "quien": "PM Régimen General + PF actividad empresarial/profesional + PF arrendamiento + RESICO PF/PM",
+      "fundamento": ["LISR Art. 14 (PM)", "LISR Art. 106 (PF act. emp.)", "LISR Art. 113-E (RESICO PF)", "LISR Art. 116 (arrendamiento)"],
+      "periodicidad": "mensual",
+      "dia_vencimiento": 17,
+      "aplica_extra_6to_digito": true
+    },
+    {
+      "id": "iva_pago_definitivo",
+      "nombre": "Pago definitivo IVA",
+      "quien": "Todos los contribuyentes con actos gravados o exentos",
+      "fundamento": "LIVA Art. 5-D",
+      "periodicidad": "mensual",
+      "dia_vencimiento": 17,
+      "aplica_extra_6to_digito": true
+    },
+    {
+      "id": "diot",
+      "nombre": "DIOT — Declaración Informativa de Operaciones con Terceros",
+      "quien": "Todos los contribuyentes obligados a presentar declaración mensual IVA",
+      "fundamento": "LIVA Art. 32 fr. VIII",
+      "periodicidad": "mensual",
+      "dia_vencimiento": 17,
+      "aplica_extra_6to_digito": true,
+      "plataforma": "https://pstcdi.clouda.sat.gob.mx (única desde 1-ago-2025)",
+      "formato_archivo": ".txt pipe-delimited UTF-8"
+    },
+    {
+      "id": "retenciones_terceros",
+      "nombre": "Entero de retenciones (ISR + IVA a terceros)",
+      "quien": "PM o PF act. emp. que retiene a sueldos/honorarios/arrendamiento/RESICO/dividendos",
+      "fundamento": ["LISR Arts. 96, 106, 116, 140", "LIVA Art. 1-A"],
+      "periodicidad": "mensual",
+      "dia_vencimiento": 17,
+      "aplica_extra_6to_digito": true
+    },
+    {
+      "id": "cfdi_nomina",
+      "nombre": "CFDI Nómina (timbrado por evento de pago)",
+      "quien": "Patrón con trabajadores",
+      "periodicidad": "por evento de pago",
+      "fecha_limite": "Al momento del pago al trabajador o a más tardar el día siguiente hábil",
+      "nota": "Timbrado posterior tiene tolerancia hasta el día 15 del mes siguiente (regla RMF)"
+    }
+  ],
+  "obligaciones_bimestrales": [
+    {
+      "id": "imss_sua",
+      "nombre": "Pago IMSS (SUA)",
+      "fundamento": "LSS Art. 39",
+      "periodicidad": "bimestral (cuotas de retiro y CEAV)",
+      "dia_vencimiento": 17,
+      "nota": "Cuota mensual va el día 17 del mes siguiente; cuota bimestral (RT, CEAV, INFONAVIT) va el día 17 del mes siguiente al cierre del bimestre"
+    },
+    {
+      "id": "infonavit",
+      "nombre": "Aportación INFONAVIT 5% + descuentos a empleados",
+      "fundamento": "Ley INFONAVIT Art. 29",
+      "periodicidad": "bimestral",
+      "dia_vencimiento": 17
+    }
+  ],
+  "obligaciones_anuales": [
+    {
+      "id": "anual_pm",
+      "nombre": "Declaración Anual Personas Morales",
+      "quien": "PM Régimen General y RESICO PM",
+      "fundamento": "LISR Art. 9",
+      "fecha_limite": "31 de marzo del año siguiente al ejercicio",
+      "ejemplo": "Declaración 2025 → vence 31-mar-2026; Declaración 2026 → vence 31-mar-2027"
+    },
+    {
+      "id": "anual_pm_sin_fines_lucro",
+      "nombre": "Declaración Anual PM Sin Fines de Lucro / Donatarias",
+      "quien": "PM Régimen 603",
+      "fecha_limite": "15 de febrero del año siguiente"
+    },
+    {
+      "id": "anual_pf",
+      "nombre": "Declaración Anual Personas Físicas",
+      "quien": "PF (todos los regímenes excepto RESICO PF que es definitivo)",
+      "fundamento": "LISR Art. 152",
+      "fecha_limite": "30 de abril del año siguiente al ejercicio"
+    },
+    {
+      "id": "prima_riesgo_trabajo",
+      "nombre": "Determinación Anual de la Prima de Riesgo de Trabajo (DPRT)",
+      "quien": "Patrón inscrito en IMSS con al menos 1 año de operación",
+      "fundamento": "LSS Art. 74 + RACERF",
+      "fecha_limite": "Último día hábil de febrero",
+      "alerta": "Omisión → IMSS aplica prima media de la clase = casi siempre el patrón paga MÁS"
+    },
+    {
+      "id": "ptu_pm",
+      "nombre": "Reparto PTU — Personas Morales",
+      "fundamento": "LFT Arts. 117-131",
+      "fecha_limite": "30 de mayo del año siguiente al cierre del ejercicio"
+    },
+    {
+      "id": "ptu_pf",
+      "nombre": "Reparto PTU — Personas Físicas con act. empresarial",
+      "fecha_limite": "29 de junio del año siguiente"
+    },
+    {
+      "id": "forma_76",
+      "nombre": "Operaciones Relevantes (Forma 76)",
+      "fundamento": "CFF Art. 31-A",
+      "quien": "Contribuyentes con operaciones >$60M anuales en supuestos listados",
+      "fecha_limite": "Mensual: día 17 del mes siguiente. Anual: integrada en anual."
+    }
+  ],
+  "fechas_clave_2026": {
+    "31_marzo_2026": "Declaración Anual 2025 PM (Régimen General y RESICO PM)",
+    "30_abril_2026": "Declaración Anual 2025 PF (todos los regímenes con declaración anual)",
+    "ultimo_febrero_2026": "Determinación Anual Prima Riesgo de Trabajo (DPRT) IMSS",
+    "30_mayo_2026": "PTU 2025 a pagar por personas morales",
+    "29_junio_2026": "PTU 2025 a pagar por personas físicas",
+    "17_de_cada_mes": "ISR provisional + IVA + DIOT + retenciones + SUA mensual"
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "_meta": {
+    "as_of": "2026-06-10",
+    "currency": "MXN",
+    "fees_exclude_iva": true,
+    "iva_rate": 0.16,
+    "notes": "Comisiones publicadas en páginas oficiales o fuentes verificadas. Excluyen IVA salvo nota. Validar antes de firmar contrato — los gateways negocian a partir de cierto volumen.",
+    "verify_with": "scripts/verify-fees.sh"
+  },
+  "gateways": [
+    {
+      "id": "conekta",
+      "name": "Conekta",
+      "pricing_url": "https://www.conekta.com/pricing",
+      "docs_url": "https://developers.conekta.com",
+      "sandbox": "https://developers.conekta.com/docs/sandbox-y-produccion",
+      "origin": "MX",
+      "fees": {
+        "card_national": { "pct": 3.4, "fixed": 3.00, "iva": true, "notes": "1 pago en débito o crédito" },
+        "oxxo_pay": { "pct": 2.6, "fixed": 3.00, "iva": true, "min": 5.40, "notes": "OXXO cobra extra $10–13 al cliente. Máx $12,000 por orden." },
+        "spei": { "pct": 0, "fixed": 12.50, "iva": true, "notes": "Tarifa flat — best-in-class para tickets altos B2B" },
+        "bnpl_conekta": { "pct": 4.0, "fixed": 0, "iva": true },
+        "bnpl_aplazo": { "pct": 6.0, "fixed": 0, "iva": true },
+        "vales_despensa": { "pct": 4.4, "fixed": 3.00, "iva": true },
+        "msi": { "notes": "Sobretasa varía por banco. AmEx 3.9–14.9% (3–18m), BBVA 4.9–26.5% (3–24m), Citi 5.4–13.5% (3–18m), otros 3.5–12.0% (3–12m)" },
+        "secure_3ds": { "pct": 0, "fixed": 1.50, "iva": true, "notes": "Por intento, 3DS Intelligent/Total" }
+      },
+      "payout": {
+        "first_payout_days": 10,
+        "regular_payout": "T+1 hábil a partir del segundo payout",
+        "min_balance": 0
+      },
+      "marketplace": {
+        "split_payments": "no_publico",
+        "notes": "Conekta tiene capacidad de split pero no está documentada públicamente — hay que escalar con ventas (Conekta Connect). Si vas marketplace serio, considera MP o Stripe."
+      },
+      "methods_supported": ["card", "oxxo", "spei", "bnpl_kueski", "bnpl_aplazo", "vales", "msi"],
+      "gotchas": [
+        "Primer payout tarda ~10 días hábiles — flujo de caja inicial complicado",
+        "OXXO Pay tope de $12,000 MXN por orden",
+        "SPEI flat $12.50 es excelente para tickets > $1,000 pero caro para tickets bajos",
+        "Marketplace/split requiere conversación con ventas — no es self-serve",
+        "Webhooks pueden duplicarse — implementa idempotencia siempre",
+        "Sandbox separa por API key, no por subdomain"
+      ],
+      "best_for": ["b2b_spei_alto_ticket", "tarjeta_competitiva", "oxxo_e2e_mx"]
+    },
+    {
+      "id": "mercadopago",
+      "name": "Mercado Pago MX",
+      "pricing_url": "https://www.mercadopago.com.mx/costs-section",
+      "docs_url": "https://www.mercadopago.com.mx/developers",
+      "sandbox": "Test users via API — https://www.mercadopago.com.mx/developers/es/docs/your-integrations/test/test-users",
+      "origin": "AR (LATAM)",
+      "fees": {
+        "card_instant_payout": { "pct": 3.49, "fixed": 4.00, "iva": true, "notes": "Payout al instante (default)" },
+        "card_14d_payout": { "pct": 3.19, "fixed": 4.00, "iva": true, "notes": "Payout 14 días" },
+        "card_30d_payout": { "pct": 2.95, "fixed": 4.00, "iva": true, "notes": "Payout 30 días — el más barato si tu flujo lo aguanta" },
+        "spei_checkout": { "pct": 3.49, "fixed": 4.00, "iva": true, "notes": "CONTRAINTUITIVO: SPEI vía checkout cobra como tarjeta. No hay descuento." },
+        "oxxo": { "pct": 3.79, "fixed": 4.00, "iva": true, "notes": "Payout 3 días" },
+        "qr_balance_mp": { "pct": 0.99, "fixed": 0, "iva": true, "notes": "Presencial QR — saldo MP, instantáneo" },
+        "qr_debit": { "pct": 1.69, "fixed": 0, "iva": true },
+        "qr_credit": { "pct": 2.99, "fixed": 0, "iva": true, "notes": "T+1 hábil" },
+        "msi_3m": { "additional_pct": 4.69 },
+        "msi_6m": { "additional_pct": 7.69 },
+        "msi_9m": { "additional_pct": 11.19 },
+        "msi_12m": { "additional_pct": 12.89 },
+        "msi_18m": { "additional_pct": 19.39 },
+        "msi_24m": { "additional_pct": 27.29 }
+      },
+      "payout": {
+        "first_payout_days": 0,
+        "regular_payout": "Inmediato (default) o T+14/T+30 con descuento",
+        "min_balance": 0
+      },
+      "marketplace": {
+        "split_payments": "nativo",
+        "docs": "https://www.mercadopago.com.mx/developers/es/docs/checkout-pro/integration-configuration/integration-marketplace",
+        "notes": "Marketplace API maduro. Soporta application_fee, cuentas vendedor sub-cuenta, payouts a sellers. Funcionalidad probada en miles de sitios LATAM."
+      },
+      "methods_supported": ["card", "spei", "oxxo", "saldo_mp", "qr", "msi", "tarjetas_internacionales"],
+      "gotchas": [
+        "SPEI vía checkout NO es más barato que tarjeta — no es buen rail SPEI puro",
+        "Payout instantáneo (default) es ~17% más caro que payout 30d — revisa cuál default tienes",
+        "Marketplace lock-in: si migras de MP a otro gateway, los flows de seller onboarding son complejos",
+        "Sandbox usa test users — no es subdomain. Crea con API y guarda credenciales por usuario",
+        "Reglas anti-fraude de MP son agresivas — tickets altos pueden requerir review manual"
+      ],
+      "best_for": ["marketplace_latam", "vertical_consumo", "vendor_payouts_automaticos"]
+    },
+    {
+      "id": "stripe_mx",
+      "name": "Stripe MX",
+      "pricing_url": "https://stripe.com/mx/pricing",
+      "docs_url": "https://docs.stripe.com",
+      "sandbox": "https://dashboard.stripe.com/test",
+      "origin": "US",
+      "fees": {
+        "card_national": { "pct": 3.6, "fixed": 3.00, "iva": true },
+        "card_international": { "pct": 4.1, "fixed": 3.00, "iva": true, "notes": "+0.5% sobre nacional" },
+        "currency_conversion": { "additional_pct": 2.0 },
+        "oxxo": { "pct": 4.0, "fixed": 3.00, "iva": true, "notes": "Más caro que Conekta/MP — pero único stack" },
+        "spei": { "pct": 4.0, "fixed": 3.00, "iva": true, "notes": "También integrado como local payment method" },
+        "msi": { "additional_pct": 5.0, "notes": "Desde 5% según plazo" },
+        "secure_3ds_custom": { "fixed": 0.50, "iva": true, "notes": "Solo si usas 3DS custom — el default está incluido" },
+        "disputes": { "fixed": 150, "notes": "+30% del monto si Smart Disputes lo gana" },
+        "billing_recurrent": { "pct": 0.7, "notes": "Sobre volumen facturado (suscripciones)" },
+        "radar_fraud_teams": { "fixed": 0.35, "iva": false }
+      },
+      "payout": {
+        "first_payout_days": 7,
+        "regular_payout": "T+2 después de las primeras semanas",
+        "min_balance": 0
+      },
+      "marketplace": {
+        "split_payments": "nativo",
+        "product": "Stripe Connect",
+        "docs": "https://docs.stripe.com/connect",
+        "notes": "Connect disponible en MX. Soporta Separate Charges & Transfers, Direct Charges, Destination Charges. application_fee soportado. Payouts cross-border. Best-in-class para marketplaces serios."
+      },
+      "methods_supported": ["card", "card_international", "oxxo", "spei", "msi", "wallets_apple_google"],
+      "gotchas": [
+        "Sin OXXO no captas ~10% del mercado MX — y Stripe te cobra 4% por OXXO",
+        "Disputas 1.5x más estrictas que Conekta — chargebacks costosos",
+        "Primer payout T+7 — flujo de caja inicial",
+        "Connect onboarding requiere KYC del seller con datos MX (RFC, CURP, comprobante) — el wizard de Stripe está en inglés",
+        "MSI más caro que MP/Conekta — si tu vertical depende de meses sin intereses, Stripe no es óptimo"
+      ],
+      "best_for": ["marketplace_internacional", "saas_global", "cross_border", "developer_experience"]
+    },
+    {
+      "id": "openpay",
+      "name": "Openpay (BBVA)",
+      "pricing_url": "https://www.openpay.mx/comisiones",
+      "docs_url": "https://www.openpay.mx/docs/api/",
+      "sandbox": "https://sandbox-api.openpay.mx",
+      "origin": "MX (BBVA)",
+      "fees": {
+        "card_national": { "pct": 2.9, "fixed": 2.50, "iva": true, "notes": "Competitivo — tarifa más baja entre top tier" },
+        "card_bbva_zona": { "pct": 2.99, "fixed": 0, "iva": true, "notes": "Vía Zona de Cobro BBVA" },
+        "amex": { "pct": 3.5, "fixed": 0, "iva": true },
+        "card_international": { "pct": 3.7, "fixed": 0, "iva": true },
+        "oxxo": { "pct": 0, "fixed": 14.66, "iva": false, "notes": "Comisionista (Openpay no cobra %)" },
+        "spei": { "pct": 0, "fixed": 8.00, "iva": true, "notes": "Min $8 MXN; T+1 si cuenta destino es BBVA mismo día" }
+      },
+      "payout": {
+        "first_payout_days": null,
+        "regular_payout": "T+1; mismo día si dispersión a BBVA",
+        "notes": "Ventaja real para comercios con cuenta BBVA"
+      },
+      "marketplace": {
+        "split_payments": "limitado",
+        "notes": "Tiene API de 'comerciantes' / sub-merchants pero documentación 2026 escasa. Mejor verificar con ventas si lo necesitas serio."
+      },
+      "methods_supported": ["card", "amex", "oxxo", "spei", "card_international"],
+      "gotchas": [
+        "Transparencia limitada en pricing más allá de tarjeta — pide cotización por escrito",
+        "MSI sobretasa no publicada — hay que pedirla",
+        "API REST más vieja que Conekta/Stripe — DX inferior",
+        "Soporte a través de BBVA puede ser lento — útil si ya eres cliente empresarial BBVA",
+        "Marketplace flow no es self-serve"
+      ],
+      "best_for": ["tarjeta_volumen_alto_mx", "cliente_existente_bbva", "spei_b2b_t1"]
+    },
+    {
+      "id": "clip",
+      "name": "Clip",
+      "pricing_url": "https://www.clip.mx/soluciones/checkout",
+      "docs_url": "https://developers.clip.mx",
+      "sandbox": "https://developers.clip.mx/docs/sandbox",
+      "origin": "MX",
+      "fees": {
+        "card_online": { "pct": 3.6, "fixed": 0, "iva": true, "notes": "Tarjeta, débito, vales, AmEx e internacional — todos al mismo % sin fijo" },
+        "link_pago": { "pct": 3.6, "fixed": 0, "iva": true },
+        "tpv_fisico": { "pct": 3.6, "fixed": 0, "iva": true, "notes": "Rango 3.6–3.75% según terminal" },
+        "msi": { "additional_pct": null, "notes": "Sobretasa bancaria hasta ~27.17% total (3-24m)" }
+      },
+      "payout": {
+        "first_payout_days": null,
+        "regular_payout": "Mismo día si tx entre 9–20h CDMX, sino T+1"
+      },
+      "marketplace": {
+        "split_payments": "no",
+        "notes": "Clip no ofrece marketplace/split. Es card-first y orientado a comercios chicos."
+      },
+      "methods_supported": ["card", "amex", "card_international", "vales", "msi", "link_pago"],
+      "gotchas": [
+        "SIN OXXO online ni SPEI — Clip es card-only en checkout digital",
+        "Sin fijo es ganador para tickets bajos (<$100 MXN)",
+        "Docs y SDK menos pulidos que Conekta/Stripe",
+        "Fortaleza histórica es TPV físico, checkout digital es más nuevo",
+        "Sin marketplace API — no usar para eltianguis"
+      ],
+      "best_for": ["tickets_bajos_card_only", "tpv_fisico_pymes", "link_pago_simple"]
+    }
+  ],
+  "comparison_quick": {
+    "best_card_fee_national": "openpay (2.9% + $2.50)",
+    "best_spei_high_ticket": "conekta ($12.50 flat)",
+    "best_oxxo_fee": "conekta (2.6% + $3)",
+    "best_marketplace_native": "stripe_connect, mercadopago",
+    "best_for_tickets_bajos": "clip (sin fijo)",
+    "best_for_international": "stripe_mx",
+    "best_for_b2b_spei": "conekta or openpay"
+  }
+}

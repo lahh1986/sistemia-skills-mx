@@ -1,0 +1,133 @@
+{
+  "version": "1.0",
+  "vigencia_inicio": "2026-01-01",
+  "fuente": "Anexo 8 RMF 2026, publicado en DOF 28-12-2025",
+  "path_pdf_oficial": "research/contador-pyme-mx-corpus/sat-rmf-2026/Anexo-8-RMF-2026.pdf",
+  "factor_actualizacion_vs_2025": 1.1321,
+  "fundamento_legal": "LISR Art. 96 (retenciones asalariados) + LISR Art. 175 Reglamento (tarifas por periodicidad)",
+  "tarifas_retencion_periodicas": {
+    "diaria": {
+      "descripcion": "Apartado B.I — Por número de días laborados",
+      "rangos": [
+        {"li": 0.01,       "ls": 27.78,     "cf": 0.00,      "pct": 1.92},
+        {"li": 27.79,      "ls": 235.81,    "cf": 0.53,      "pct": 6.40},
+        {"li": 235.82,     "ls": 414.41,    "cf": 13.85,     "pct": 10.88},
+        {"li": 414.42,     "ls": 481.73,    "cf": 33.28,     "pct": 16.00},
+        {"li": 481.74,     "ls": 576.76,    "cf": 44.05,     "pct": 17.92},
+        {"li": 576.77,     "ls": 1163.25,   "cf": 61.08,     "pct": 21.36},
+        {"li": 1163.26,    "ls": 1833.44,   "cf": 186.35,    "pct": 23.52},
+        {"li": 1833.45,    "ls": 3500.35,   "cf": 343.98,    "pct": 30.00},
+        {"li": 3500.36,    "ls": 4667.13,   "cf": 844.05,    "pct": 32.00},
+        {"li": 4667.14,    "ls": 14001.38,  "cf": 1217.42,   "pct": 34.00},
+        {"li": 14001.39,   "ls": null,      "cf": 4391.07,   "pct": 35.00}
+      ]
+    },
+    "semanal": {
+      "descripcion": "Apartado B.II — Periodo de 7 días",
+      "rangos": [
+        {"li": 0.01,       "ls": 194.46,    "cf": 0.00,      "pct": 1.92},
+        {"li": 194.47,     "ls": 1650.67,   "cf": 3.71,      "pct": 6.40},
+        {"li": 1650.68,    "ls": 2900.87,   "cf": 96.95,     "pct": 10.88},
+        {"li": 2900.88,    "ls": 3372.11,   "cf": 232.96,    "pct": 16.00},
+        {"li": 3372.12,    "ls": 4037.32,   "cf": 308.35,    "pct": 17.92},
+        {"li": 4037.33,    "ls": 8142.75,   "cf": 427.56,    "pct": 21.36},
+        {"li": 8142.76,    "ls": 12834.08,  "cf": 1304.45,   "pct": 23.52},
+        {"li": 12834.09,   "ls": 24502.45,  "cf": 2407.86,   "pct": 30.00},
+        {"li": 24502.46,   "ls": 32669.91,  "cf": 5908.35,   "pct": 32.00},
+        {"li": 32669.92,   "ls": 98009.66,  "cf": 8521.94,   "pct": 34.00},
+        {"li": 98009.67,   "ls": null,      "cf": 30737.49,  "pct": 35.00}
+      ]
+    },
+    "decenal": {
+      "descripcion": "Apartado B.III — Periodo de 10 días",
+      "rangos": [
+        {"li": 0.01,       "ls": 277.80,    "cf": 0.00,      "pct": 1.92},
+        {"li": 277.81,     "ls": 2358.10,   "cf": 5.30,      "pct": 6.40},
+        {"li": 2358.11,    "ls": 4144.10,   "cf": 138.50,    "pct": 10.88},
+        {"li": 4144.11,    "ls": 4817.30,   "cf": 332.80,    "pct": 16.00},
+        {"li": 4817.31,    "ls": 5767.60,   "cf": 440.50,    "pct": 17.92},
+        {"li": 5767.61,    "ls": 11632.50,  "cf": 610.80,    "pct": 21.36},
+        {"li": 11632.51,   "ls": 18334.40,  "cf": 1863.50,   "pct": 23.52},
+        {"li": 18334.41,   "ls": 35003.50,  "cf": 3439.80,   "pct": 30.00},
+        {"li": 35003.51,   "ls": 46671.30,  "cf": 8440.50,   "pct": 32.00},
+        {"li": 46671.31,   "ls": 140013.80, "cf": 12174.20,  "pct": 34.00},
+        {"li": 140013.81,  "ls": null,      "cf": 43910.70,  "pct": 35.00}
+      ]
+    },
+    "quincenal": {
+      "descripcion": "Apartado B.IV — Periodo de 15 días",
+      "rangos": [
+        {"li": 0.01,       "ls": 416.70,    "cf": 0.00,      "pct": 1.92},
+        {"li": 416.71,     "ls": 3537.15,   "cf": 7.95,      "pct": 6.40},
+        {"li": 3537.16,    "ls": 6216.15,   "cf": 207.75,    "pct": 10.88},
+        {"li": 6216.16,    "ls": 7225.95,   "cf": 499.20,    "pct": 16.00},
+        {"li": 7225.96,    "ls": 8651.40,   "cf": 660.75,    "pct": 17.92},
+        {"li": 8651.41,    "ls": 17448.75,  "cf": 916.20,    "pct": 21.36},
+        {"li": 17448.76,   "ls": 27501.60,  "cf": 2795.25,   "pct": 23.52},
+        {"li": 27501.61,   "ls": 52505.25,  "cf": 5159.70,   "pct": 30.00},
+        {"li": 52505.26,   "ls": 70006.95,  "cf": 12660.75,  "pct": 32.00},
+        {"li": 70006.96,   "ls": 210020.70, "cf": 18261.30,  "pct": 34.00},
+        {"li": 210020.71,  "ls": null,      "cf": 65866.05,  "pct": 35.00}
+      ]
+    },
+    "mensual": {
+      "descripcion": "Apartado B.V — Periodo mensual",
+      "rangos": [
+        {"li": 0.01,       "ls": 844.59,    "cf": 0.00,      "pct": 1.92},
+        {"li": 844.60,     "ls": 7168.51,   "cf": 16.22,     "pct": 6.40},
+        {"li": 7168.52,    "ls": 12598.02,  "cf": 420.95,    "pct": 10.88},
+        {"li": 12598.03,   "ls": 14644.64,  "cf": 1011.68,   "pct": 16.00},
+        {"li": 14644.65,   "ls": 17533.64,  "cf": 1339.14,   "pct": 17.92},
+        {"li": 17533.65,   "ls": 35362.83,  "cf": 1856.84,   "pct": 21.36},
+        {"li": 35362.84,   "ls": 55736.68,  "cf": 5665.16,   "pct": 23.52},
+        {"li": 55736.69,   "ls": 106410.50, "cf": 10457.09,  "pct": 30.00},
+        {"li": 106410.51,  "ls": 141880.66, "cf": 25659.23,  "pct": 32.00},
+        {"li": 141880.67,  "ls": 425641.99, "cf": 37009.69,  "pct": 34.00},
+        {"li": 425642.00,  "ls": null,      "cf": 133488.54, "pct": 35.00}
+      ]
+    }
+  },
+  "tarifa_anual_pf_2026": {
+    "descripcion": "Apartado C.II — Tarifa para cálculo del impuesto correspondiente al ejercicio 2026",
+    "fundamento_legal": "LISR Arts. 97 y 152",
+    "rangos": [
+      {"li": 0.01,         "ls": 10135.11,    "cf": 0.00,         "pct": 1.92},
+      {"li": 10135.12,     "ls": 86022.11,    "cf": 194.59,       "pct": 6.40},
+      {"li": 86022.12,     "ls": 151176.19,   "cf": 5051.37,      "pct": 10.88},
+      {"li": 151176.20,    "ls": 175735.66,   "cf": 12140.13,     "pct": 16.00},
+      {"li": 175735.67,    "ls": 210403.69,   "cf": 16069.64,     "pct": 17.92},
+      {"li": 210403.70,    "ls": 424353.97,   "cf": 22282.14,     "pct": 21.36},
+      {"li": 424353.98,    "ls": 668840.14,   "cf": 67981.92,     "pct": 23.52},
+      {"li": 668840.15,    "ls": 1276925.98,  "cf": 125485.07,    "pct": 30.00},
+      {"li": 1276925.99,   "ls": 1702567.97,  "cf": 307910.81,    "pct": 32.00},
+      {"li": 1702567.98,   "ls": 5107703.92,  "cf": 444116.23,    "pct": 34.00},
+      {"li": 5107703.93,   "ls": null,        "cf": 1601862.46,   "pct": 35.00}
+    ]
+  },
+  "tarifa_anual_pf_2025": {
+    "descripcion": "Apartado C.I — Tarifa para ejercicio 2025 (para declaración anual presentada en abril 2026)",
+    "rangos": [
+      {"li": 0.01,         "ls": 8952.49,     "cf": 0.00,         "pct": 1.92},
+      {"li": 8952.50,      "ls": 75984.55,    "cf": 171.88,       "pct": 6.40},
+      {"li": 75984.56,     "ls": 133536.07,   "cf": 4461.94,      "pct": 10.88},
+      {"li": 133536.08,    "ls": 155229.80,   "cf": 10723.55,     "pct": 16.00},
+      {"li": 155229.81,    "ls": 185852.57,   "cf": 14194.54,     "pct": 17.92},
+      {"li": 185852.58,    "ls": 374837.88,   "cf": 19682.13,     "pct": 21.36},
+      {"li": 374837.89,    "ls": 590795.99,   "cf": 60049.40,     "pct": 23.52},
+      {"li": 590796.00,    "ls": 1127926.84,  "cf": 110842.74,    "pct": 30.00},
+      {"li": 1127926.85,   "ls": 1503902.46,  "cf": 271981.99,    "pct": 32.00},
+      {"li": 1503902.47,   "ls": 4511707.37,  "cf": 392294.17,    "pct": 34.00},
+      {"li": 4511707.38,   "ls": null,        "cf": 1414947.85,   "pct": 35.00}
+    ]
+  },
+  "tasa_isr_pm_2026": {
+    "descripcion": "LISR Art. 9 — Tasa única para personas morales del Régimen General",
+    "tasa_pct": 30.0,
+    "aplicacion": "Sobre la utilidad fiscal (ingresos acumulables - deducciones autorizadas - PTU pagada - pérdidas fiscales pendientes)"
+  },
+  "notas": [
+    "Las tarifas se aplican sobre la base gravable (sueldo + percepciones gravadas - exentos topados UMA).",
+    "Si el periodo de pago difiere de los listados (ej. catorcenal), se usa la tarifa diaria multiplicada por el número de días del periodo.",
+    "Para el cálculo anual de PF ver Apartado C.II del mismo Anexo 8 (incluido arriba)."
+  ]
+}

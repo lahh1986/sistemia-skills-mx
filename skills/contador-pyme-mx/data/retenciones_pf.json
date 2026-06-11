@@ -1,0 +1,88 @@
+{
+  "version": "1.0",
+  "vigencia": "2026",
+  "fuente": "LISR + LIVA + RMF 2026",
+  "descripcion": "Retenciones obligatorias que debe hacer una Persona Moral (o PF con act. emp.) cuando paga a una Persona Física. Se reflejan en el nodo Impuestos/Retenciones del CFDI 4.0.",
+  "tipos": {
+    "honorarios_profesionales": {
+      "descripcion": "Servicios profesionales independientes (Cap. II Sec. I LISR, Art. 100-110)",
+      "obligacion_retener": "Solo cuando el pagador es Persona Moral",
+      "isr_tasa_pct": 10.0,
+      "isr_fundamento": "LISR Art. 106 (provisional 10% sobre el monto sin IVA)",
+      "iva_tasa_pct": 10.6667,
+      "iva_fundamento": "LIVA Art. 1-A fr. II + RLIVA Art. 3 fr. I (2/3 partes del IVA trasladado = 10.67% del monto sin IVA, equivalente a 2/3 × 16%)",
+      "calculo_iva_alternativo": "También se expresa como 'dos terceras partes del IVA trasladado': sobre $1,000 base, IVA es $160, retención IVA = $160 × 2/3 = $106.67",
+      "nodo_xml_cfdi40": {
+        "Impuestos.Retenciones.Retencion": [
+          {"Impuesto": "001 (ISR)", "TipoFactor": "Tasa", "TasaOCuota": "0.100000", "Importe": "subtotal × 0.10"},
+          {"Impuesto": "002 (IVA)", "TipoFactor": "Tasa", "TasaOCuota": "0.106667", "Importe": "subtotal × 0.106667"}
+        ]
+      },
+      "alerta_skill": "Si receptor es PM y concepto contiene 'honorarios', 'consultoría', 'asesoría', 'profesional' → debe haber estas 2 retenciones."
+    },
+    "arrendamiento": {
+      "descripcion": "Arrendamiento de inmuebles por PF (Cap. III LISR, Art. 114-118)",
+      "obligacion_retener": "Solo cuando el pagador es Persona Moral",
+      "isr_tasa_pct": 10.0,
+      "isr_fundamento": "LISR Art. 116 (provisional 10% sobre el monto sin IVA)",
+      "iva_tasa_pct": 10.6667,
+      "iva_fundamento": "LIVA Art. 1-A fr. II + RLIVA Art. 3 fr. II (2/3 partes del IVA)",
+      "nodo_xml_cfdi40": "igual a honorarios",
+      "alerta_skill": "Si receptor PM y concepto 'arrendamiento', 'renta de local/oficina/bodega' → mismas 2 retenciones."
+    },
+    "resico_pf_a_pm": {
+      "descripcion": "Pago a Persona Física en Régimen Simplificado de Confianza por PM",
+      "obligacion_retener": "Sí — la PM debe retener al RESICO PF",
+      "isr_tasa_pct": 1.25,
+      "isr_fundamento": "LISR Art. 113-J (retención del 1.25% del monto del pago sin IVA)",
+      "iva_tasa_pct": null,
+      "iva_fundamento": "NO hay retención de IVA en este esquema (el RESICO PF no es asimilado a actos del 1-A LIVA)",
+      "nodo_xml_cfdi40": {
+        "Impuestos.Retenciones.Retencion": [
+          {"Impuesto": "001 (ISR)", "TipoFactor": "Tasa", "TasaOCuota": "0.012500", "Importe": "subtotal × 0.0125"}
+        ]
+      },
+      "alerta_skill_critica": "Si emisor es PF + regimen 626 (RESICO) y receptor es PM → DEBE incluir retención ISR 1.25%. Sin esto la PM no puede deducir el gasto y al PF le llega requerimiento."
+    },
+    "asimilados_a_salarios": {
+      "descripcion": "Ingresos asimilados a salarios (Art. 94 LISR fr. IV-VII)",
+      "obligacion_retener": "Sí, el pagador hace retención conforme a tarifa del Art. 96 LISR",
+      "isr_tasa_pct": "variable según tarifa Art. 96 (ver Anexo 8 RMF)",
+      "isr_fundamento": "LISR Art. 96 + tarifa Anexo 8 RMF 2026",
+      "iva_tasa_pct": null,
+      "iva_fundamento": "No hay traslado de IVA (es ingreso por servicio personal subordinado-asimilado)",
+      "nodo_xml_cfdi40": "Usar complemento Nómina 1.2 si es pago periódico; si es esporádico, usar CFDI ingreso con retención ISR según tarifa",
+      "tope_anual": "$75,000,000 — si excede, sale del régimen y va a actividad empresarial"
+    },
+    "dividendos_a_pf": {
+      "descripcion": "Pago de dividendos por PM a sus accionistas PF",
+      "isr_tasa_pct": 10.0,
+      "isr_fundamento": "LISR Art. 140 (retención adicional 10% sobre el dividendo)",
+      "iva_tasa_pct": null,
+      "notas": "Adicional al impuesto a nivel sociedad (no afecta cálculo nivel empresa, retención es responsabilidad de PM al pagar al accionista PF)"
+    },
+    "premios": {
+      "descripcion": "Loterías, rifas, sorteos, juegos con apuestas",
+      "isr_tasa_pct": 1.0,
+      "isr_fundamento": "LISR Art. 138 (federal); estados pueden aplicar adicional hasta 6%",
+      "notas": "Hay un esquema especial cuando el premio supera $1,500 UMA"
+    }
+  },
+  "errores_comunes_skill_debe_alertar": [
+    {
+      "error": "Timbrar CFDI a RESICO PF sin retención 1.25% ISR cuando receptor es PM",
+      "impacto_mxn_aprox": "Para PM: no deduce el gasto (pérdida × tasa ISR). Para PF: requerimiento SAT.",
+      "regla_skill": "Si emisor.regimen=626 (RESICO) AND receptor.tipo='PM' AND no existe Retenciones nodo → 🚨"
+    },
+    {
+      "error": "Honorarios facturados sin retenciones por PM pagador",
+      "impacto_mxn_aprox": "PM no puede deducir el gasto al 100%; debe retener para deducir.",
+      "regla_skill": "Si concepto sugiere honorarios profesionales AND receptor PM AND no retenciones → ⚠️"
+    },
+    {
+      "error": "Arrendamiento sin retenciones por arrendatario PM",
+      "impacto_mxn_aprox": "Misma lógica que honorarios.",
+      "regla_skill": "Si ClaveProdServ relacionada con arrendamiento (78101800 etc.) AND receptor PM → ⚠️"
+    }
+  ]
+}

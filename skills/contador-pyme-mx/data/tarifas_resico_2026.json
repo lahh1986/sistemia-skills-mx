@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "vigencia": "2026",
+  "fuente": "LISR Art. 113-E (PF) y Art. 206-215 (PM)",
+  "resico_pf": {
+    "descripcion": "Pago mensual definitivo sobre ingresos efectivamente cobrados, sin deducciones",
+    "fundamento": "LISR Art. 113-E",
+    "tope_ingresos_anuales_mxn": 3500000.00,
+    "tasa_aplicable_sobre": "Ingresos del mes efectivamente cobrados (no acumulado)",
+    "tabla_tasas_mensuales": [
+      {"li": 0.01,          "ls": 25000.00,     "tasa_pct": 1.00},
+      {"li": 25000.01,      "ls": 50000.00,     "tasa_pct": 1.10},
+      {"li": 50000.01,      "ls": 83333.33,     "tasa_pct": 1.50},
+      {"li": 83333.34,      "ls": 208333.33,    "tasa_pct": 2.00},
+      {"li": 208333.34,     "ls": null,         "tasa_pct": 2.50}
+    ],
+    "retencion_pf_a_pm": {
+      "fundamento": "LISR Art. 113-J",
+      "tasa_pct": 1.25,
+      "aplica_cuando": "PF en RESICO factura a Persona Moral. La PM retiene 1.25% ISR y enterarlo mensualmente.",
+      "se_acredita": "El RESICO PF puede acreditar esta retención contra su impuesto del periodo y la del ejercicio anual."
+    },
+    "exclusiones_tipicas": [
+      "Socios o accionistas de personas morales",
+      "Residentes en el extranjero",
+      "Ingresos asimilados a salarios exclusivamente",
+      "Actividades a través de fideicomisos o asociaciones en participación",
+      "Si excede tope $3.5M en el ejercicio: sale del régimen y va a Cap. II Sec. I (act. emp. y profesional)"
+    ]
+  },
+  "resico_pm": {
+    "descripcion": "Régimen Simplificado de Confianza para Personas Morales",
+    "fundamento": "LISR Arts. 206-215",
+    "tope_ingresos_anuales_mxn": 35000000.00,
+    "tasa_isr_pct": 30.00,
+    "diferencia_vs_pm_general": [
+      "Base flujo de efectivo (cobrado/pagado) en lugar de devengado",
+      "Deducciones autorizadas idénticas a PM general",
+      "Inversiones pueden deducirse a porcentajes mayores que MOI",
+      "PM debe estar constituida solo por PF (no PM como socias)",
+      "Obligatorio si cumple requisitos y no hay causal de exclusión"
+    ],
+    "tope_inversiones": "Inversión adquirida en el periodo, deducible al 100% si cumple LISR Art. 209"
+  }
+}

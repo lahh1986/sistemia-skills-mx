@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "fuente": "SAT Anexo 20 + Guía Cancelación CFDI 4.0 (vigente desde 2022)",
+  "vigencia": "2026",
+  "motivos": {
+    "01": {
+      "clave": "01",
+      "descripcion_corta": "Comprobante emitido con errores con relación",
+      "descripcion_oficial_sat": "Cuando el CFDI generado contiene un error en la clave del producto, valor unitario, descuento o cualquier otro dato, por lo que se debe reemitir.",
+      "requiere_folio_sustituto": true,
+      "campo_relacionado_xml": "FolioSustitucion",
+      "cuando_usar": "Tienes que emitir un nuevo CFDI corregido. El XML cancelado se ata al nuevo via UUID en el nodo FolioSustitucion.",
+      "alerta_skill": "Si motivo=01 y NO se proporciona FolioSustitucion → rechaza."
+    },
+    "02": {
+      "clave": "02",
+      "descripcion_corta": "Comprobante emitido con errores sin relación",
+      "descripcion_oficial_sat": "Cuando el CFDI generado contiene un error en la clave del producto, valor unitario, descuento o cualquier otro dato y NO se requiere relacionar con otro CFDI generado.",
+      "requiere_folio_sustituto": false,
+      "campo_relacionado_xml": null,
+      "cuando_usar": "El CFDI estaba mal y NO se va a re-emitir (ej. cliente desistió de la compra)."
+    },
+    "03": {
+      "clave": "03",
+      "descripcion_corta": "No se llevó a cabo la operación",
+      "descripcion_oficial_sat": "Cuando la operación facturada no se concreta.",
+      "requiere_folio_sustituto": false,
+      "campo_relacionado_xml": null,
+      "cuando_usar": "Se cobró/facturó pero la operación nunca ocurrió. NO se re-emite."
+    },
+    "04": {
+      "clave": "04",
+      "descripcion_corta": "Operación nominativa relacionada en una factura global",
+      "descripcion_oficial_sat": "Aplica cuando se incluye una venta en la factura global y posteriormente el cliente solicita su comprobante nominativo, lo que conlleva a cancelar la factura global y reexpedirla, así como generar el nominativo al cliente.",
+      "requiere_folio_sustituto": false,
+      "campo_relacionado_xml": null,
+      "cuando_usar": "Sólo aplica a clientes con régimen Público en General que después piden CFDI nominativo."
+    }
+  },
+  "reglas_generales": {
+    "plazo_cancelacion_libre": "Hasta el último día del mes en que se emitió el CFDI",
+    "cancelacion_fuera_de_plazo": "Después del mes requiere aceptación expresa del receptor vía Buzón Tributario en 72 hrs",
+    "cancelacion_con_aceptacion_excepciones": [
+      "Monto total ≤ $1,000",
+      "Nómina",
+      "Egresos",
+      "Traslado",
+      "Receptor RFC genérico",
+      "Concepto de ingresos por enajenación de bienes",
+      "Por concepto de prima vacacional"
+    ],
+    "no_se_puede_cancelar_ejercicio_anterior": "Después del cierre del ejercicio fiscal sin sustitución, generalmente requiere amparo o reclasificación contable manual"
+  },
+  "errores_comunes_skill_debe_alertar": [
+    {
+      "error": "Motivo 01 sin FolioSustitucion",
+      "consecuencia": "PAC rechaza la cancelación. CFDI queda vivo."
+    },
+    {
+      "error": "Cancelar CFDI de ejercicio anterior con motivo 02 o 03",
+      "consecuencia": "Diferencia entre contabilidad y declaración. Riesgo auditoría."
+    },
+    {
+      "error": "Cancelar nómina después de pagada al trabajador",
+      "consecuencia": "Asume retención no enterada. Diferencias en declaración informativa."
+    }
+  ]
+}

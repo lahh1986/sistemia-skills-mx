@@ -1,0 +1,114 @@
+{
+  "version": "1.0",
+  "fecha_snapshot": "2026-05-30",
+  "fuentes": {
+    "uma": "INEGI DOF 09-01-2026 (código 5778072)",
+    "salario_minimo": "CONASAMI DOF 09-12-2025",
+    "subsidio_empleo": "Decreto DOF 31-12-2025 (código 5777649)"
+  },
+  "uma_2026": {
+    "vigencia_inicio": "2026-02-01",
+    "vigencia_fin": "2027-01-31",
+    "diaria_mxn": 117.31,
+    "mensual_mxn": 3566.22,
+    "anual_mxn": 42794.64,
+    "nota_enero_2026": "Para enero 2026 sigue aplicando UMA 2025 ($113.14 diaria / $3,439.46 mensual). La UMA 2026 entra el 1-feb-2026.",
+    "uma_2025_diaria_mxn": 113.14,
+    "uma_2025_mensual_mxn": 3439.46
+  },
+  "salario_minimo_2026": {
+    "vigencia_inicio": "2026-01-01",
+    "vigencia_fin": "2026-12-31",
+    "zona_general_diario_mxn": 315.04,
+    "zona_general_mensual_mxn": 9582.47,
+    "zona_libre_frontera_norte_diario_mxn": 440.87,
+    "zona_libre_frontera_norte_mensual_mxn": 13402.62,
+    "zonas": {
+      "zona_libre_frontera_norte_municipios_aprox": [
+        "Tijuana", "Mexicali", "Ensenada", "Tecate", "Rosarito (BC)",
+        "San Luis Río Colorado, Nogales, Agua Prieta, Cananea (Sonora)",
+        "Ciudad Juárez (Chih)",
+        "Ojinaga, Praxedis G. Guerrero (Chih)",
+        "Acuña, Piedras Negras, Anáhuac (Coah)",
+        "Nuevo Laredo, Reynosa, Río Bravo, Matamoros (Tamps)",
+        "Camargo, Guerrero, Gustavo Díaz Ordaz, Mier, Miguel Alemán, Valle Hermoso (Tamps)"
+      ],
+      "todos_los_demas": "Zona General"
+    },
+    "incremento_vs_2025": {
+      "zona_general_pct": 13.0,
+      "zona_frontera_pct": 5.0
+    }
+  },
+  "infonavit": {
+    "aportacion_patronal_pct": 5.00,
+    "fundamento": "Ley INFONAVIT Art. 29 fr. II",
+    "tope_sbc_uma": 25,
+    "periodicidad_pago": "bimestral",
+    "fecha_limite_bimestre": "día 17 del mes siguiente al cierre del bimestre"
+  },
+  "topes_y_limites_fiscales": {
+    "deduccion_personal_global_anual": {
+      "tope_uma_anuales": 5,
+      "tope_mxn_2026": 213973.20,
+      "alternativa_pct_ingreso": 15.0,
+      "regla": "Aplica el MENOR entre 5 UMA anuales o 15% del ingreso anual",
+      "fundamento": "LISR Art. 151 último párrafo"
+    },
+    "pago_efectivo_deducible_maximo": {
+      "tope_mxn": 2000.00,
+      "regla": "Pagos en efectivo > $2,000 NO son deducibles. Para deducir paga con transferencia, cheque nominativo, tarjeta o monedero electrónico autorizado.",
+      "fundamento": "LISR Art. 27 fr. III"
+    },
+    "deposito_efectivo_alerta": {
+      "tope_mxn_anual": 15000.00,
+      "regla_recibidos_por_pf": "Depósitos en efectivo > $15,000 mensuales generan reporte automático del banco al SAT (no es ilegal pero invita revisión)."
+    },
+    "prestamos_aportaciones_capital_efectivo_alerta": {
+      "tope_mxn_anual": 600000.00,
+      "regla": "Si recibes > $600,000 anuales en efectivo por préstamos, aportaciones o aumentos de capital DEBES presentar Forma 86-A",
+      "fundamento": "LISR Art. 76 fr. XVI"
+    },
+    "tope_resico_pf_ingresos_anual": {
+      "tope_mxn": 3500000.00,
+      "fundamento": "LISR Art. 113-E"
+    },
+    "tope_resico_pm_ingresos_anual": {
+      "tope_mxn": 35000000.00,
+      "fundamento": "LISR Art. 206"
+    },
+    "tope_asimilados_a_salarios_anual": {
+      "tope_mxn": 75000000.00,
+      "regla": "Si excede, debe migrar al régimen de actividad empresarial",
+      "fundamento": "LISR Art. 94 último párrafo"
+    },
+    "operaciones_relevantes_minimo": {
+      "tope_mxn": 60000000.00,
+      "fundamento": "Forma 76 Art. 31-A CFF"
+    }
+  },
+  "isn_resumen_por_estado_2026": {
+    "descripcion": "Impuesto Sobre Nómina estatal. Versión completa en ~/sistemia-skills-mx/skills/legal-pyme-mx/data/isn_por_estado.json",
+    "rangos_tasa": "1.8% (BCN, más bajo) a 3.0% (mayoría de estados)",
+    "ejemplos": {
+      "BCN": 1.80,
+      "Aguascalientes": 2.50,
+      "BCS": 2.50,
+      "Tabasco": 2.50,
+      "Chiapas, Coahuila, Colima, Guerrero, Morelos, Durango": 2.00,
+      "CDMX, EdoMex, NL, JAL, GTO, QRO, QROO, SLP, SIN, SON, TAM, MICH, HID, PUE, CHIH, NAY, YUC, ZAC, OAX, CAMP, VER, TLAX": 3.00
+    }
+  },
+  "factores_calculo_practico": {
+    "dias_mes_promedio_imss_infonavit": 30.4,
+    "ptu_pct_utilidad_fiscal": 10.0,
+    "ptu_tope_meses_salario": 3,
+    "aguinaldo_minimo_dias": 15,
+    "vacaciones_primer_año_dias_lft_2023": 12,
+    "vacaciones_segundo_año_dias": 14,
+    "prima_vacacional_minimo_pct": 25.0,
+    "prima_antiguedad_dias_por_año": 12,
+    "prima_antiguedad_tope_sbc_uma": 2,
+    "ptu_dias_minimos_trabajados": 60
+  }
+}

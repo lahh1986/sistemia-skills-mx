@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "vigencia_inicio": "2026-01-01",
+  "vigencia_fin": "2026-12-31",
+  "fuente": "Decreto que modifica el diverso que otorga el subsidio para el empleo. DOF 31-12-2025 (código 5777649).",
+  "fundamento_legal": "Decreto presidencial Art. 8º Décimo. Estructura desde 01-may-2024: cuota fija mensual ligada a UMA (eliminó la tabla escalonada antigua).",
+  "tope_ingreso_mensual_gravable": 11492.66,
+  "descripcion_general": "Cuota fija mensual aplicable a trabajadores con ingreso gravado <= tope. Si el trabajador tiene ingresos arriba del tope NO se aplica subsidio.",
+  "monto_2026": {
+    "enero_transicion": {
+      "monto_mxn": 536.21,
+      "calculo": "15.59% × UMA mensual vigente en 2025 ($3,439.46) = $536.21",
+      "razon": "La UMA 2026 entra en vigor el 1-feb-2026; durante enero aún rige UMA 2025"
+    },
+    "feb_a_dic": {
+      "monto_mxn": 536.22,
+      "calculo": "15.02% × UMA mensual 2026 ($3,566.22) = $535.65 (redondeado a $536.22 según decreto)",
+      "razon": "Desde 1-feb-2026 vigente UMA 2026"
+    }
+  },
+  "ajustes_por_periodicidad": {
+    "descripcion": "Si el patrón paga semanal/quincenal, el subsidio mensual se prorratea según días del periodo",
+    "formulas": {
+      "diaria": "subsidio_mensual / 30.4",
+      "semanal": "subsidio_mensual × 7 / 30.4",
+      "decenal": "subsidio_mensual × 10 / 30.4",
+      "quincenal": "subsidio_mensual × 15 / 30.4",
+      "mensual": "subsidio_mensual"
+    }
+  },
+  "aplicacion": {
+    "regla_basica": "Subsidio se RESTA del ISR retenido al trabajador. Si subsidio > ISR, la diferencia se entrega al trabajador en efectivo y el patrón la acredita contra otros impuestos.",
+    "cuenta_contable_credito_patron": "Cuenta 119 — Subsidio al empleo pagado por exceder ISR retenido"
+  },
+  "cambios_recientes": [
+    "01-may-2024: Cambio estructural — de tabla escalonada a cuota fija ligada a UMA (Decreto DOF)",
+    "01-ene-2026: Tope ingreso sube de $10,171 (2025) a $11,492.66 (2026)",
+    "01-ene-2026: Porcentaje sube de 13.8% a 15.02% (15.59% transición enero)"
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "vigencia_inicio": "2026-01-01",
+  "fuente": "Ley del Seguro Social (LSS) — vigente con reforma DOF 15-01-2026",
+  "path_pdf_oficial": "research/contador-pyme-mx-corpus/leyes-federales/LSS.pdf",
+  "uma_diaria_2026": 117.31,
+  "uma_mensual_2026": 3566.22,
+  "tope_sbc_uma_count": 25,
+  "tope_sbc_diario_2026": 2932.75,
+  "tope_sbc_mensual_2026": 89148.41,
+  "factor_dias_mes": 30.4,
+  "notas_generales": [
+    "Las cuotas se calculan sobre el Salario Base de Cotización (SBC), que es el salario diario + prestaciones gravables.",
+    "El SBC nunca puede exceder 25 UMA diarias.",
+    "Las cuotas patronales se enteran MENSUALMENTE (día 17). INFONAVIT y RT bimestrales.",
+    "Para el cálculo real usa SUA (Sistema Único de Autodeterminación) v3.7.1 del IMSS."
+  ],
+  "seguros": {
+    "enfermedades_maternidad_cuota_fija": {
+      "fundamento": "LSS Art. 106 fracción I",
+      "descripcion": "Cuota fija por trabajador (independiente del salario)",
+      "base_calculo": "UMA diaria × días del periodo",
+      "patron_pct": 20.40,
+      "obrero_pct": 0.00,
+      "ejemplo_mensual": "20.40% × $117.31 × 30.4 = $727.50 patrón mensual por trabajador"
+    },
+    "enfermedades_maternidad_excedente": {
+      "fundamento": "LSS Art. 106 fracción II",
+      "descripcion": "Solo aplica si SBC > 3 UMA diarias. Sobre el excedente de 3 UMA.",
+      "base_calculo": "(SBC - 3 × UMA diaria) × días",
+      "patron_pct": 1.10,
+      "obrero_pct": 0.40,
+      "umbral_uma_diarias": 3,
+      "ejemplo": "SBC $500/día: excedente = $500 - $351.93 = $148.07. Patrón 1.10% × $148.07 × 30.4 = $49.57/mes."
+    },
+    "enfermedades_maternidad_dinero": {
+      "fundamento": "LSS Art. 107",
+      "descripcion": "Prestaciones en dinero (incapacidades temporales)",
+      "base_calculo": "SBC × días",
+      "patron_pct": 0.70,
+      "obrero_pct": 0.25
+    },
+    "enfermedades_maternidad_gastos_medicos_pensionados": {
+      "fundamento": "LSS Art. 25",
+      "descripcion": "Para gastos médicos de pensionados y beneficiarios",
+      "base_calculo": "SBC × días",
+      "patron_pct": 1.05,
+      "obrero_pct": 0.375
+    },
+    "invalidez_vida": {
+      "fundamento": "LSS Art. 147",
+      "descripcion": "Seguro de Invalidez y Vida (IV)",
+      "base_calculo": "SBC × días",
+      "patron_pct": 1.75,
+      "obrero_pct": 0.625
+    },
+    "guarderias_prestaciones_sociales": {
+      "fundamento": "LSS Art. 211",
+      "descripcion": "Seguro de Guarderías y Prestaciones Sociales (GPS)",
+      "base_calculo": "SBC × días",
+      "patron_pct": 1.00,
+      "obrero_pct": 0.00
+    },
+    "retiro": {
+      "fundamento": "LSS Art. 168 fracción I",
+      "descripcion": "Ramo de Retiro (RT) — al SAR/AFORE del trabajador",
+      "base_calculo": "SBC × días",
+      "patron_pct": 2.00,
+      "obrero_pct": 0.00,
+      "periodicidad": "bimestral"
+    },
+    "cesantia_vejez_2026": {
+      "fundamento": "LSS Art. 168 fracción II (con reforma de pensiones 2020 — incremento gradual hasta 2030)",
+      "descripcion": "Cesantía en Edad Avanzada y Vejez (CEAV) — cuota patronal incrementa cada año hasta 11.875% en 2030",
+      "base_calculo": "SBC × días",
+      "patron_pct_2026": "6.361 a 7.513 según rango SBC en UMAs",
+      "obrero_pct": 1.125,
+      "periodicidad": "bimestral",
+      "tabla_cuota_patronal_por_rango_sbc_uma": [
+        {"sbc_uma_min": 0,  "sbc_uma_max": 1.0,  "patron_pct": 3.150},
+        {"sbc_uma_min": 1.0,"sbc_uma_max": 1.5,  "patron_pct": 3.281},
+        {"sbc_uma_min": 1.5,"sbc_uma_max": 2.0,  "patron_pct": 3.575},
+        {"sbc_uma_min": 2.0,"sbc_uma_max": 2.5,  "patron_pct": 3.751},
+        {"sbc_uma_min": 2.5,"sbc_uma_max": 3.0,  "patron_pct": 3.869},
+        {"sbc_uma_min": 3.0,"sbc_uma_max": 3.5,  "patron_pct": 3.953},
+        {"sbc_uma_min": 3.5,"sbc_uma_max": 4.0,  "patron_pct": 4.016},
+        {"sbc_uma_min": 4.0,"sbc_uma_max": 25.0, "patron_pct": 6.361},
+        {"sbc_uma_min": 25.0,"sbc_uma_max": null,"patron_pct": 7.513}
+      ],
+      "nota_simplificada": "Para PyMEs con salarios típicos $200-$1,500 diarios (SBC ~1.7-12.8 UMA), aplica 3.575% a 6.361%. En cálculo agregado para la nómina, asumir 6.361% si todos los trabajadores ganan más de 4 UMA diarias (típico clase media trabajadora)."
+    },
+    "riesgos_de_trabajo": {
+      "fundamento": "LSS Art. 71",
+      "descripcion": "Seguro de Riesgos de Trabajo (RT) — variable según clase y prima",
+      "base_calculo": "SBC × días",
+      "patron_pct": "variable según clase y prima determinada anualmente",
+      "obrero_pct": 0.00,
+      "rangos_prima": {
+        "minima": 0.500,
+        "maxima": 7.589,
+        "promedio_nacional": 2.50
+      },
+      "clases_de_riesgo": {
+        "I":   {"prima_media_pct": 0.54355, "ejemplos": "oficinas, despachos, comercios menores"},
+        "II":  {"prima_media_pct": 1.13065, "ejemplos": "comercios mayores, talleres ligeros"},
+        "III": {"prima_media_pct": 2.59840, "ejemplos": "manufactura, restaurantes, hoteles"},
+        "IV":  {"prima_media_pct": 4.65325, "ejemplos": "construcción, transporte"},
+        "V":   {"prima_media_pct": 7.58875, "ejemplos": "minería, explosivos, petroquímica"}
+      },
+      "determinacion_anual": {
+        "trámite": "Declaración Anual de Prima de Riesgo de Trabajo (DPRT)",
+        "fecha_limite": "Último día de febrero de cada año",
+        "metodo": "Patrón calcula prima propia con base en siniestralidad del año anterior (incapacidades, defunciones, días no trabajados)",
+        "vigencia": "Marzo del año actual a febrero del siguiente",
+        "alerta_skill": "Si patrón NO presenta DPRT en febrero, IMSS aplica la prima media de la clase del giro = casi siempre paga MÁS. Omisión típica que cuesta miles de pesos al año."
+      }
+    },
+    "infonavit_aportacion_patronal": {
+      "fundamento": "Ley INFONAVIT Art. 29 fracción II",
+      "descripcion": "Aportación patronal al Fondo Nacional de la Vivienda",
+      "base_calculo": "SBC × días",
+      "patron_pct": 5.00,
+      "obrero_pct": 0.00,
+      "periodicidad": "bimestral",
+      "nota": "El obrero también puede tener descuento si trae crédito INFONAVIT activo. Eso se calcula sobre el factor del crédito vigente (no es cuota fija)."
+    }
+  },
+  "consolidados_2026_aproximados": {
+    "descripcion": "Suma aproximada todos los seguros para SBC típicos (sin RT específica, asume clase III prom 2.598%, CEAV 6.361%)",
+    "cuota_total_patron_aprox_pct_sobre_sbc": {
+      "sbc_4_uma_diarias_(~$469)": "~26.5% (incluye IMSS + INFONAVIT + RT clase III)",
+      "sbc_10_uma_diarias_(~$1,173)": "~28.5%",
+      "sbc_25_uma_diarias_tope_($2,932.75)": "~31.0%"
+    },
+    "cuota_total_obrero_aprox_pct_sobre_sbc": {
+      "todos_los_niveles": "~2.5% (1.125% CEAV + 0.625% IV + 0.4% EyM excedente + 0.25% dinero + 0.375% pensionados)"
+    },
+    "nota_critica": "Estos consolidados son APROXIMADOS. Para cálculo exacto usar SUA o el módulo calc_nomina.py de este skill."
+  }
+}

@@ -41,6 +41,69 @@ RE_RFC_GENERICO_NAC = re.compile(r"^XAXX010101000$")  # RFC genérico nacional p
 RE_RFC_GENERICO_EXT = re.compile(r"^XEXX010101000$")  # RFC genérico extranjero
 
 
+# Tabla SAT oficial para cálculo del dígito verificador del RFC
+# Fuente: documento técnico SAT — algoritmo del dígito verificador
+TABLA_RFC_DIGITO = {
+    '0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
+    'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15, 'G': 16, 'H': 17, 'I': 18,
+    'J': 19, 'K': 20, 'L': 21, 'M': 22, 'N': 23, '&': 24, 'O': 25, 'P': 26,
+    'Q': 27, 'R': 28, 'S': 29, 'T': 30, 'U': 31, 'V': 32, 'W': 33, 'X': 34,
+    'Y': 35, 'Z': 36, ' ': 37, 'Ñ': 38,
+}
+
+
+def calcular_digito_verificador_rfc(rfc_sin_dv: str) -> str | None:
+    """Calcula el último dígito verificador del RFC según algoritmo oficial SAT.
+
+    rfc_sin_dv: RFC SIN el último dígito (11 chars para PM, 12 para PF).
+    Devuelve el dígito esperado (0-9, A) o None si entrada inválida.
+
+    Algoritmo:
+      - Si len=11 (PM), prepender espacio para llegar a 12
+      - Mapear cada char a su valor en TABLA_RFC_DIGITO
+      - Sumar producto[i] = valor × (13 - i)
+      - resto = suma % 11
+      - resto==0 → '0', resto==1 → 'A', sino → str(11 - resto)
+    """
+    if not rfc_sin_dv:
+        return None
+    rfc_sin_dv = rfc_sin_dv.upper()
+    if len(rfc_sin_dv) == 11:
+        rfc_sin_dv = ' ' + rfc_sin_dv
+    if len(rfc_sin_dv) != 12:
+        return None
+    try:
+        suma = sum(TABLA_RFC_DIGITO[ch] * (13 - i) for i, ch in enumerate(rfc_sin_dv))
+    except KeyError:
+        return None
+    resto = suma % 11
+    if resto == 0:
+        return '0'
+    elif resto == 1:
+        return 'A'
+    return str(11 - resto)
+
+
+def validar_digito_verificador(rfc: str) -> dict:
+    """Verifica que el último char del RFC sea el dígito correcto.
+    Devuelve {'valido': bool, 'esperado': str, 'real': str}."""
+    rfc = rfc.strip().upper()
+    if rfc in ("XAXX010101000", "XEXX010101000"):
+        return {"valido": True, "nota": "RFC genérico, no requiere verificación"}
+    if len(rfc) not in (12, 13):
+        return {"valido": False, "razon": f"longitud incorrecta: {len(rfc)}"}
+    real = rfc[-1]
+    esperado = calcular_digito_verificador_rfc(rfc[:-1])
+    if esperado is None:
+        return {"valido": False, "razon": "caracter inválido en RFC"}
+    return {
+        "valido": real == esperado,
+        "real": real,
+        "esperado": esperado,
+        "nota": "✓ dígito verificador correcto" if real == esperado else f"⚠ dígito real '{real}' ≠ esperado '{esperado}' — RFC NO válido estructuralmente"
+    }
+
+
 def validar_estructura(rfc: str):
     rfc = rfc.strip().upper()
     if not rfc:
@@ -55,26 +118,32 @@ def validar_estructura(rfc: str):
     if m:
         letras, aa, mm, dd, homo, dv = m.groups()
         fecha_ok = validar_fecha(aa, mm, dd)
+        dv_check = validar_digito_verificador(rfc)
         return {
-            "valido": fecha_ok["ok"],
+            "valido": fecha_ok["ok"] and dv_check["valido"],
             "tipo": "persona_fisica",
             "longitud": 13,
             "fecha_nacimiento": f"{aa}-{mm}-{dd}" if fecha_ok["ok"] else None,
             "fecha_warning": None if fecha_ok["ok"] else fecha_ok["razon"],
             "homoclave": homo + dv,
+            "digito_verificador": dv_check,
+            "advertencia_critica": None if dv_check["valido"] else f"🚨 RFC ESTRUCTURALMENTE INVÁLIDO: dígito verificador esperado '{dv_check.get('esperado','?')}' pero RFC trae '{dv_check.get('real','?')}'. NO aceptar CFDI con este RFC.",
         }
 
     m = RE_RFC_MORAL.match(rfc)
     if m:
         letras, aa, mm, dd, homo, dv = m.groups()
         fecha_ok = validar_fecha(aa, mm, dd)
+        dv_check = validar_digito_verificador(rfc)
         return {
-            "valido": fecha_ok["ok"],
+            "valido": fecha_ok["ok"] and dv_check["valido"],
             "tipo": "persona_moral",
             "longitud": 12,
             "fecha_constitucion": f"{aa}-{mm}-{dd}" if fecha_ok["ok"] else None,
             "fecha_warning": None if fecha_ok["ok"] else fecha_ok["razon"],
             "homoclave": homo + dv,
+            "digito_verificador": dv_check,
+            "advertencia_critica": None if dv_check["valido"] else f"🚨 RFC ESTRUCTURALMENTE INVÁLIDO: dígito verificador esperado '{dv_check.get('esperado','?')}' pero RFC trae '{dv_check.get('real','?')}'. NO aceptar CFDI con este RFC.",
         }
 
     return {"valido": False, "razon": "no_match", "longitud": len(rfc), "esperado": "12 (moral) o 13 (física)"}

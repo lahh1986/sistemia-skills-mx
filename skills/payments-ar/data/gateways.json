@@ -1,0 +1,243 @@
+{
+  "_meta": {
+    "as_of": "2026-06-10",
+    "currency": "ARS",
+    "fees_exclude_iva": true,
+    "iva_rate": 0.21,
+    "country_context": "Argentina opera con cepo cambiario, múltiples tipos de cambio (oficial, MEP, CCL, cripto), cultura masiva de cuotas, y un régimen PSP endurecido por BCRA Com 'A' 8432/2026. Los gateways listados son los relevantes para checkout online — la barra de entrada y los plazos cambian si tu volumen pasa de PyME a enterprise.",
+    "notes": "Comisiones cambian seguido en AR por inflación + regulación BCRA. Validar siempre antes de firmar. Para MP AR los números de marketing son directionales — el costo real depende de tu mix de inmediato vs 14d vs 35d y de qué cuotas activás.",
+    "verify_with": "scripts/verify-fees.sh"
+  },
+  "gateways": [
+    {
+      "id": "mercadopago_ar",
+      "name": "Mercado Pago Argentina",
+      "pricing_url": "https://www.mercadopago.com.ar/ayuda/33399",
+      "docs_url": "https://www.mercadopago.com.ar/developers",
+      "sandbox": "Test users vía API — https://www.mercadopago.com.ar/developers/es/docs/your-integrations/test/test-users",
+      "origin": "AR (HQ)",
+      "fees": {
+        "card_inmediato": { "pct": 6.29, "fixed": 0, "iva": true, "notes": "Checkout Pro/API con acreditación inmediata. Default del onboarding nuevo." },
+        "card_14d": { "pct": 3.49, "fixed": 0, "iva": true, "notes": "Acreditación 14 días" },
+        "card_28d": { "pct": 1.99, "fixed": 0, "iva": true },
+        "card_35d": { "pct": 1.49, "fixed": 0, "iva": true, "notes": "El más barato si tu flujo aguanta 35 días" },
+        "link_pago_inmediato": { "pct": 6.60, "fixed": 0, "iva": true },
+        "qr_dinero_en_cuenta": { "pct": 0.80, "fixed": 0, "iva": true, "notes": "Transferencia 3.0 / QR interoperable — imbatible para bancarizados. Sin cuotas." },
+        "qr_cuotas_sin_tarjeta": { "pct": 1.42, "fixed": 0, "iva": true, "notes": "Cuota con Mercado Pago (Mercado Crédito)" },
+        "point_debito_inmediato": { "pct": 3.41, "fixed": 0, "iva": true, "notes": "POS físico" },
+        "point_credito_inmediato": { "pct": 6.60, "fixed": 0, "iva": true },
+        "surcharge_tarjeta_internacional": { "pct": 3.0, "fixed": 0, "iva": true, "notes": "Adicional sobre tarifa base. Vigente desde 6-mar-2026. Sin negociación pública." },
+        "cuotas_sin_interes": { "notes": "Costo adicional al merchant, escala con # cuotas. Variable, visible solo en panel 'Costos y cuotas' del seller. Modelar como ~5-25% adicional según plazo." }
+      },
+      "payout": {
+        "first_payout_days": null,
+        "regular_payout": "Configurable por venta. Acreditación a CVU instantánea; transferencia a banco gratis.",
+        "min_balance": 0,
+        "notes": "Cuentas nuevas o picos atípicos disparan retención anti-fraude de 7-21 días — el más agresivo del mercado AR."
+      },
+      "marketplace": {
+        "split_payments": "nativo",
+        "product": "Marketplace API",
+        "docs": "https://www.mercadopago.com.ar/developers/es/docs/checkout-pro/integration-configuration/integration-marketplace",
+        "notes": "ÚNICO gateway en AR con marketplace_fee + collector_id + cuentas seller via OAuth verdaderamente productivo. MELI lo come dogfood. Mejor stack marketplace LATAM en general."
+      },
+      "methods_supported": ["card", "card_international", "qr_pct", "saldo_mp", "rapipago", "pago_facil", "transferencia_3", "mercado_credito"],
+      "gotchas": [
+        "Acreditación inmediata (6.29%) es default — revisar plan en panel, muchos comercios no saben que pueden bajar a 1.49% a 35d",
+        "Holds anti-fraude 7-21 días en cuentas nuevas — flujo de caja inicial complicado",
+        "Cuotas 'sin interés' subsidiadas a veces se cobran al seller silenciosamente — revisar 'Costos y cuotas' por SKU",
+        "Surcharge +3% a tarjetas extranjeras rompe checkout cross-border — si vendés a no-AR, considerá Stripe + estructura offshore",
+        "Webhooks duplicados (mismo pattern que MP MX) — idempotencia con external_reference",
+        "Para BNPL embedded usar 'Mercado Crédito' (flag en preferencia) — funciona muy bien con cuotas reales sin entrar en lista Naranja/Wibond"
+      ],
+      "best_for": ["marketplace_ar", "checkout_pyme_ar", "qr_interoperable", "rapipago_pago_facil"]
+    },
+    {
+      "id": "decidir",
+      "name": "Decidir / Prisma Medios de Pago",
+      "pricing_url": "Aranceles regulados por acuerdo Ministerio Producción + CAC + CAME (públicos vía BBVA/Galicia)",
+      "docs_url": "https://decidir.com.ar/",
+      "sandbox": "https://developers.decidir.com (login requerido)",
+      "origin": "AR (consorcio bancario, ahora Visa)",
+      "fees": {
+        "debito": { "pct": 0.80, "fixed": 0, "iva": true, "notes": "Acreditación T+1 hábil — fee regulado" },
+        "credito_visa_mc": { "pct": 1.80, "fixed": 0, "iva": true, "notes": "1 pago. Plazo varía por Categoría (I/II/III) BCRA" },
+        "amex": { "pct": 2.90, "fixed": 0, "iva": true, "notes": "T+8" },
+        "cuotas": { "pct": 1.80, "fixed": 0, "iva": true, "notes": "Mismo % base, T+2 (AMEX T+3)" }
+      },
+      "payout": {
+        "categoria_i": { "days": 8, "notes": "PyME/micro" },
+        "categoria_ii": { "days": 10, "notes": "Medianos + gastro/salud/turismo" },
+        "categoria_iii": { "days": 18, "notes": "Grandes" },
+        "pago_anticipado": "Sí — T+2 con descuento ('cobro hoy')",
+        "notes": "BCRA reclasifica categoría anualmente — tu cashflow puede mudarse de T+8 a T+18 sin aviso"
+      },
+      "marketplace": {
+        "split_payments": "no_nativo",
+        "notes": "Sin split nativo. Conciliación manual o vía agregador externo."
+      },
+      "methods_supported": ["card", "debito", "amex", "card_international"],
+      "gotchas": [
+        "Integración con módulos SOAP/legacy en algunos puntos — DX inferior a MP",
+        "Categorización BCRA se mueve sin previo aviso — afecta cashflow del comercio",
+        "No cubre Rapipago/Pago Fácil ni wallets — sólo tarjeta vía consorcio bancario",
+        "Mejor opción si tu seller TIENE acuerdo con banco grande (Galicia, BBVA, Santander) — el banco te da Prisma integrado con tasas mejoradas"
+      ],
+      "best_for": ["ecom_bancarizado_ar", "tarjeta_pura_sin_wallet", "seller_con_acuerdo_bancario"]
+    },
+    {
+      "id": "dlocal_ar",
+      "name": "dLocal Argentina",
+      "pricing_url": "No publicado — negociado caso por caso",
+      "docs_url": "https://docs.dlocal.com",
+      "sandbox": "https://sandbox.dlocal.com",
+      "origin": "UY (LATAM-wide)",
+      "fees": {
+        "estimado_card": { "pct": 4.0, "fixed": 0.30, "fixed_currency": "USD", "iva": true, "notes": "Rango histórico 3.5-4.5% + USD 0.30 — confirmar con sales" },
+        "rapipago_pago_facil": { "notes": "Vía dLocal directo — pricing similar al estimado_card" },
+        "pareto_bnpl": { "notes": "BNPL embebido vía dLocal, costo variable" }
+      },
+      "payout": {
+        "regular_payout": "Variable (T+? según contrato)",
+        "usd_payout": "Disponible vía dLocal Pay-outs — clave para SaaS extranjeros que cobran en AR",
+        "notes": "Payout en USD a entidad AR requiere licencia BCRA — dLocal lo maneja vía estructura propia"
+      },
+      "marketplace": {
+        "split_payments": "limitado",
+        "notes": "Multi-account, no nativo. Mejor verificar con sales si lo necesitás serio."
+      },
+      "methods_supported": ["card", "card_international", "rapipago", "pago_facil", "modo_cards", "qr_interoperable", "pareto_bnpl"],
+      "gotchas": [
+        "Sin pricing público — perdés tiempo de negociación inicial",
+        "Cepo cambiario: payout USD a empresa AR sólo via dLocal Pay-outs",
+        "Mejor framing: 'international gateway que entiende AR' más que 'gateway local puro'",
+        "Si vendés desde fuera de AR a clientes AR, dLocal es la jugada — no MP"
+      ],
+      "best_for": ["cross_border_saas", "merchant_internacional_en_ar", "payout_usd_desde_ar"]
+    },
+    {
+      "id": "modo",
+      "name": "MODO",
+      "pricing_url": "https://ayuda.modo.com.ar",
+      "docs_url": "Integración vía Payway, Tiendanube, VTEX, WooCommerce — sin SDK propio robusto",
+      "sandbox": "Via procesadora subyacente",
+      "origin": "AR (consorcio bancario, anti-MP play)",
+      "fees": {
+        "modo_qr_dinero_en_cuenta": { "pct": 0.80, "fixed": 0, "iva": true, "notes": "Imbatible para bancarizados — match con MP QR interoperable" },
+        "modo_costo_aceptacion": { "pct": 0, "fixed": 0, "notes": "MODO mismo no cobra — se paga la comisión de la procesadora subyacente (Payway/Clover/Posnet)" }
+      },
+      "payout": {
+        "regular_payout": "Hereda de la procesadora subyacente (típicamente T+1 a T+18 según Categoría BCRA)"
+      },
+      "marketplace": {
+        "split_payments": "no_nativo",
+        "notes": "MODO es esencialmente una capa de UX sobre apps bancarias. Sin marketplace propio."
+      },
+      "methods_supported": ["qr_interoperable", "tarjeta_via_payway"],
+      "gotchas": [
+        "UX obliga al usuario a abrir su app bancaria — fricción real en checkout",
+        "Sólo funciona si tu cliente target son bancarizados",
+        "Sin SDK propio — siempre pasás por una procesadora (Payway = ex-Decidir light)",
+        "Adopción 2026 secundaria vs MP — útil sumar como medio extra, no como rail principal",
+        "Si tu vertical es gastro/retail físico con público bancarizado premium, MODO tiene tracción real ahí"
+      ],
+      "best_for": ["gastro_retail_fisico", "bancarizados_premium", "complemento_mp"]
+    },
+    {
+      "id": "payu_ar",
+      "name": "PayU Argentina",
+      "pricing_url": "https://corporate.payu.com/argentina/es/",
+      "docs_url": "https://developers.payulatam.com",
+      "sandbox": "https://sandbox.payulatam.com",
+      "origin": "Naspers/Prosus (LATAM-wide)",
+      "fees": {
+        "starter": { "pct": 3.99, "fixed": 3.00, "iva": true, "notes": "Por transacción exitosa. Pricing público — raro en AR." },
+        "enterprise": { "notes": "Tarifa negociada (>$500k ARS/mes)" },
+        "retiros_banco": { "notes": "3 gratis/mes, $10 + IVA a partir del 4°" }
+      },
+      "payout": {
+        "regular_payout": "T+? según categoría"
+      },
+      "marketplace": {
+        "split_payments": "no_nativo_ar",
+        "notes": "En LATAM-wide sí, en AR específicamente perdió terreno post-2022."
+      },
+      "methods_supported": ["card", "card_international", "rapipago", "pago_facil", "transferencia"],
+      "gotchas": [
+        "Perdió market share serio vs MP/dLocal post-2022 — usar sólo si ya tenés cuenta LATAM-wide PayU",
+        "Pricing público pero starter es caro vs MP a 35d",
+        "Sin marketplace nativo en AR",
+        "Mejor si tu producto vende en varios países LATAM con stack unificado PayU"
+      ],
+      "best_for": ["latam_wide_ya_en_payu", "starter_simple_sin_marketplace"]
+    },
+    {
+      "id": "uala_bis",
+      "name": "Ualá Bis",
+      "pricing_url": "https://www.ualabis.com.ar/",
+      "docs_url": "https://www.ualabis.com.ar/",
+      "sandbox": "Limitado",
+      "origin": "AR (Ualá)",
+      "fees": {
+        "tarifa_unica": { "pct": 4.9, "fixed": 0, "iva": true, "notes": "Sin importar medio de pago, acreditación INMEDIATA en cuenta Ualá" },
+        "cuotas": { "notes": "3, 6 o 12 disponibles vía link de pago" }
+      },
+      "payout": {
+        "regular_payout": "Inmediato a cuenta Ualá; transferencia a banco gratis"
+      },
+      "marketplace": {
+        "split_payments": "no",
+        "notes": "Sin marketplace. Es wallet+cobro simple para SMB/freelancer."
+      },
+      "methods_supported": ["card", "link_pago", "mpos"],
+      "gotchas": [
+        "4.9% plana es CARA comparada con MP 1.49% a 35d — sólo conviene si necesitás cash inmediato y operás chico",
+        "No es payment processor full-stack — más wallet para freelancers/SMB",
+        "Sin marketplace API",
+        "No usar para eltianguis-equivalente — esto es para el bar de la esquina o el freelance que necesita link de pago rápido"
+      ],
+      "best_for": ["freelancer_smb_simple", "cobro_inmediato_sin_marketplace", "link_de_pago_rapido"]
+    },
+    {
+      "id": "naranja_x",
+      "name": "Naranja X — Toque",
+      "pricing_url": "https://toque.naranjax.com/comisiones",
+      "docs_url": "https://toque.naranjax.com/",
+      "sandbox": "Limitado",
+      "origin": "AR (Córdoba — históricamente tarjeta Naranja)",
+      "fees": {
+        "venta_inmediato": { "pct": 9.99, "fixed": 0, "iva": true },
+        "venta_2d": { "pct": 9.29, "fixed": 0, "iva": true },
+        "venta_7d": { "pct": 7.99, "fixed": 0, "iva": true },
+        "venta_15d": { "pct": 6.09, "fixed": 0, "iva": true },
+        "venta_21d": { "pct": 4.59, "fixed": 0, "iva": true },
+        "venta_30d": { "pct": 2.99, "fixed": 0, "iva": true },
+        "venta_45d": { "pct": 1.19, "fixed": 0, "iva": true, "notes": "El más barato si tu flujo aguanta 45 días" }
+      },
+      "payout": {
+        "regular_payout": "Configurable inmediato a 45 días — el más flexible de AR"
+      },
+      "marketplace": {
+        "split_payments": "no",
+        "notes": "Sin marketplace. Es POS + link de pago + issuer."
+      },
+      "methods_supported": ["card", "naranja_card", "plan_z"],
+      "gotchas": [
+        "Aceptar tarjeta Naranja NO es opcional para electro/indumentaria del interior (Córdoba, NOA) — Naranja sigue siendo top-3 en cuotas",
+        "Naranja como issuer ofrece Plan Z (1/2/3 cuotas sin interés decididas por el cliente al cierre) — esto ayuda conversión",
+        "Toque (su servicio de cobro) tiene buen escalonado por plazo pero arranca caro (9.99% inmediato)",
+        "Si vendés electro/indumentaria mainstream, Naranja vía MP o Decidir es suficiente — no necesitás Toque directo"
+      ],
+      "best_for": ["electro_indumentaria_interior", "vertical_cordoba_noa", "issuer_plan_z"]
+    }
+  ],
+  "comparison_quick": {
+    "best_for_qr_interoperable": "mercadopago_ar o modo (0.80% match)",
+    "best_for_card_low_fee": "mercadopago_ar a 35d (1.49%) o decidir débito (0.80%)",
+    "best_for_marketplace_native": "mercadopago_ar (único serio)",
+    "best_for_cross_border_usd": "dlocal_ar (vía Pay-outs)",
+    "best_for_freelancer_simple": "uala_bis (link pago, 4.9% pero inmediato)",
+    "best_for_electro_indumentaria_interior": "mercadopago_ar + naranja_x via issuer",
+    "best_for_pricing_publico_transparente": "mercadopago_ar, payu_ar, naranja_x_toque"
+  }
+}

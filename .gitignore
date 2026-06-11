@@ -12,6 +12,14 @@ focus-group-electoral-mx/
 # Skills electoral fork - private
 skills/focus-group-electoral-mx/
 
+# Skill QSP recruiting - cliente-específico, no público
+skills/focus-group-qsp-reclutamiento/
+
+# Landing focusgroup - build artifacts
+landing-focusgroup/dist/
+landing-focusgroup/.wrangler/
+landing-focusgroup/tools/
+
 # Zips intermedios
 *.zip
 *.rar

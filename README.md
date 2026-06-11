@@ -6,8 +6,20 @@
 [![Validation: PSEC-MX](https://img.shields.io/badge/Validation-PSEC--MX-blue)](METODOLOGIA.md)
 [![Coverage: 14 personas](https://img.shields.io/badge/Personas-14-green)](skills/focus-group-mx/personas/)
 [![Sources: ENIGH 2024](https://img.shields.io/badge/Sources-ENIGH%202024%2BAMAI%2BPROFECO-orange)](#fuentes-de-datos)
+[![Skills: 8](https://img.shields.io/badge/Skills-8-purple)](skills/)
 
 ## Skills disponibles
+
+| # | Skill | Qué hace | Data anclada en |
+|---|---|---|---|
+| 1 | 🎯 [`focus-group-mx`](skills/focus-group-mx/) | 14 personas MX evalúan copy/ad/landing antes de ads | ENIGH 2024 + AMAI + PROFECO + INE 2024 |
+| 2 | 💰 [`precios-mx`](skills/precios-mx/) | Consulta precios reales por colonia/cadena/SKU. 10.5M registros 2024-26 | PROFECO QQP (DuckDB) |
+| 3 | 🪪 [`nse-mx`](skills/nse-mx/) | Clasifica un hogar/cliente en NSE AMAI 2024 (A/B → E) | AMAI 2024 + ENIGH 2022 |
+| 4 | 👥 [`demografia-mx`](skills/demografia-mx/) | Market sizing por edad/sexo/entidad. 1950-2070 | CONAPO Conciliación + Proyecciones |
+| 5 | 📍 [`mercado-local-mx`](skills/mercado-local-mx/) | Análisis de viabilidad para abrir negocio físico en MX (composite) | demografia + nse + precios |
+| 6 | 📲 [`habitos-digitales-mx`](skills/habitos-digitales-mx/) | Penetración internet/redes/e-commerce por target | ENDUTIH 2024 + DataReportal + AMVO + ENIF |
+| 7 | ⚖️ [`legal-pyme-mx`](skills/legal-pyme-mx/) | Cumplimiento legal federal PyME: RFC, 69-B, CFDI, Aviso Privacidad, ISN, REPSE, LFPIORPI | SAT + INAI + STPS + Diputados + RENAPO (30 archivos, 119 MB) |
+| 8 | 🧾 [`contador-pyme-mx`](skills/contador-pyme-mx/) | Validador CFDI 4.0 + alerta PUE fin mes + motivo cancelación + retenciones RESICO/honorarios + cruce 69-B | SAT RMF 2026 + 11 XSDs CFDI + 6 XSDs Contabilidad + Anexos 8/24 + LISR/LIVA/LIEPS (40 archivos, 26 MB) |
 
 ### 🎯 `focus-group-mx` (flagship)
 
@@ -17,6 +29,20 @@ Cubrimos NSE A/B → E × género × generación × región usando microdatos EN
 (n=91,414 hogares). Cada persona pasa validación cuantitativa documentada.
 
 [Ver skill →](skills/focus-group-mx/)
+
+### Cómo se combinan los skills (pipeline típico)
+
+```
+                 ┌─ demografia-mx (¿cuántas personas?)
+                 │
+mercado-local-mx ┼─ nse-mx          (¿qué NSE?)            ──► viabilidad de negocio
+                 │
+                 └─ precios-mx      (¿qué competencia?)
+
+habitos-digitales-mx (¿en qué plataforma están?) ──► media plan
+
+focus-group-mx (¿les va a entrar el copy?)        ──► validación pre-gasto
+```
 
 ## ¿Qué tiene de distinto?
 

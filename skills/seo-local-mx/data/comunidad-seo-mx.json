@@ -1,0 +1,97 @@
+{
+  "_meta": {
+    "captured_at": "2026-06-18",
+    "source": "Grok 4 + DeepSearch",
+    "completeness": "v1.0 — 5 cuentas + 5 temas calientes + tools tracción MX"
+  },
+  "cuentas_activas": [
+    {
+      "handle": "@seonestor",
+      "nombre": "Néstor Vázquez",
+      "foco": "SEO técnico LATAM. Organiza el evento SEO Guacamole.",
+      "relevancia_mx": "alta"
+    },
+    {
+      "handle": "@seolocalmx",
+      "nombre": null,
+      "foco": "SEO local para negocios con ubicación física en México.",
+      "relevancia_mx": "alta"
+    },
+    {
+      "handle": "@Mrkt360Mexico",
+      "nombre": null,
+      "foco": "Agencia. Discute optimización para AI Overviews y local.",
+      "relevancia_mx": "media-alta"
+    },
+    {
+      "handle": "@Ready2Rank",
+      "nombre": "Jose Chavez",
+      "foco": "GBP y features AI en perfiles locales.",
+      "relevancia_mx": "media"
+    },
+    {
+      "handle": "@aleyda",
+      "nombre": "Aleyda Solís",
+      "foco": "SEO internacional. Influye en estrategias LATAM.",
+      "relevancia_mx": "alta (internacional)"
+    }
+  ],
+  "temas_calientes_30d": [
+    {
+      "tema": "GEO (Generative Engine Optimization)",
+      "descripcion": "Optimización para ChatGPT, Gemini, AI Overviews. Vs SEO tradicional."
+    },
+    {
+      "tema": "Suspensions y manejo de reseñas en GBP",
+      "descripcion": "Google está eliminando reseñas genéricas; perfiles legítimos también caen por error."
+    },
+    {
+      "tema": "Impacto Core Updates en Local Pack",
+      "descripcion": "Directorios perdiendo posiciones, negocios con GBP sólido ganando."
+    },
+    {
+      "tema": "Schema structured data para AIO",
+      "descripcion": "Patrones de markup para ser citado en AI Overviews en español."
+    },
+    {
+      "tema": "Tools de auditoría NAP y consistencia",
+      "descripcion": "Discusión sobre cuál es la mejor herramienta para MX (BrightLocal vs Localo vs Whitespark)."
+    }
+  ],
+  "tools_traccion_mx": {
+    "subiendo": [
+      {
+        "tool": "BrightLocal",
+        "razon": "Manejo GBP + citations locales. Reportes legibles para clientes."
+      },
+      {
+        "tool": "Whitespark",
+        "razon": "Líder en citation building. Datos MX están mejorando."
+      },
+      {
+        "tool": "Localo",
+        "razon": "Foco específico en optimización GBP + monitoreo de cambios."
+      }
+    ],
+    "criticadas": [
+      {
+        "tool": "Semrush",
+        "razon": "Menos foco específico en AI/GEO. Sigue siendo referencia para keyword research."
+      },
+      {
+        "tool": "Ahrefs",
+        "razon": "Igual que Semrush — fuerte en backlinks, débil en local pack tracking."
+      }
+    ],
+    "multi_location": [
+      {
+        "tool": "Moz Local",
+        "razon": "Sigue siendo opción para chains/franquicias."
+      },
+      {
+        "tool": "Yext",
+        "razon": "Enterprise multi-location. Caro para PyME MX."
+      }
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "_meta": {
+    "captured_at": "2026-06-18",
+    "source": "Gemini 2.5 Pro + Google Search grounding",
+    "completeness": "v1.0 — completo. 11 features cubiertos, todos disponibles en MX.",
+    "context_mx": "Reserve with Google en MX depende de partners externos (TheFork, OpenTable, Doctoralia). No hay calendario nativo gratuito."
+  },
+  "features": [
+    {
+      "feature": "Posts / Novedades",
+      "disponible_mx": true,
+      "tipos": ["Oferta", "Evento", "Novedad"],
+      "limites": "1500 caracteres, imagen 720x540 mínimo, video hasta 30 seg",
+      "frecuencia_recomendada": "semanal",
+      "impacto_seo": "indirecto — engagement señal",
+      "fuente": "https://support.google.com/business/answer/7342169"
+    },
+    {
+      "feature": "Productos",
+      "disponible_mx": true,
+      "tipos": ["Carrusel de productos", "Categorías personalizadas"],
+      "limites": "Título, descripción 1000 caracteres, precio, botón CTA (Comprar, Más info)",
+      "frecuencia_recomendada": "actualizar según inventario",
+      "impacto_seo": "directo — palabras clave en descripciones indexan localmente",
+      "fuente": "https://support.google.com/business/answer/9128523"
+    },
+    {
+      "feature": "Servicios",
+      "disponible_mx": true,
+      "tipos": ["Servicios predefinidos por categoría", "Servicios personalizados"],
+      "limites": "Descripción hasta 300 caracteres, precio opcional",
+      "frecuencia_recomendada": "única vez, revisar anualmente",
+      "impacto_seo": "directo — justificaciones en Local Pack ('Ofrece: [Servicio]')",
+      "fuente": "https://support.google.com/business/answer/9302609"
+    },
+    {
+      "feature": "Reservaciones (Reserve with Google)",
+      "disponible_mx": true,
+      "tipos": ["Restaurantes", "Citas de salud", "Belleza"],
+      "limites": "Solo via proveedores externos asociados (TheFork, Doctoralia, OpenTable). No hay calendario nativo gratuito.",
+      "frecuencia_recomendada": "N/A",
+      "impacto_seo": "indirecto — mejora tasa de conversión local",
+      "fuente": "https://support.google.com/business/answer/7475773"
+    },
+    {
+      "feature": "Mensajes (Chat)",
+      "disponible_mx": true,
+      "tipos": ["Chat nativo en GBP", "FAQs automatizadas"],
+      "limites": "Debe responderse en <24 horas o Google desactiva la función.",
+      "frecuencia_recomendada": "respuesta diaria",
+      "impacto_seo": "indirecto — señal de negocio activo y engagement",
+      "fuente": "https://support.google.com/business/answer/9114771"
+    },
+    {
+      "feature": "Preguntas y respuestas (Q&A)",
+      "disponible_mx": true,
+      "tipos": ["Generadas por usuarios", "Generadas por el dueño (FAQ seeding)"],
+      "limites": "Cualquier usuario de Google puede responder.",
+      "frecuencia_recomendada": "monitoreo mensual / siembra inicial proactiva",
+      "impacto_seo": "directo — el texto de Q&A se indexa y puede hacer trigger de fragmentos enriquecidos",
+      "fuente": "https://support.google.com/business/answer/7516648"
+    },
+    {
+      "feature": "Atributos",
+      "disponible_mx": true,
+      "tipos": ["Accesibilidad", "Opciones de servicio", "Pagos", "Público"],
+      "limites": "Sujetos a categoría principal y región (algunos atributos médicos US no existen en MX).",
+      "frecuencia_recomendada": "revisión trimestral",
+      "impacto_seo": "directo — filtros de búsqueda ('abierto ahora', 'para llevar', 'silla de ruedas')",
+      "fuente": "https://support.google.com/business/answer/9059526"
+    },
+    {
+      "feature": "Fotos y Videos",
+      "disponible_mx": true,
+      "tipos": ["Logotipo", "Portada", "Exterior", "Interior", "Equipo", "Video"],
+      "limites": "Imágenes <5 MB, 720x720 px recomendado. Videos <75 MB, hasta 30 seg.",
+      "frecuencia_recomendada": "mensual",
+      "impacto_seo": "indirecto — CTR, retención, señales de actividad",
+      "fuente": "https://support.google.com/business/answer/6103862"
+    },
+    {
+      "feature": "Reseñas (Reviews)",
+      "disponible_mx": true,
+      "tipos": ["Calificación por estrellas", "Texto", "Fotos del cliente"],
+      "limites": "Filtros de spam estrictos. Reseñas legítimas en MX a veces se ocultan si comparten IP o no tienen historial.",
+      "frecuencia_recomendada": "generación continua; responder en <48 horas",
+      "impacto_seo": "directo — principal factor de ranking del Local Pack",
+      "fuente": "https://support.google.com/business/answer/3474122"
+    },
+    {
+      "feature": "Insights / Performance",
+      "disponible_mx": true,
+      "tipos": ["Búsquedas", "Vistas", "Interacciones (llamadas, mensajes, clics a web, direcciones)"],
+      "limites": "Datos disponibles hasta los últimos 6 meses.",
+      "frecuencia_recomendada": "revisión mensual",
+      "impacto_seo": "N/A — analítica",
+      "fuente": "https://support.google.com/business/answer/10018786"
+    },
+    {
+      "feature": "Merchant Center Linkage (Productos de inventario local)",
+      "disponible_mx": true,
+      "tipos": ["Inventario local (LIA)"],
+      "limites": "Requiere configuración via Google Merchant Center y sincronización POS.",
+      "frecuencia_recomendada": "sync automática via feed",
+      "impacto_seo": "directo — muestra sección 'Ver lo que hay en tienda' en el perfil",
+      "fuente": "https://support.google.com/merchants/answer/3055811"
+    }
+  ]
+}

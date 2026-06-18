@@ -1,0 +1,123 @@
+{
+  "schema": "seo-local-mx.reviews-velocity.v1",
+  "created_at": "2026-06-18",
+  "market_target": "MX",
+  "_meta": {
+    "captured_at": "2026-06-18",
+    "source": "ChatGPT GPT-5 Deep Research"
+  },
+  "source_status": {
+    "mx_specific_public_benchmarks_found": false,
+    "decision": "Usar benchmarks US/global por categoría como proxy, con flag extrapolado_de_us.",
+    "warning": "No tratar estos números como regla de ranking. Son umbrales operativos para competir; el ranking local también depende de proximidad, relevancia, categoría GBP, autoridad, fotos, respuestas, citaciones y comportamiento del usuario."
+  },
+  "fuentes": [
+    {"id": "google_gbp_help_2026", "name": "Google Business Profile Help - Improve your local ranking", "url": "https://support.google.com/business/answer/7091?hl=en", "year": 2026, "coverage": "Google confirma relevancia de información completa, horarios, respuestas a reseñas y reseñas positivas como señales para destacar.", "data_quality": "primaria_para_principios; no da benchmarks numéricos"},
+    {"id": "brightlocal_local_algorithm_2025", "name": "BrightLocal - Google Local Algorithm and Ranking Factors", "url": "https://www.brightlocal.com/learn/google-local-algorithm-and-ranking-factors/", "year": 2025, "coverage": "Reporta que reviews pesan alrededor de 20% en Local Pack ranking factors.", "data_quality": "secundaria_alta"},
+    {"id": "localfalcon_reviews_2026", "name": "Local Falcon - Google Reviews, Ratings & Location Whitepaper", "url": "https://www.localfalcon.com/blog/whitepaper-google-reviews-ratings--location-what-50-million-search-results-reveal-about-ranking-in-the-local-3pack", "year": 2026, "coverage": "50.4M resultados locales US, Q4 2025; P10, mediana y P90 de reseñas para negocios en Local 3-Pack por categoría.", "data_quality": "alta_para_volumen_por_categoria; extrapolado_de_us"},
+    {"id": "maplift_industry_benchmarks_2025", "name": "Maplift - Industry Review Benchmarks", "url": "https://www.maplift.app/blog/industry-review-benchmarks", "year": 2025, "coverage": "Benchmarks por industria y recomendaciones de velocidad mensual de reseñas.", "data_quality": "secundaria; útil para velocity"},
+    {"id": "semrush_3pack_2026", "name": "Semrush - Google 3-Pack", "url": "https://www.semrush.com/blog/google-3-pack/", "year": 2026, "coverage": "Guía SEO Local; confirma reviews como señal de prominencia y recomienda pedir reseñas sin incentivos.", "data_quality": "secundaria"}
+  ],
+  "city_size_definitions": [
+    {"ciudad_size": "metropoli", "definition": "CDMX, Guadalajara, Monterrey y zonas metropolitanas grandes", "review_multiplier_vs_base": 1.35, "source_refs": ["localfalcon_reviews_2026"]},
+    {"ciudad_size": "ciudad_media", "definition": "300k-1M habitantes", "review_multiplier_vs_base": 1.0, "source_refs": ["localfalcon_reviews_2026"]},
+    {"ciudad_size": "pueblo", "definition": "<300k habitantes", "review_multiplier_vs_base": 0.67, "source_refs": ["localfalcon_reviews_2026"]}
+  ],
+  "benchmarks": [
+    {
+      "vertical": "dentista",
+      "base_category_source": "Dentist",
+      "extrapolado_de_us": true,
+      "fuente_refs": ["localfalcon_reviews_2026", "maplift_industry_benchmarks_2025", "google_gbp_help_2026"],
+      "city_sizes": [
+        {"ciudad_size": "metropoli", "reseñas_promedio_top3_local_pack": 467, "reseñas_minimas_competir": 70, "velocidad_recomendada": "12-18 nuevas/mes", "rating_promedio_top3": 4.8, "confidence": "media"},
+        {"ciudad_size": "ciudad_media", "reseñas_promedio_top3_local_pack": 346, "reseñas_minimas_competir": 52, "velocidad_recomendada": "8-12 nuevas/mes", "rating_promedio_top3": 4.8, "confidence": "media"},
+        {"ciudad_size": "pueblo", "reseñas_promedio_top3_local_pack": 232, "reseñas_minimas_competir": 35, "velocidad_recomendada": "3-6 nuevas/mes", "rating_promedio_top3": 4.7, "confidence": "media-baja"}
+      ]
+    },
+    {
+      "vertical": "restaurante / comida a domicilio",
+      "base_category_source": "Restaurant",
+      "extrapolado_de_us": true,
+      "fuente_refs": ["localfalcon_reviews_2026", "maplift_industry_benchmarks_2025", "google_gbp_help_2026"],
+      "city_sizes": [
+        {"ciudad_size": "metropoli", "reseñas_promedio_top3_local_pack": 609, "reseñas_minimas_competir": 104, "velocidad_recomendada": "25-40 nuevas/mes", "rating_promedio_top3": 4.7, "confidence": "media"},
+        {"ciudad_size": "ciudad_media", "reseñas_promedio_top3_local_pack": 451, "reseñas_minimas_competir": 77, "velocidad_recomendada": "20-30 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "media"},
+        {"ciudad_size": "pueblo", "reseñas_promedio_top3_local_pack": 302, "reseñas_minimas_competir": 52, "velocidad_recomendada": "8-15 nuevas/mes", "rating_promedio_top3": 4.5, "confidence": "media-baja"}
+      ]
+    },
+    {
+      "vertical": "plomero",
+      "base_category_source": "Plumber",
+      "extrapolado_de_us": true,
+      "fuente_refs": ["localfalcon_reviews_2026", "maplift_industry_benchmarks_2025", "brightlocal_local_algorithm_2025", "google_gbp_help_2026"],
+      "city_sizes": [
+        {"ciudad_size": "metropoli", "reseñas_promedio_top3_local_pack": 290, "reseñas_minimas_competir": 28, "velocidad_recomendada": "10-15 nuevas/mes", "rating_promedio_top3": 4.8, "confidence": "media"},
+        {"ciudad_size": "ciudad_media", "reseñas_promedio_top3_local_pack": 215, "reseñas_minimas_competir": 21, "velocidad_recomendada": "8-12 nuevas/mes", "rating_promedio_top3": 4.8, "confidence": "media"},
+        {"ciudad_size": "pueblo", "reseñas_promedio_top3_local_pack": 144, "reseñas_minimas_competir": 14, "velocidad_recomendada": "3-6 nuevas/mes", "rating_promedio_top3": 4.7, "confidence": "media-baja"}
+      ]
+    },
+    {
+      "vertical": "estética / barbería",
+      "base_category_source": "Personal Care / Beauty",
+      "extrapolado_de_us": true,
+      "fuente_refs": ["maplift_industry_benchmarks_2025", "brightlocal_local_algorithm_2025", "google_gbp_help_2026"],
+      "city_sizes": [
+        {"ciudad_size": "metropoli", "reseñas_promedio_top3_local_pack": 92, "reseñas_minimas_competir": 47, "velocidad_recomendada": "8-12 nuevas/mes", "rating_promedio_top3": 4.7, "confidence": "media-baja"},
+        {"ciudad_size": "ciudad_media", "reseñas_promedio_top3_local_pack": 68, "reseñas_minimas_competir": 35, "velocidad_recomendada": "6-10 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "media-baja"},
+        {"ciudad_size": "pueblo", "reseñas_promedio_top3_local_pack": 46, "reseñas_minimas_competir": 23, "velocidad_recomendada": "3-5 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "baja"}
+      ]
+    },
+    {
+      "vertical": "taller mecánico",
+      "base_category_source": "Auto Repair Shop",
+      "extrapolado_de_us": true,
+      "fuente_refs": ["localfalcon_reviews_2026", "maplift_industry_benchmarks_2025", "google_gbp_help_2026"],
+      "city_sizes": [
+        {"ciudad_size": "metropoli", "reseñas_promedio_top3_local_pack": 254, "reseñas_minimas_competir": 31, "velocidad_recomendada": "8-12 nuevas/mes", "rating_promedio_top3": 4.7, "confidence": "media"},
+        {"ciudad_size": "ciudad_media", "reseñas_promedio_top3_local_pack": 188, "reseñas_minimas_competir": 23, "velocidad_recomendada": "6-10 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "media"},
+        {"ciudad_size": "pueblo", "reseñas_promedio_top3_local_pack": 126, "reseñas_minimas_competir": 15, "velocidad_recomendada": "3-5 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "media-baja"}
+      ]
+    },
+    {
+      "vertical": "clases particulares",
+      "base_category_source": "Education / tutoring local service",
+      "extrapolado_de_us": true,
+      "fuente_refs": ["maplift_industry_benchmarks_2025", "google_gbp_help_2026"],
+      "data_gap": "No encontré benchmark público confiable de Local Pack para clases particulares/tutores en MX.",
+      "city_sizes": [
+        {"ciudad_size": "metropoli", "reseñas_promedio_top3_local_pack": 34, "reseñas_minimas_competir": 11, "velocidad_recomendada": "4-8 nuevas/mes", "rating_promedio_top3": 4.7, "confidence": "baja"},
+        {"ciudad_size": "ciudad_media", "reseñas_promedio_top3_local_pack": 25, "reseñas_minimas_competir": 8, "velocidad_recomendada": "3-5 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "baja"},
+        {"ciudad_size": "pueblo", "reseñas_promedio_top3_local_pack": 17, "reseñas_minimas_competir": 5, "velocidad_recomendada": "1-3 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "baja"}
+      ]
+    },
+    {
+      "vertical": "asesor inmobiliario / casa en venta",
+      "base_category_source": "Real Estate / Property",
+      "extrapolado_de_us": true,
+      "fuente_refs": ["maplift_industry_benchmarks_2025", "google_gbp_help_2026"],
+      "city_sizes": [
+        {"ciudad_size": "metropoli", "reseñas_promedio_top3_local_pack": 51, "reseñas_minimas_competir": 20, "velocidad_recomendada": "4-8 nuevas/mes", "rating_promedio_top3": 4.7, "confidence": "media-baja"},
+        {"ciudad_size": "ciudad_media", "reseñas_promedio_top3_local_pack": 38, "reseñas_minimas_competir": 15, "velocidad_recomendada": "3-5 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "media-baja"},
+        {"ciudad_size": "pueblo", "reseñas_promedio_top3_local_pack": 25, "reseñas_minimas_competir": 10, "velocidad_recomendada": "1-3 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "baja"}
+      ]
+    },
+    {
+      "vertical": "ferretería / tlapalería",
+      "base_category_source": "Retail / hardware store",
+      "extrapolado_de_us": true,
+      "fuente_refs": ["maplift_industry_benchmarks_2025", "google_gbp_help_2026"],
+      "city_sizes": [
+        {"ciudad_size": "metropoli", "reseñas_promedio_top3_local_pack": 101, "reseñas_minimas_competir": 54, "velocidad_recomendada": "10-15 nuevas/mes", "rating_promedio_top3": 4.6, "confidence": "media-baja"},
+        {"ciudad_size": "ciudad_media", "reseñas_promedio_top3_local_pack": 75, "reseñas_minimas_competir": 40, "velocidad_recomendada": "8-12 nuevas/mes", "rating_promedio_top3": 4.5, "confidence": "media-baja"},
+        {"ciudad_size": "pueblo", "reseñas_promedio_top3_local_pack": 50, "reseñas_minimas_competir": 27, "velocidad_recomendada": "3-6 nuevas/mes", "rating_promedio_top3": 4.5, "confidence": "baja"}
+      ]
+    }
+  ],
+  "operational_rules": [
+    {"rule": "Competir = alcanzar al menos P10 de reseñas del benchmark y rating >= 4.5.", "source_refs": ["localfalcon_reviews_2026", "maplift_industry_benchmarks_2025"]},
+    {"rule": "Dominar = acercarse a mediana/P50 del Local 3-Pack y mantener reseñas nuevas cada mes.", "source_refs": ["localfalcon_reviews_2026", "maplift_industry_benchmarks_2025"]},
+    {"rule": "No incentivar reseñas; pedirlas en momentos naturales del servicio y responderlas.", "source_refs": ["google_gbp_help_2026", "semrush_3pack_2026"]},
+    {"rule": "La velocidad debe parecer real: picos artificiales de reseñas sin operación real son riesgo reputacional.", "source_refs": ["maplift_industry_benchmarks_2025"]}
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "captured_at": "2026-06-18",
+    "source": "Grok 4 + DeepSearch",
+    "scope": "Solo updates con impacto medible reportado en MX/LATAM en local pack o directorios. Últimos 6 meses (2026-01 → 2026-06)."
+  },
+  "updates": [
+    {
+      "fecha": "2026-02",
+      "nombre": "Discover Core Update",
+      "qué_cambió": "Mejoró relevancia local en feeds de Google Discover",
+      "impacto_local_mx": "Más visibilidad para contenido hiperlocal de sitios mexicanos en Discover",
+      "fuente": null
+    },
+    {
+      "fecha": "2026-03-24",
+      "nombre": "March 2026 Spam Update",
+      "qué_cambió": "Enfoque en contenido AI escalado y abuso",
+      "impacto_local_mx": "Limpieza de directorios spammy y link farms. Negocios legítimos con GBP sólido ganaron terreno.",
+      "fuente": null
+    },
+    {
+      "fecha": "2026-03-27",
+      "fecha_fin": "2026-04-08",
+      "nombre": "March 2026 Core Update",
+      "qué_cambió": "Reevaluación amplia de calidad, Core Web Vitals y utilidad",
+      "impacto_local_mx": "Turbulencia en 'near me'. Directorios perdieron posiciones; sitios con contenido real y GBP fuerte subieron.",
+      "fuente": null
+    },
+    {
+      "fecha": "2026-05-21",
+      "fecha_fin": "2026-06-02",
+      "nombre": "May 2026 Core Update",
+      "qué_cambió": "Enfoque en spam AI y calidad",
+      "impacto_local_mx": "Directorios y agregadores bajaron en términos locales. Énfasis en perfiles auténticos y experiencia real.",
+      "fuente": null
+    }
+  ],
+  "patron_general_2026": "Updates 2026 castigan directorios genéricos y premian entidades reales (GBP completo + contenido auténtico + reseñas con respuesta). El SKILL debe priorizar señales de entidad real sobre 'list building' en directorios débiles."
+}

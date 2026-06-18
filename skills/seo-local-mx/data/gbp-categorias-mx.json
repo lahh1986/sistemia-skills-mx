@@ -1,0 +1,141 @@
+{
+  "_meta": {
+    "captured_at": "2026-06-18",
+    "source": "Gemini 2.5 Pro + Google Search grounding",
+    "completeness": "v0.1 — 10 categorías (1 por sub-vertical). Pendiente expandir a 40-50 en ronda 2.",
+    "notes": "Atributos de salud MX no incluyen Medicare/Medicaid ni redes de salud US. Se usan genéricos: 'Acepta pacientes nuevos', 'Requiere cita previa'."
+  },
+  "categorias": [
+    {
+      "vertical": "salud",
+      "gbp_category_id": "dentist",
+      "label_es_mx": "Dentista",
+      "label_en": "Dentist",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Acepta pacientes nuevos",
+        "Requiere cita previa",
+        "Sanitarios unisex",
+        "Accesible para sillas de ruedas"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "vertical": "salud",
+      "gbp_category_id": "pharmacy",
+      "label_es_mx": "Farmacia",
+      "label_en": "Pharmacy",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Entrega a domicilio",
+        "Compras en tienda",
+        "Entrega el mismo día"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "vertical": "restaurantes_y_comida",
+      "gbp_category_id": "taco_restaurant",
+      "label_es_mx": "Taquería",
+      "label_en": "Taco restaurant",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Consumo en el lugar",
+        "Para llevar",
+        "Entrega sin contacto",
+        "Acepta pagos con dispositivos móviles (NFC)",
+        "Solo efectivo"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "vertical": "restaurantes_y_comida",
+      "gbp_category_id": "restaurant",
+      "label_es_mx": "Restaurante",
+      "label_en": "Restaurant",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Sirve alcohol",
+        "Asientos al aire libre",
+        "Menú para niños",
+        "Música en vivo"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "vertical": "servicios_del_hogar",
+      "gbp_category_id": "plumber",
+      "label_es_mx": "Plomero",
+      "label_en": "Plumber",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Presupuestos sin compromiso",
+        "Servicios de emergencia 24 horas"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "vertical": "belleza_y_cuidado_personal",
+      "gbp_category_id": "beauty_salon",
+      "label_es_mx": "Estética",
+      "label_en": "Beauty salon",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Requiere cita previa",
+        "Se identifica como de dueñas mujeres",
+        "Amigable con la comunidad LGBTQ+"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "vertical": "automotriz",
+      "gbp_category_id": "mechanic",
+      "label_es_mx": "Taller mecánico",
+      "label_en": "Mechanic",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Cambio de aceite",
+        "Revisión técnica",
+        "Estacionamiento accesible para personas en silla de ruedas"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "vertical": "educacion",
+      "gbp_category_id": "primary_school",
+      "label_es_mx": "Escuela primaria",
+      "label_en": "Primary school",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Clases en línea no disponibles",
+        "Accesibilidad para sillas de ruedas"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "vertical": "inmuebles",
+      "gbp_category_id": "real_estate_agency",
+      "label_es_mx": "Agencia inmobiliaria",
+      "label_en": "Real estate agency",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Citas en línea",
+        "Servicios en las instalaciones"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "vertical": "comercio_local",
+      "gbp_category_id": "hardware_store",
+      "label_es_mx": "Ferretería",
+      "label_en": "Hardware store",
+      "is_primary_recommended": true,
+      "atributos_relevantes_mx": [
+        "Compras en tienda",
+        "Recolección en tienda",
+        "Entrega a domicilio"
+      ],
+      "fuente": "https://support.google.com/business/answer/3038177"
+    }
+  ]
+}

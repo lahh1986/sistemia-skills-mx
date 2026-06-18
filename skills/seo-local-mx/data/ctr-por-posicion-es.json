@@ -1,0 +1,149 @@
+{
+  "schema": "seo-local-mx.ctr-serp.v1",
+  "created_at": "2026-06-18",
+  "market_target": "MX",
+  "language_target": "es-MX",
+  "_meta": {
+    "captured_at": "2026-06-18",
+    "source": "ChatGPT GPT-5 Deep Research"
+  },
+  "finding_summary": {
+    "mx_specific_ctr_public_data": false,
+    "spanish_specific_ctr_public_data": "limitada/no suficiente para curva completa por posición",
+    "recommended_use": "Usar estas curvas como priors; recalibrar con Google Search Console por vertical, ciudad, dispositivo y presencia de Local Pack.",
+    "critical_warning": "La presencia de Local Pack, ads, mapas, reviews y featured snippets cambia el CTR más que el idioma."
+  },
+  "fuentes": [
+    {"id": "awr_ctr_tool_2026", "name": "Advanced Web Ranking CTR Tool", "url": "https://www.advancedwebranking.com/free-seo-tools/google-organic-ctr", "year": 2026, "coverage": "Herramienta dinámica de CTR orgánico, actualizada mensualmente, con filtros por mercado, dispositivo, intención y features.", "data_quality": "alta_para_priors; requiere export dinámico para valores exactos por MX/es"},
+    {"id": "first_page_sage_2025", "name": "First Page Sage - Google CTR by Ranking Position", "url": "https://firstpagesage.com/reports/google-click-through-rates-ctrs-by-ranking-position/", "year": 2025, "coverage": "Curva pública por posición; incluye ajuste reportado cuando hay Local Pack.", "data_quality": "secundaria; no específica MX/es"},
+    {"id": "sistrix_2020", "name": "SISTRIX CTR Study", "url": "https://www.sistrix.com/ask-sistrix/data-studies/these-are-the-ctrs-for-various-types-of-google-search-result/", "year": 2020, "coverage": "80 millones de keywords; CTR promedio pos. 1, 2 y 3; enfatiza impacto de SERP features.", "data_quality": "alta_para_efecto_SERP; no específica MX/es"},
+    {"id": "backlinko_2025", "name": "Backlinko Google CTR Stats", "url": "https://backlinko.com/google-ctr-stats", "year": 2025, "coverage": "4 millones de resultados; reporta CTR del resultado #1 y patrón de caída por posición.", "data_quality": "alta_para_benchmark_global; no específica MX/es"},
+    {"id": "seoclarity_2025", "name": "seoClarity Mobile and Desktop CTR Study", "url": "https://www.seoclarity.net/mobile-desktop-ctr-study-11302/", "year": 2025, "coverage": "750M impresiones, 32M clics, 12M queries; compara móvil vs desktop.", "data_quality": "alta_para_diferencia_device; no específica MX/es"},
+    {"id": "searchlab_local_2026", "name": "Searchlab Local SEO Statistics 2026", "url": "https://searchlab.nl/en/statistics/local-seo-statistics-2026", "year": 2026, "coverage": "Compilación de estadísticas Local Pack; reporta CTR por posición del Local Pack y orgánico debajo del pack.", "data_quality": "compilación_secundaria; útil para modelo local"}
+  ],
+  "datasets_observados": [
+    {
+      "id": "fps_no_serp_features_mixed",
+      "fuente_ref": "first_page_sage_2025",
+      "fecha": "2025-05",
+      "idioma": "no segmentado",
+      "mercado": "US/global",
+      "device": "mixed",
+      "serp_context": "sin Local Pack ni SERP features dominantes",
+      "extrapolado_a_es_mx": true,
+      "ctr_por_posicion": {"1": 0.398, "2": 0.187, "3": 0.102, "4": 0.072, "5": 0.051, "6": 0.044, "7": 0.03, "8": 0.021, "9": 0.019, "10": 0.016},
+      "notas": "Curva útil como techo orgánico cuando no hay Local Pack. No usar sin recalibrar en verticales locales."
+    },
+    {
+      "id": "fps_with_local_pack_mixed",
+      "fuente_ref": "first_page_sage_2025",
+      "fecha": "2025-05",
+      "idioma": "no segmentado",
+      "mercado": "US/global",
+      "device": "mixed",
+      "serp_context": "Local Pack presente arriba de orgánico",
+      "extrapolado_a_es_mx": true,
+      "ctr_por_posicion_organico_debajo_del_pack": {"1": 0.237, "2": 0.151},
+      "notas": "Caída del CTR orgánico cuando aparece Local Pack. No publica curva completa 3-10."
+    },
+    {
+      "id": "searchlab_local_pack_positions",
+      "fuente_ref": "searchlab_local_2026",
+      "fecha": "2026",
+      "idioma": "no segmentado",
+      "mercado": "global/US-EU compilado",
+      "device": "mixed_mobile_heavy",
+      "serp_context": "Local Pack",
+      "extrapolado_a_es_mx": true,
+      "ctr_local_pack_por_posicion": {"1": 0.178, "2": 0.136, "3": 0.104},
+      "ctr_organico_1_debajo_local_pack": 0.142,
+      "notas": "El Local Pack captura clics antes del orgánico clásico."
+    },
+    {
+      "id": "sistrix_average_top3",
+      "fuente_ref": "sistrix_2020",
+      "fecha": "2020",
+      "idioma": "no segmentado",
+      "mercado": "global",
+      "device": "mixed",
+      "serp_context": "promedio general con mezcla de features",
+      "extrapolado_a_es_mx": true,
+      "ctr_por_posicion_publicado": {"1": 0.285, "2": 0.157, "3": 0.11},
+      "notas": "CTR depende del layout de SERP y la intención."
+    },
+    {
+      "id": "backlinko_position_1",
+      "fuente_ref": "backlinko_2025",
+      "fecha": "2025",
+      "idioma": "no segmentado",
+      "mercado": "global/US",
+      "device": "mixed",
+      "serp_context": "promedio orgánico",
+      "extrapolado_a_es_mx": true,
+      "ctr_por_posicion_publicado": {"1": 0.276},
+      "notas": "La fuente pública confirma CTR #1; no se llenan posiciones no verificadas desde esta fuente."
+    },
+    {
+      "id": "seoclarity_mobile_desktop_qualitative",
+      "fuente_ref": "seoclarity_2025",
+      "fecha": "2025-07",
+      "idioma": "no segmentado",
+      "mercado": "global/US",
+      "device": "mobile_vs_desktop",
+      "serp_context": "orgánico general",
+      "extrapolado_a_es_mx": true,
+      "ctr_por_posicion": null,
+      "notas": "Compara móvil vs desktop a escala. Para valores exactos por posición usar export o herramienta interactiva."
+    }
+  ],
+  "curvas_operativas_para_seo_local_mx": [
+    {
+      "id": "mobile_sin_local_pack_prior",
+      "device": "mobile",
+      "serp_context": "sin Local Pack dominante",
+      "tipo": "prior_modelado",
+      "base_refs": ["first_page_sage_2025", "seoclarity_2025", "awr_ctr_tool_2026"],
+      "ctr_por_posicion": {"1": 0.30, "2": 0.15, "3": 0.09, "4": 0.06, "5": 0.045, "6": 0.035, "7": 0.026, "8": 0.02, "9": 0.017, "10": 0.014},
+      "confidence": "media-baja",
+      "notas": "Curva modelada para iniciar scoring. Sustituir por GSC/AWR exportado por MX y mobile."
+    },
+    {
+      "id": "desktop_sin_local_pack_prior",
+      "device": "desktop",
+      "serp_context": "sin Local Pack dominante",
+      "tipo": "prior_modelado",
+      "base_refs": ["first_page_sage_2025", "seoclarity_2025", "awr_ctr_tool_2026"],
+      "ctr_por_posicion": {"1": 0.36, "2": 0.17, "3": 0.10, "4": 0.07, "5": 0.05, "6": 0.04, "7": 0.03, "8": 0.022, "9": 0.019, "10": 0.016},
+      "confidence": "media-baja",
+      "notas": "Desktop distribuye distinto los clics por layout; no mezclar con mobile."
+    },
+    {
+      "id": "mobile_con_local_pack_prior",
+      "device": "mobile",
+      "serp_context": "Local Pack presente",
+      "tipo": "prior_modelado_para_seo_local",
+      "base_refs": ["first_page_sage_2025", "searchlab_local_2026", "semrush_local_2026"],
+      "ctr_local_pack_por_posicion": {"1": 0.18, "2": 0.14, "3": 0.10},
+      "ctr_organico_por_posicion_debajo_del_pack": {"1": 0.14, "2": 0.09, "3": 0.06, "4": 0.04, "5": 0.03, "6": 0.022, "7": 0.018, "8": 0.014, "9": 0.012, "10": 0.01},
+      "confidence": "media",
+      "notas": "Para local SEO, separar ranking del Map Pack y ranking orgánico; son superficies distintas."
+    }
+  ],
+  "implementation_rules": [
+    {
+      "rule": "Nunca reportar 'posición 1' sin indicar superficie.",
+      "examples": ["Local Pack #1", "Orgánico #1 debajo del pack", "Orgánico #1 sin pack"],
+      "source_refs": ["first_page_sage_2025", "searchlab_local_2026"]
+    },
+    {
+      "rule": "Segmentar CTR por device.",
+      "reason": "La evidencia a escala muestra diferencias entre móvil y desktop.",
+      "source_refs": ["seoclarity_2025", "awr_ctr_tool_2026"]
+    },
+    {
+      "rule": "Para México, usar estas curvas solo como default hasta tener GSC.",
+      "reason": "No se encontró curva pública confiable específica para MX/es-MX por vertical local.",
+      "source_refs": ["awr_ctr_tool_2026", "first_page_sage_2025", "sistrix_2020"]
+    }
+  ]
+}

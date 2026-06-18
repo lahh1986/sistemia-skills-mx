@@ -1,0 +1,392 @@
+{
+  "schema": "seo-local-mx.keywords.v1",
+  "created_at": "2026-06-18",
+  "market": "MX",
+  "language": "es-MX",
+  "_meta": {
+    "captured_at": "2026-06-18",
+    "source": "ChatGPT GPT-5 Deep Research",
+    "completeness": "v1.0 — 8 verticales completos. Volúmenes mensuales NO incluidos (no hay fuente pública confiable; conectar GKP/Ahrefs/Semrush en producción)."
+  },
+  "methodology": {
+    "principio": "No se inventaron volúmenes. Cuando no hubo fuente pública verificable para volumen mensual MX por vertical, se marcó explícitamente.",
+    "source_tier_order": [
+      "MX público observado",
+      "LATAM / español",
+      "US / global extrapolado"
+    ],
+    "nota_para_implementacion": "Para producción, conectar Google Keyword Planner, Google Search Console, Ahrefs o Semrush vía export/API y usar este JSON como taxonomía semilla."
+  },
+  "fuentes_globales": {
+    "semrush_local_2026": {
+      "url": "https://www.semrush.com/blog/google-3-pack/",
+      "year": 2026,
+      "uso": "Patrones locales tipo [servicio] near me, best [servicio] in [ciudad], [servicio] [ubicación]."
+    },
+    "think_google_near_me_2018": {
+      "url": "https://business.google.com/uk/think/marketing-strategies/near-me-searches/",
+      "year": 2018,
+      "uso": "Crecimiento de búsquedas móviles con intención local tipo 'near me now', 'near me today/tonight'."
+    },
+    "doctoralia_trends_2018": {
+      "url": "https://cdn2.hubspot.net/hubfs/442271/Herramientas%20de%20m%C3%A9tricas%20y%20tendencias%20de%20b%C3%BAsqueda.pdf",
+      "year": 2018,
+      "uso": "Ejemplo público MX de Google Trends: en México se busca más 'dentista' que 'odontólogo'."
+    },
+    "rae_tlapaleria_2026": {
+      "url": "https://dle.rae.es/tlapaler%C3%ADa",
+      "year": 2026,
+      "uso": "Regionalismo mexicano 'tlapalería'."
+    },
+    "dem_tlapaleria_2026": {
+      "url": "https://dem.colmex.mx/ver/tlapaler%C3%ADa",
+      "year": 2026,
+      "uso": "Definición mexicana de tlapalería como tienda de materiales/herramientas."
+    },
+    "asale_autoparte_2010": {
+      "url": "https://www.asale.org/damer/autoparte",
+      "year": 2010,
+      "uso": "Regionalismo de 'autoparte' en México y otros países latinoamericanos."
+    },
+    "dem_autopartes_2026": {
+      "url": "https://dem.colmex.mx/ver/autopartes",
+      "year": 2026,
+      "uso": "Autopartes como partes y refacciones de automóviles."
+    },
+    "lamudi_cdmx_2022": {
+      "url": "https://www.lamudi.com.mx/journal/reporte-de-bienes-raices-cdmx-2022-lamudi/",
+      "year": 2022,
+      "uso": "Orden de preferencia digital inmobiliaria en CDMX: casas en venta, departamentos en renta, casas en renta, departamentos en venta."
+    },
+    "circulo_bienes_raices_2025": {
+      "url": "https://blog.circulobienesraices.com/como-vender-una-casa-usando-plataformas-inmobiliarias/",
+      "year": 2025,
+      "uso": "Google Trends inmobiliario: 'casa en venta' con interés alto en Querétaro, Jalisco, Aguascalientes, CDMX y Nuevo León."
+    },
+    "superprof_mx_2026": {
+      "url": "https://www.superprof.mx/clases/todas-materias/tijuana/",
+      "year": 2026,
+      "uso": "Patrones públicos de clases particulares: 'clases particulares cerca de mi', ciudad, materia, en línea y a domicilio."
+    },
+    "maplift_reviews_2025": {
+      "url": "https://www.maplift.app/blog/industry-review-benchmarks",
+      "year": 2025,
+      "uso": "Benchmarks por industria; también confirma categorías locales como dental, restaurantes, auto, beauty, retail, real estate."
+    },
+    "rewo_ferreteria_2025": {
+      "url": "https://rewo.com.mx/ferreterias-cerca-de-mi-encuentra-todo-en-rewo/",
+      "year": 2025,
+      "uso": "Patrones MX observados para 'ferretería cerca de mi' y 'ferreterías en [ciudad]'."
+    },
+    "dondeir_tlapaleria_2025": {
+      "url": "https://www.dondeir.com/content/tlapaleria-cerca-de-mi-encuentra-la-mejor-opcion/",
+      "year": 2025,
+      "uso": "Patrón MX observado para 'tlapalería cerca de mí'."
+    }
+  },
+  "verticales": [
+    {
+      "vertical": "dentista",
+      "head_terms": [
+        {"term": "dentista", "priority": "primario", "source_refs": ["doctoralia_trends_2018"]},
+        {"term": "odontólogo", "priority": "secundario/formal", "source_refs": ["doctoralia_trends_2018"]},
+        {"term": "clínica dental", "priority": "comercial/local", "source_refs": ["semrush_local_2026", "maplift_reviews_2025"]}
+      ],
+      "modificadores_calientes": [
+        {"mod": "cerca de mí", "intent": "local-now", "query_pattern": "dentista cerca de mí", "source_refs": ["semrush_local_2026", "think_google_near_me_2018"]},
+        {"mod": "precio / costo", "intent": "price", "query_pattern": "extracción muela del juicio precio cdmx", "source_refs": ["semrush_local_2026"]},
+        {"mod": "urgencias / 24 horas", "intent": "urgency", "query_pattern": "dentista 24 horas cerca de mí", "source_refs": ["think_google_near_me_2018"]},
+        {"mod": "sin dolor", "intent": "fear", "query_pattern": "dentista sin dolor", "source_refs": ["semrush_local_2026"]},
+        {"mod": "domingo / abierto ahora", "intent": "schedule", "query_pattern": "dentista abierto domingo cerca de mí", "source_refs": ["think_google_near_me_2018"]}
+      ],
+      "long_tail_alta_intencion": [
+        {"query": "extracción muela del juicio precio cdmx", "intent": "procedimiento + precio + ciudad", "source_refs": ["semrush_local_2026"]},
+        {"query": "blanqueamiento dental costo", "intent": "procedimiento + precio", "source_refs": ["semrush_local_2026"]},
+        {"query": "endodoncia precio cerca de mí", "intent": "procedimiento + local + precio", "source_refs": ["semrush_local_2026"]},
+        {"query": "brackets precio mensualidad", "intent": "tratamiento + financiamiento", "source_refs": ["semrush_local_2026"]}
+      ],
+      "regionalismos": [
+        {"termino": "dentista", "equivale_a": "odontólogo", "regiones": ["MX general"], "nota": "Preferencia léxica en Google Trends MX.", "source_refs": ["doctoralia_trends_2018"]},
+        {"termino": "muelas del juicio", "equivale_a": "terceros molares", "regiones": ["MX general"], "nota": "Coloquial para comercial; clínico en FAQ.", "source_refs": ["semrush_local_2026"]}
+      ],
+      "ciudades_top_busqueda": {
+        "value": ["CDMX", "Guadalajara", "Monterrey", "Puebla", "Tijuana"],
+        "data_quality": "proxy_no_validado_con_volumen_publico",
+        "nota": "Validar con GKP/GSC.",
+        "source_refs": ["semrush_local_2026"]
+      },
+      "volumen_mensual_aprox_mx": {
+        "status": "no_encontré_data_pública_confiable",
+        "value": null,
+        "nota": "Requiere acceso autenticado a GKP/Ahrefs/Semrush.",
+        "source_refs": ["semrush_local_2026"]
+      }
+    },
+    {
+      "vertical": "restaurante / comida a domicilio",
+      "head_terms": [
+        {"term": "restaurante", "priority": "primario", "source_refs": ["semrush_local_2026", "maplift_reviews_2025"]},
+        {"term": "comida a domicilio", "priority": "alta intención", "source_refs": ["semrush_local_2026", "think_google_near_me_2018"]},
+        {"term": "tacos / taquería", "priority": "MX verticalizado", "source_refs": ["semrush_local_2026"]}
+      ],
+      "modificadores_calientes": [
+        {"mod": "cerca de mí", "intent": "local-now", "query_pattern": "restaurante cerca de mí", "source_refs": ["semrush_local_2026", "think_google_near_me_2018"]},
+        {"mod": "a domicilio", "intent": "delivery", "query_pattern": "comida a domicilio cerca de mí", "source_refs": ["semrush_local_2026"]},
+        {"mod": "abierto ahora", "intent": "schedule", "query_pattern": "restaurante abierto ahora cerca de mí", "source_refs": ["think_google_near_me_2018"]},
+        {"mod": "barato / económico", "intent": "price", "query_pattern": "comida barata cerca de mí", "source_refs": ["semrush_local_2026"]},
+        {"mod": "hoy / noche", "intent": "immediate", "query_pattern": "restaurante cerca de mí abierto hoy", "source_refs": ["think_google_near_me_2018"]}
+      ],
+      "long_tail_alta_intencion": [
+        {"query": "tacos cerca de mí abiertos", "intent": "comida específica + horario", "source_refs": ["semrush_local_2026"]},
+        {"query": "comida corrida cerca de mí", "intent": "comida diaria económica", "source_refs": ["semrush_local_2026"]},
+        {"query": "restaurante familiar cerca de mí", "intent": "ocasión familiar", "source_refs": ["semrush_local_2026"]},
+        {"query": "mariscos cerca de mí", "intent": "categoría gastronómica", "source_refs": ["semrush_local_2026"]}
+      ],
+      "regionalismos": [
+        {"termino": "fonda", "equivale_a": "restaurante económico / comida corrida", "regiones": ["centro", "CDMX", "Edomex"], "nota": "Útil para comida diaria económica.", "source_refs": ["semrush_local_2026"]},
+        {"termino": "lonchería", "equivale_a": "comida rápida local / tortas / antojitos", "regiones": ["occidente", "norte", "sureste"], "nota": "Sustituye 'cafetería' o 'restaurante pequeño' según ciudad.", "source_refs": ["semrush_local_2026"]},
+        {"termino": "antojitos", "equivale_a": "comida mexicana informal", "regiones": ["MX general"], "nota": "Modificar por especialidad: tacos, quesadillas, gorditas, sopes, tortas.", "source_refs": ["semrush_local_2026"]}
+      ],
+      "ciudades_top_busqueda": {
+        "value": ["CDMX", "Guadalajara", "Monterrey", "Puebla", "Tijuana"],
+        "data_quality": "proxy_no_validado_con_volumen_publico",
+        "nota": "Validar con GKP por categoría gastronómica.",
+        "source_refs": ["semrush_local_2026", "think_google_near_me_2018"]
+      },
+      "volumen_mensual_aprox_mx": {
+        "status": "no_encontré_data_pública_confiable",
+        "value": null,
+        "nota": "Intención fragmentada por tipo de comida.",
+        "source_refs": ["semrush_local_2026"]
+      }
+    },
+    {
+      "vertical": "plomero",
+      "head_terms": [
+        {"term": "plomero", "priority": "primario MX", "source_refs": ["semrush_local_2026"]},
+        {"term": "servicio de plomería", "priority": "formal/comercial", "source_refs": ["semrush_local_2026"]},
+        {"term": "fontanero", "priority": "baja prioridad MX; más común en España", "source_refs": ["semrush_local_2026"]}
+      ],
+      "modificadores_calientes": [
+        {"mod": "cerca de mí", "intent": "local-now", "query_pattern": "plomero cerca de mí", "source_refs": ["semrush_local_2026", "think_google_near_me_2018"]},
+        {"mod": "24 horas", "intent": "urgency", "query_pattern": "plomero 24 horas cerca de mí", "source_refs": ["think_google_near_me_2018"]},
+        {"mod": "urgente / emergencia", "intent": "emergency", "query_pattern": "plomero urgente cerca de mí", "source_refs": ["think_google_near_me_2018"]},
+        {"mod": "fuga de agua", "intent": "problem-specific", "query_pattern": "plomero fuga de agua", "source_refs": ["semrush_local_2026"]},
+        {"mod": "destapar drenaje", "intent": "problem-specific", "query_pattern": "destapar drenaje precio", "source_refs": ["semrush_local_2026"]}
+      ],
+      "long_tail_alta_intencion": [
+        {"query": "plomero 24 horas cerca de mí", "intent": "emergencia local", "source_refs": ["think_google_near_me_2018"]},
+        {"query": "destapar drenaje precio", "intent": "problema + precio", "source_refs": ["semrush_local_2026"]},
+        {"query": "reparación fuga de agua cdmx", "intent": "problema + ciudad", "source_refs": ["semrush_local_2026"]},
+        {"query": "instalación boiler plomero", "intent": "servicio específico", "source_refs": ["semrush_local_2026"]}
+      ],
+      "regionalismos": [
+        {"termino": "plomero", "equivale_a": "fontanero", "regiones": ["MX general"], "nota": "Priorizar 'plomero' MX; 'fontanero' como variante secundaria.", "source_refs": ["semrush_local_2026"]},
+        {"termino": "boiler", "equivale_a": "calentador de agua", "regiones": ["MX general"], "nota": "Usar ambas variantes en FAQ/servicios.", "source_refs": ["semrush_local_2026"]}
+      ],
+      "ciudades_top_busqueda": {
+        "value": ["CDMX", "Guadalajara", "Monterrey", "Puebla", "Tijuana"],
+        "data_quality": "proxy_no_validado_con_volumen_publico",
+        "nota": "Validar con GKP por radios urbanos.",
+        "source_refs": ["semrush_local_2026"]
+      },
+      "volumen_mensual_aprox_mx": {
+        "status": "no_encontré_data_pública_confiable",
+        "value": null,
+        "nota": "Vertical de alta urgencia; volumen/CPC por ciudad.",
+        "source_refs": ["semrush_local_2026"]
+      }
+    },
+    {
+      "vertical": "estética / barbería",
+      "head_terms": [
+        {"term": "estética", "priority": "primario MX belleza general", "source_refs": ["semrush_local_2026", "maplift_reviews_2025"]},
+        {"term": "barbería", "priority": "primario masculino", "source_refs": ["semrush_local_2026", "maplift_reviews_2025"]},
+        {"term": "salón de belleza", "priority": "formal/comercial", "source_refs": ["semrush_local_2026", "maplift_reviews_2025"]},
+        {"term": "peluquería", "priority": "secundario", "source_refs": ["semrush_local_2026"]}
+      ],
+      "modificadores_calientes": [
+        {"mod": "cerca de mí", "intent": "local-now", "query_pattern": "barbería cerca de mí", "source_refs": ["semrush_local_2026", "think_google_near_me_2018"]},
+        {"mod": "abierta ahora", "intent": "schedule", "query_pattern": "estética abierta cerca de mí", "source_refs": ["think_google_near_me_2018"]},
+        {"mod": "precio", "intent": "price", "query_pattern": "corte de cabello hombre precio", "source_refs": ["semrush_local_2026"]},
+        {"mod": "uñas / gelish", "intent": "service-specific", "query_pattern": "uñas gelish cerca de mí", "source_refs": ["semrush_local_2026"]},
+        {"mod": "domingo", "intent": "schedule", "query_pattern": "barbería abierta domingo cerca de mí", "source_refs": ["think_google_near_me_2018"]}
+      ],
+      "long_tail_alta_intencion": [
+        {"query": "barbería cerca de mí abierta", "intent": "local + horario", "source_refs": ["think_google_near_me_2018"]},
+        {"query": "corte de cabello hombre cerca de mí", "intent": "servicio específico", "source_refs": ["semrush_local_2026"]},
+        {"query": "uñas acrílicas precio cerca de mí", "intent": "servicio + precio + local", "source_refs": ["semrush_local_2026"]},
+        {"query": "maquillaje profesional cerca de mí", "intent": "evento / ocasión", "source_refs": ["semrush_local_2026"]}
+      ],
+      "regionalismos": [
+        {"termino": "estética", "equivale_a": "salón de belleza", "regiones": ["MX general"], "nota": "Mejor que 'beauty salon'.", "source_refs": ["semrush_local_2026"]},
+        {"termino": "barbería", "equivale_a": "peluquería masculina", "regiones": ["MX urbano"], "nota": "Landing separada cuando ticket/público sean distintos.", "source_refs": ["maplift_reviews_2025"]}
+      ],
+      "ciudades_top_busqueda": {
+        "value": ["CDMX", "Guadalajara", "Monterrey", "Puebla", "Tijuana"],
+        "data_quality": "proxy_no_validado_con_volumen_publico",
+        "nota": "Validar por subservicio: barbería, uñas, pestañas, maquillaje.",
+        "source_refs": ["semrush_local_2026"]
+      },
+      "volumen_mensual_aprox_mx": {
+        "status": "no_encontré_data_pública_confiable",
+        "value": null,
+        "nota": "Volumen fragmentado por subservicio.",
+        "source_refs": ["semrush_local_2026"]
+      }
+    },
+    {
+      "vertical": "taller mecánico",
+      "head_terms": [
+        {"term": "taller mecánico", "priority": "primario MX", "source_refs": ["semrush_local_2026", "dem_autopartes_2026"]},
+        {"term": "mecánico", "priority": "local-now", "source_refs": ["semrush_local_2026"]},
+        {"term": "taller automotriz", "priority": "formal/comercial", "source_refs": ["semrush_local_2026"]}
+      ],
+      "modificadores_calientes": [
+        {"mod": "cerca de mí", "intent": "local-now", "query_pattern": "taller mecánico cerca de mí", "source_refs": ["semrush_local_2026", "think_google_near_me_2018"]},
+        {"mod": "abierto ahora", "intent": "schedule", "query_pattern": "mecánico abierto cerca de mí", "source_refs": ["think_google_near_me_2018"]},
+        {"mod": "precio", "intent": "price", "query_pattern": "afinación auto precio", "source_refs": ["semrush_local_2026"]},
+        {"mod": "a domicilio", "intent": "convenience", "query_pattern": "mecánico a domicilio cerca de mí", "source_refs": ["semrush_local_2026"]},
+        {"mod": "escáner / diagnóstico", "intent": "problem-specific", "query_pattern": "diagnóstico con escáner automotriz precio", "source_refs": ["semrush_local_2026"]}
+      ],
+      "long_tail_alta_intencion": [
+        {"query": "cambio de aceite cerca de mí", "intent": "servicio recurrente local", "source_refs": ["semrush_local_2026"]},
+        {"query": "afinación auto precio", "intent": "servicio + precio", "source_refs": ["semrush_local_2026"]},
+        {"query": "mecánico a domicilio cerca de mí", "intent": "conveniencia + local", "source_refs": ["semrush_local_2026"]},
+        {"query": "taller de frenos cerca de mí", "intent": "especialidad + local", "source_refs": ["semrush_local_2026"]}
+      ],
+      "regionalismos": [
+        {"termino": "refaccionaria", "equivale_a": "tienda de autopartes", "regiones": ["MX general"], "nota": "No es taller pero cruza intención cuando hay pieza + instalación.", "source_refs": ["dem_autopartes_2026", "asale_autoparte_2010"]},
+        {"termino": "autopartes", "equivale_a": "refacciones para automóvil", "regiones": ["MX general", "LATAM"], "nota": "Usar en páginas de refacciones, no como sustituto del taller.", "source_refs": ["dem_autopartes_2026", "asale_autoparte_2010"]},
+        {"termino": "hojalatería y pintura", "equivale_a": "body shop / reparación de carrocería", "regiones": ["MX general"], "nota": "Separar de mecánica general; intención y competencia distintas.", "source_refs": ["semrush_local_2026"]}
+      ],
+      "ciudades_top_busqueda": {
+        "value": ["CDMX", "Guadalajara", "Monterrey", "Puebla", "Tijuana"],
+        "data_quality": "proxy_no_validado_con_volumen_publico",
+        "nota": "Validar por 'mecánico', 'taller mecánico' y subservicios.",
+        "source_refs": ["semrush_local_2026"]
+      },
+      "volumen_mensual_aprox_mx": {
+        "status": "no_encontré_data_pública_confiable",
+        "value": null,
+        "nota": "No usar volumen nacional único; varía por marca, falla y subservicio.",
+        "source_refs": ["semrush_local_2026"]
+      }
+    },
+    {
+      "vertical": "clases particulares",
+      "head_terms": [
+        {"term": "clases particulares", "priority": "primario MX", "source_refs": ["superprof_mx_2026"]},
+        {"term": "maestro particular", "priority": "coloquial/comercial", "source_refs": ["superprof_mx_2026"]},
+        {"term": "regularización", "priority": "MX educación básica/media", "source_refs": ["superprof_mx_2026"]},
+        {"term": "tutorías", "priority": "formal/edtech", "source_refs": ["superprof_mx_2026"]}
+      ],
+      "modificadores_calientes": [
+        {"mod": "cerca de mí", "intent": "local-now", "query_pattern": "clases particulares cerca de mí", "source_refs": ["superprof_mx_2026", "semrush_local_2026"]},
+        {"mod": "a domicilio", "intent": "convenience", "query_pattern": "maestro particular a domicilio", "source_refs": ["superprof_mx_2026"]},
+        {"mod": "en línea", "intent": "remote", "query_pattern": "clases particulares en línea", "source_refs": ["superprof_mx_2026"]},
+        {"mod": "matemáticas / inglés", "intent": "subject-specific", "query_pattern": "clases de matemáticas cerca de mí", "source_refs": ["superprof_mx_2026"]},
+        {"mod": "precio / por hora", "intent": "price", "query_pattern": "maestro particular precio por hora", "source_refs": ["superprof_mx_2026"]}
+      ],
+      "long_tail_alta_intencion": [
+        {"query": "clases de matemáticas secundaria cerca de mí", "intent": "materia + nivel + local", "source_refs": ["superprof_mx_2026"]},
+        {"query": "maestro de inglés a domicilio", "intent": "materia + domicilio", "source_refs": ["superprof_mx_2026"]},
+        {"query": "regularización primaria cerca de mí", "intent": "nivel escolar + local", "source_refs": ["superprof_mx_2026"]},
+        {"query": "clases particulares en línea matemáticas", "intent": "materia + remoto", "source_refs": ["superprof_mx_2026"]}
+      ],
+      "regionalismos": [
+        {"termino": "regularización", "equivale_a": "refuerzo escolar / tutoring", "regiones": ["MX general"], "nota": "Keyword clave para educación básica y media.", "source_refs": ["superprof_mx_2026"]},
+        {"termino": "maestro particular", "equivale_a": "tutor privado", "regiones": ["MX general"], "nota": "Más natural que 'tutor privado' para padres de familia.", "source_refs": ["superprof_mx_2026"]}
+      ],
+      "ciudades_top_busqueda": {
+        "value": ["CDMX", "Guadalajara", "Monterrey", "Puebla", "Tijuana"],
+        "data_quality": "proxy_no_validado_con_volumen_publico",
+        "nota": "Validar con GKP por materia.",
+        "source_refs": ["superprof_mx_2026"]
+      },
+      "volumen_mensual_aprox_mx": {
+        "status": "no_encontré_data_pública_confiable",
+        "value": null,
+        "nota": "Volumen depende más de materia/nivel que de categoría general.",
+        "source_refs": ["superprof_mx_2026"]
+      }
+    },
+    {
+      "vertical": "asesor inmobiliario / casa en venta",
+      "head_terms": [
+        {"term": "casa en venta", "priority": "primario alta demanda", "source_refs": ["lamudi_cdmx_2022", "circulo_bienes_raices_2025"]},
+        {"term": "departamento en renta", "priority": "alta demanda urbana", "source_refs": ["lamudi_cdmx_2022"]},
+        {"term": "asesor inmobiliario", "priority": "servicio/profesional", "source_refs": ["semrush_local_2026"]},
+        {"term": "bienes raíces", "priority": "categoría formal", "source_refs": ["lamudi_cdmx_2022"]}
+      ],
+      "modificadores_calientes": [
+        {"mod": "en venta", "intent": "transactional", "query_pattern": "casas en venta en querétaro", "source_refs": ["lamudi_cdmx_2022", "circulo_bienes_raices_2025"]},
+        {"mod": "en renta", "intent": "transactional", "query_pattern": "departamentos en renta cdmx", "source_refs": ["lamudi_cdmx_2022"]},
+        {"mod": "cerca de mí", "intent": "local-browse", "query_pattern": "casas en venta cerca de mí", "source_refs": ["semrush_local_2026"]},
+        {"mod": "crédito infonavit", "intent": "financing", "query_pattern": "casas en venta crédito infonavit", "source_refs": ["semrush_local_2026"]},
+        {"mod": "colonia / zona", "intent": "neighborhood", "query_pattern": "casas en venta en [colonia]", "source_refs": ["semrush_local_2026"]}
+      ],
+      "long_tail_alta_intencion": [
+        {"query": "casas en venta en querétaro crédito infonavit", "intent": "compra + ciudad + financiamiento", "source_refs": ["circulo_bienes_raices_2025"]},
+        {"query": "departamentos en renta cdmx amueblados", "intent": "renta + ciudad + atributo", "source_refs": ["lamudi_cdmx_2022"]},
+        {"query": "asesor inmobiliario para vender casa", "intent": "servicio profesional", "source_refs": ["semrush_local_2026"]},
+        {"query": "casas en venta cerca de mí", "intent": "inventario local", "source_refs": ["semrush_local_2026"]}
+      ],
+      "regionalismos": [
+        {"termino": "bienes raíces", "equivale_a": "real estate", "regiones": ["MX general"], "nota": "Para navegación/categoría; para compra usar 'casa en venta' o 'departamento en renta'.", "source_refs": ["lamudi_cdmx_2022"]},
+        {"termino": "asesor inmobiliario", "equivale_a": "agente inmobiliario / broker", "regiones": ["MX general"], "nota": "Más natural que 'realtor'.", "source_refs": ["semrush_local_2026"]},
+        {"termino": "Infonavit", "equivale_a": "financiamiento hipotecario de vivienda para trabajadores", "regiones": ["MX general"], "nota": "Modificador de alta intención para vivienda popular/media.", "source_refs": ["semrush_local_2026"]}
+      ],
+      "ciudades_top_busqueda": {
+        "value": ["Querétaro", "Jalisco", "Aguascalientes", "CDMX", "Nuevo León"],
+        "data_quality": "proxy_google_trends_publicado",
+        "nota": "Interés alto para 'casa en venta' por entidad: Querétaro, GDL, Aguascalientes, CDMX, MTY.",
+        "source_refs": ["circulo_bienes_raices_2025", "lamudi_cdmx_2022"]
+      },
+      "volumen_mensual_aprox_mx": {
+        "status": "no_encontré_data_pública_confiable",
+        "value": null,
+        "nota": "Señales públicas de tendencias sin volumen abierto. Usar GKP o Semrush.",
+        "source_refs": ["lamudi_cdmx_2022", "circulo_bienes_raices_2025"]
+      }
+    },
+    {
+      "vertical": "ferretería / tlapalería",
+      "head_terms": [
+        {"term": "ferretería", "priority": "primario general", "source_refs": ["rewo_ferreteria_2025"]},
+        {"term": "tlapalería", "priority": "regionalismo MX clave", "source_refs": ["rae_tlapaleria_2026", "dem_tlapaleria_2026", "dondeir_tlapaleria_2025"]},
+        {"term": "material eléctrico", "priority": "subcategoría", "source_refs": ["dem_tlapaleria_2026"]},
+        {"term": "herramientas", "priority": "subcategoría", "source_refs": ["dem_tlapaleria_2026"]}
+      ],
+      "modificadores_calientes": [
+        {"mod": "cerca de mí", "intent": "local-now", "query_pattern": "ferretería cerca de mí", "source_refs": ["rewo_ferreteria_2025", "semrush_local_2026"]},
+        {"mod": "tlapalería cerca de mí", "intent": "local-now-regional", "query_pattern": "tlapalería cerca de mí", "source_refs": ["dondeir_tlapaleria_2025"]},
+        {"mod": "abierta ahora", "intent": "schedule", "query_pattern": "ferretería abierta cerca de mí", "source_refs": ["think_google_near_me_2018"]},
+        {"mod": "material eléctrico / plomería / pintura", "intent": "category-specific", "query_pattern": "material eléctrico cerca de mí", "source_refs": ["dem_tlapaleria_2026"]},
+        {"mod": "a domicilio", "intent": "delivery", "query_pattern": "ferretería a domicilio cerca de mí", "source_refs": ["semrush_local_2026"]}
+      ],
+      "long_tail_alta_intencion": [
+        {"query": "tlapalería cerca de mí abierta", "intent": "regionalismo + local + horario", "source_refs": ["dondeir_tlapaleria_2025"]},
+        {"query": "ferretería cerca de mí abierta ahora", "intent": "local + horario", "source_refs": ["rewo_ferreteria_2025", "think_google_near_me_2018"]},
+        {"query": "material eléctrico cerca de mí", "intent": "subcategoría local", "source_refs": ["dem_tlapaleria_2026"]},
+        {"query": "pintura vinílica cerca de mí", "intent": "producto específico local", "source_refs": ["dem_tlapaleria_2026"]}
+      ],
+      "regionalismos": [
+        {"termino": "tlapalería", "equivale_a": "ferretería / tienda de pintura, materiales eléctricos y herramientas", "regiones": ["centro", "CDMX", "Edomex", "Puebla", "Hidalgo", "Morelos"], "nota": "Clave para no perder búsquedas locales en centro de México.", "source_refs": ["rae_tlapaleria_2026", "dem_tlapaleria_2026"]},
+        {"termino": "ferretería", "equivale_a": "hardware store", "regiones": ["MX general"], "nota": "Término nacional; usar junto con tlapalería cuando aplique.", "source_refs": ["rewo_ferreteria_2025"]}
+      ],
+      "ciudades_top_busqueda": {
+        "value": ["CDMX", "Guadalajara", "Monterrey", "Puebla", "Tijuana"],
+        "data_quality": "proxy_no_validado_con_volumen_publico",
+        "nota": "Validar 'tlapalería' vs 'ferretería' en Google Trends por estado.",
+        "source_refs": ["rewo_ferreteria_2025", "dondeir_tlapaleria_2025"]
+      },
+      "volumen_mensual_aprox_mx": {
+        "status": "no_encontré_data_pública_confiable",
+        "value": null,
+        "nota": "Diferenciar ferretería, tlapalería y subcategorías por ciudad.",
+        "source_refs": ["rewo_ferreteria_2025", "dondeir_tlapaleria_2025"]
+      }
+    }
+  ]
+}

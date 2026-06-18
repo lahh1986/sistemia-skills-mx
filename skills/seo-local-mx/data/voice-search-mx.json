@@ -1,0 +1,194 @@
+{
+  "schema": "seo-local-mx.voice-search.v1",
+  "created_at": "2026-06-18",
+  "market_target": "MX",
+  "language_target": "es-MX",
+  "_meta": {
+    "captured_at": "2026-06-18",
+    "source": "ChatGPT GPT-5 Deep Research"
+  },
+  "source_status": {
+    "mx_specific_voice_query_corpus_found": false,
+    "mx_specific_adoption_proxy_found": true,
+    "note": "No encontré corpus público de queries reales de voz por vertical en México. Se usó infraestructura/adopción MX de INEGI y estudios globales de voice/local search como proxy."
+  },
+  "fuentes": [
+    {"id": "inegi_endutih_2024", "name": "INEGI ENDUTIH 2024", "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/endutih/ENDUTIH_24.pdf", "year": 2024, "coverage": "83.1% de personas usuarias de internet en MX; 26% de hogares con al menos un dispositivo inteligente; de esos hogares, 63.6% reportó bocina o asistente del hogar.", "data_quality": "primaria MX para adopción digital, no para queries"},
+    {"id": "think_google_voice_2018", "name": "Think with Google - Búsquedas por voz", "url": "https://www.thinkwithgoogle.com/_qs/documents/5645/busquedas_voz_1.pdf", "year": 2018, "coverage": "Voice search en Android; usos incluyen búsqueda de lugares/navegación; recomendaciones de contenido semántico, preguntas, schema y GBP.", "data_quality": "Google, español; no específico de México"},
+    {"id": "think_google_near_me_2018", "name": "Think with Google - Near me searches", "url": "https://business.google.com/uk/think/marketing-strategies/near-me-searches/", "year": 2018, "coverage": "Crecimiento de búsquedas móviles locales tipo 'near me now' y 'near me today/tonight'.", "data_quality": "Google/global; extrapolado a MX"},
+    {"id": "backlinko_voice_2024", "name": "Backlinko - Voice Search SEO Study", "url": "https://backlinko.com/voice-search-seo-study", "year": 2024, "coverage": "Estudio de resultados de Google Home; respuestas de voz tienden a ser cortas y vienen de páginas con autoridad/top rankings.", "data_quality": "global/US; extrapolado"},
+    {"id": "backlinko_voice_optimize_2025", "name": "Backlinko - How to Optimize for Voice Search", "url": "https://backlinko.com/optimize-for-voice-search", "year": 2025, "coverage": "Recomendaciones: keywords en forma de pregunta, FAQ, respuestas breves, lenguaje natural.", "data_quality": "global/US; extrapolado"},
+    {"id": "searchlab_local_voice_2026", "name": "Searchlab Local SEO Statistics 2026", "url": "https://searchlab.nl/en/statistics/local-seo-statistics-2026", "year": 2026, "coverage": "Compilación: queries de voz son más largas, usan palabras interrogativas y suelen depender de top 3/local pack.", "data_quality": "compilación secundaria; extrapolado"}
+  ],
+  "adopcion_mx": {
+    "internet_users_mx_2024": {"value": 0.831, "source_refs": ["inegi_endutih_2024"]},
+    "households_with_smart_device_2024": {"value": 0.26, "source_refs": ["inegi_endutih_2024"]},
+    "smart_device_households_with_speaker_or_home_assistant": {"value": 0.636, "source_refs": ["inegi_endutih_2024"]},
+    "voice_search_query_share_mx": {"value": null, "status": "no_encontré_data_pública_confiable", "source_refs": ["inegi_endutih_2024", "think_google_voice_2018"]}
+  },
+  "global_voice_rules_for_mx": [
+    {"rule": "Voice usa preguntas completas y contexto conversacional.", "examples": ["dónde hay", "cuál está abierto", "me recomiendas", "cómo llego", "llama a"], "source_refs": ["think_google_voice_2018", "backlinko_voice_optimize_2025", "searchlab_local_voice_2026"]},
+    {"rule": "Voice local depende mucho de Google Business Profile: categoría, horario, ubicación, reseñas y servicios.", "source_refs": ["think_google_voice_2018", "think_google_near_me_2018"]},
+    {"rule": "Las respuestas deben poder contestarse en 30-60 palabras con lenguaje natural.", "source_refs": ["backlinko_voice_2024", "backlinko_voice_optimize_2025"]}
+  ],
+  "patterns": [
+    {
+      "trigger": "Hey Google",
+      "vertical": "dentista",
+      "patron_busqueda": "Hey Google, ¿dónde hay un dentista abierto ahora cerca de mí?",
+      "vs_text_search": "dentista cerca de mí abierto ahora",
+      "diferencias_clave": [
+        "voice agrega pregunta completa con 'dónde hay'",
+        "voice combina cercanía + horario en una sola frase",
+        "voice puede disparar llamada o navegación directa"
+      ],
+      "implicaciones_seo": [
+        "GBP con horario real, urgencias y teléfono visible",
+        "FAQPage: '¿Atienden urgencias dentales hoy?'",
+        "Landing por ciudad/colonia con respuesta breve: servicios, horario, zona y llamada",
+        "Schema LocalBusiness/Dentist y servicios como endodoncia, extracción, limpieza"
+      ],
+      "source_refs": ["think_google_voice_2018", "think_google_near_me_2018", "backlinko_voice_optimize_2025"],
+      "extrapolado": true
+    },
+    {
+      "trigger": "Hey Google",
+      "vertical": "restaurante / comida a domicilio",
+      "patron_busqueda": "Hey Google, ¿dónde hay tacos buenos cerca que estén abiertos?",
+      "vs_text_search": "tacos cerca de mí abiertos",
+      "diferencias_clave": [
+        "voice usa categoría específica de comida",
+        "voice usa calificadores subjetivos como 'buenos' o 'me recomiendas'",
+        "voice prioriza abierto ahora, distancia, reseñas y navegación"
+      ],
+      "implicaciones_seo": [
+        "GBP con menú, horario, fotos, atributos y categoría correcta",
+        "FAQPage: '¿Tienen comida a domicilio?' y '¿Hasta qué hora cierran?'",
+        "Contenido por especialidad: tacos, mariscos, comida corrida, antojitos",
+        "Reseñas que mencionen platillos y colonia"
+      ],
+      "source_refs": ["think_google_voice_2018", "think_google_near_me_2018", "searchlab_local_voice_2026"],
+      "extrapolado": true
+    },
+    {
+      "trigger": "Hey Google",
+      "vertical": "plomero",
+      "patron_busqueda": "Hey Google, búscame un plomero de emergencia 24 horas cerca",
+      "vs_text_search": "plomero 24 horas cerca de mí",
+      "diferencias_clave": [
+        "voice tiende a usar verbo de acción: 'búscame'",
+        "voice agrega urgencia explícita",
+        "voice espera teléfono/call action más que lectura de página"
+      ],
+      "implicaciones_seo": [
+        "GBP con categoría principal 'Plumber' y horario 24 horas solo si es real",
+        "Landing de emergencia con respuesta corta: zona, tiempo de atención, teléfono",
+        "FAQPage: '¿Atienden fugas de agua de emergencia?'",
+        "Schema LocalBusiness/Plumber y Service para fugas, drenajes, boilers"
+      ],
+      "source_refs": ["think_google_voice_2018", "think_google_near_me_2018", "backlinko_voice_optimize_2025"],
+      "extrapolado": true
+    },
+    {
+      "trigger": "Oye Siri",
+      "vertical": "estética / barbería",
+      "patron_busqueda": "Oye Siri, ¿qué barbería está abierta cerca de mí?",
+      "vs_text_search": "barbería abierta cerca de mí",
+      "diferencias_clave": [
+        "voice usa pregunta de disponibilidad",
+        "voice puede omitir ciudad porque asume ubicación actual",
+        "voice puede pedir llamada, ruta o reservación"
+      ],
+      "implicaciones_seo": [
+        "GBP con horario exacto y servicios separados: corte, barba, uñas, maquillaje",
+        "FAQPage: '¿Abren los domingos?'",
+        "Páginas por subservicio con precios desde cuando sea posible",
+        "Reseñas con keywords naturales: corte, barba, uñas, gelish, atención"
+      ],
+      "source_refs": ["think_google_voice_2018", "think_google_near_me_2018", "searchlab_local_voice_2026"],
+      "extrapolado": true
+    },
+    {
+      "trigger": "Hey Google",
+      "vertical": "taller mecánico",
+      "patron_busqueda": "Hey Google, ¿dónde hay un taller mecánico abierto cerca para cambio de aceite?",
+      "vs_text_search": "taller mecánico cerca de mí cambio de aceite",
+      "diferencias_clave": [
+        "voice combina categoría + servicio específico",
+        "voice usa 'abierto cerca' por necesidad inmediata",
+        "voice puede activar navegación al taller más cercano"
+      ],
+      "implicaciones_seo": [
+        "GBP con servicios: cambio de aceite, frenos, afinación, escáner, suspensión",
+        "FAQPage: '¿Cuánto tarda un cambio de aceite?'",
+        "Landing por servicio con precio/rango si el negocio lo permite",
+        "Schema AutoRepair y Service"
+      ],
+      "source_refs": ["think_google_voice_2018", "think_google_near_me_2018", "backlinko_voice_optimize_2025"],
+      "extrapolado": true
+    },
+    {
+      "trigger": "Hey Google",
+      "vertical": "clases particulares",
+      "patron_busqueda": "Hey Google, ¿me recomiendas un maestro de matemáticas a domicilio cerca?",
+      "vs_text_search": "clases particulares matemáticas cerca de mí",
+      "diferencias_clave": [
+        "voice usa 'me recomiendas'",
+        "voice incluye materia y modalidad en una frase",
+        "voice puede usar intención de padre/madre, no solo del estudiante"
+      ],
+      "implicaciones_seo": [
+        "Páginas por materia + nivel: matemáticas primaria, secundaria, prepa, inglés",
+        "FAQPage: '¿Dan clases a domicilio?' y '¿Tienen clases en línea?'",
+        "Contenido en lenguaje de padres: regularización, examen, tareas, rezago",
+        "Schema LocalBusiness/EducationalOrganization cuando aplique"
+      ],
+      "source_refs": ["think_google_voice_2018", "backlinko_voice_optimize_2025"],
+      "extrapolado": true
+    },
+    {
+      "trigger": "Hey Google",
+      "vertical": "asesor inmobiliario / casa en venta",
+      "patron_busqueda": "Hey Google, ¿qué casas en venta hay cerca de esta colonia?",
+      "vs_text_search": "casas en venta [colonia]",
+      "diferencias_clave": [
+        "voice usa deícticos como 'esta colonia' o 'cerca de aquí'",
+        "voice puede mezclar inventario con intención de asesoría",
+        "voice es menos precisa para filtros complejos que búsqueda textual"
+      ],
+      "implicaciones_seo": [
+        "Landing por colonia/zona con inventario actualizado",
+        "FAQPage: '¿Cómo comprar casa con crédito Infonavit?'",
+        "Contenido para preguntas de voz: precio promedio, zonas, requisitos",
+        "Schema RealEstateAgent y datos NAP consistentes"
+      ],
+      "source_refs": ["think_google_voice_2018", "backlinko_voice_optimize_2025"],
+      "extrapolado": true
+    },
+    {
+      "trigger": "Hey Google",
+      "vertical": "ferretería / tlapalería",
+      "patron_busqueda": "Hey Google, ¿dónde hay una tlapalería abierta cerca de mí?",
+      "vs_text_search": "tlapalería cerca de mí abierta",
+      "diferencias_clave": [
+        "voice conserva regionalismo si el usuario lo usa",
+        "voice prioriza abierto ahora y distancia",
+        "voice puede derivar a ruta en Maps más que a sitio web"
+      ],
+      "implicaciones_seo": [
+        "GBP con categorías y productos: ferretería, pintura, material eléctrico, herramientas",
+        "Usar 'tlapalería' en zonas donde el término sea común",
+        "FAQPage: '¿Venden material eléctrico?' y '¿Tienen entrega a domicilio?'",
+        "Páginas de categoría por producto si hay inventario relevante"
+      ],
+      "source_refs": ["think_google_voice_2018", "think_google_near_me_2018"],
+      "extrapolado": true
+    }
+  ],
+  "implementation_rules": [
+    {"rule": "Crear FAQ por vertical usando preguntas completas en español MX.", "example": "¿Dónde hay un plomero 24 horas cerca de mí?", "source_refs": ["backlinko_voice_optimize_2025", "think_google_voice_2018"]},
+    {"rule": "Mantener respuestas de FAQ en 40-60 palabras, con servicio, zona, horario y siguiente acción.", "source_refs": ["backlinko_voice_2024", "backlinko_voice_optimize_2025"]},
+    {"rule": "Optimizar GBP antes que solo blog posts para voice local.", "source_refs": ["think_google_voice_2018", "think_google_near_me_2018"]},
+    {"rule": "Registrar regionalismos como aliases semánticos, no como traducciones.", "example": "ferretería <-> tlapalería; refaccionaria <-> autopartes; regularización <-> clases de apoyo", "source_refs": ["rae_tlapaleria_2026", "dem_tlapaleria_2026"]}
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "captured_at": "2026-06-18",
+    "source": "Grok 4 + DeepSearch",
+    "completeness": "v1.0 — operativo para SKILL.md."
+  },
+  "activacion": {
+    "fecha_lanzamiento_mx": "2024-08",
+    "estado_2026_06": "completamente activo en español-MX",
+    "notas": "Lanzamiento en MX coincidió con Brasil e India en agosto 2024."
+  },
+  "comportamiento_en_queries_locales": {
+    "queries_ejemplo": ["dentista cerca de mí", "plomero CDMX", "taquería 24 horas"],
+    "que_muestra_google": "AI Overview en la parte superior + Local Pack tradicional debajo (no reemplaza al pack)",
+    "impacto_clics": "AIO reduce clics en queries informacionales/mixtas; en queries con intención local fuerte, el Local Pack sigue capturando mayoría del tráfico transaccional",
+    "diferencia_local_vs_informacional": {
+      "local": "prioriza datos GBP + reseñas recientes + proximidad. Cita más 'transaccional'.",
+      "informacional": "prioriza contenido sustantivo + E-E-A-T."
+    }
+  },
+  "patrones_para_ser_citado_en_aio_local": [
+    {
+      "prioridad": 1,
+      "patron": "Schema LocalBusiness JSON-LD completo",
+      "propiedades_clave": [
+        "geo (latitude, longitude)",
+        "openingHoursSpecification",
+        "areaServed",
+        "sameAs (perfiles sociales y directorios)",
+        "address (PostalAddress completo)",
+        "telephone (en formato E.164)",
+        "priceRange",
+        "aggregateRating + review"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "patron": "Contenido con respuestas directas al inicio del contenido",
+      "formato": "Definición/respuesta en primer párrafo (<60 palabras), seguido de detalle"
+    },
+    {
+      "prioridad": 3,
+      "patron": "FAQPage / HowTo schema en páginas clave",
+      "formato": "Preguntas reales de clientes en lenguaje natural es-MX"
+    },
+    {
+      "prioridad": 4,
+      "patron": "Reseñas recientes con respuestas del dueño",
+      "señales": "velocidad + respuesta + autenticidad pesan más que volumen acumulado"
+    },
+    {
+      "prioridad": 5,
+      "patron": "NAP consistente en GBP + sitio + directorios principales",
+      "tolerancia": "0 variantes; misma puntuación, abreviaturas, formato telefónico"
+    },
+    {
+      "prioridad": 6,
+      "patron": "GBP hiperoptimizado",
+      "elementos": "Posts semanales, fotos mensuales, atributos completos, Q&A sembradas, servicios con descripciones largas"
+    }
+  ],
+  "impacto_reportado_mx": [
+    "Tráfico orgánico de queries informacionales/locales mixtas bajó por zero-clicks",
+    "Volatilidad alta en visibilidad orgánica en términos 'near me'",
+    "GBP con AI summary propio aparece (junio 2026) — Google extiende AIO al GBP profile"
+  ]
+}
